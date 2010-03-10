@@ -1,0 +1,33 @@
+#set $melati.ResponseContentType = "text/html"
+#set $ml = $melati.HTMLMarkupLanguage
+<HTML>
+<HEAD>
+<TITLE>FlushingServlet Test</TITLE>
+</head>
+<body>
+<h2>FlushingServlet Test</h2>
+<p>
+This servlet uses org.melati.util.Flusher to ensure the output 
+is flushed to the client every 0.8 seconds.
+</p>
+<p>
+In some situations, such as a long running process, you want to keep the
+underlying http request going, without it timing out,
+you also want to be able to update the user as to progress.
+</p>
+#if ($melati.Method != "unflushed") #begin
+<p>To see what would happen if you did not flush, click <a href="unflushed">here</a> (remember to wait :)</p>
+#end #else #begin
+<p>To see what would happen if you did flush, click <a href="flushed">here</a></p>
+#end
+<h3>Your Database has the following tables:</h3>
+#set $wait = 1500
+<p>There is a $(wait)ms delay between each table name being displayed</p>
+#foreach $tab in $melati.Database.DisplayTables #begin
+  $tab.DisplayName
+  $ml.rendered($tab)<br>
+  $waiter.wait($wait)
+#end
+<p>Done.</p>
+</body>
+</html>

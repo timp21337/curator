@@ -1,0 +1,28 @@
+## $Source: /usr/cvsroot/melati/melati/src/main/java/org/melati/template/velocity/templets/wml/org.melati.poem.JdbcPersistent.vm,v $
+## $Revision: 1.1 $
+##
+## Copyright (C) 2006 Tim Pizey
+##
+## Part of Melati (http://melati.org), a framework for the rapid
+## development of clean, maintainable web applications.
+##
+## Contact details for copyright holder:
+##
+##     Tim Pizey <timp AT paneris.org>
+##     http://paneris.org/~timp
+##-------------------------------------------------------------------
+##
+## Note that this template is expected to be called infrequently.
+##
+## Normally one would either: 
+## Render the fields of the persistent individually
+## or
+## Write a specific templet to render the whole persistent. 
+##
+## I know of no actual uses of this default template, 
+## but it was initially conceived of as the summary column for the 
+## object.
+##
+## Note that there should not be a new line at the end of this file.
+##
+$object.displayString($melati.PoemLocale)
