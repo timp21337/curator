@@ -1,6 +1,9 @@
 Manifest-Version: 1.0
 Archiver-Version: Plexus Archiver
 Created-By: Apache Maven
-Built-By: timp
-Build-Jdk: 1.6.0_15
+Built-By: hudson
+Build-Jdk: 1.6.0_12
+Hudson-Build-Number: 60
+Hudson-Project: melati
+Hudson-Version: 1.345
 

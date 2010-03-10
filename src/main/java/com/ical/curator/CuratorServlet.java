@@ -17,6 +17,8 @@ import org.melati.template.ServletTemplateContext;
 public abstract class CuratorServlet extends TemplateServlet {
 
 
+  private static final long serialVersionUID = 2548619909518575143L;
+  
   public static final String templatePrefix = "com/ical/curator/view/";
 
   public String getSysAdminName () {
