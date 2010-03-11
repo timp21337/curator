@@ -13,6 +13,11 @@ import org.melati.poem.TableCategoryTable;
 import org.melati.poem.TableInfoTable;
 import org.melati.poem.ColumnInfoTable;
 import org.melati.poem.SettingTable;
+import com.ical.curator.poem.WidgetTable;
+import com.ical.curator.poem.RequestTable;
+import com.ical.curator.poem.MethodTable;
+import com.ical.curator.poem.EventTable;
+import com.ical.curator.poem.UrlTable;
 
 /**
  * Melati POEM generated Database base class.
@@ -28,6 +33,11 @@ public class CuratorDatabaseBase extends PoemDatabase {
   private TableInfoTable tab_tableinfo = null;
   private ColumnInfoTable tab_columninfo = null;
   private SettingTable tab_setting = null;
+  private WidgetTable tab_widget = null;
+  private RequestTable tab_request = null;
+  private MethodTable tab_method = null;
+  private EventTable tab_event = null;
+  private UrlTable tab_url = null;
 
   protected CuratorDatabaseBase() {
     redefineTable(tab_user = new UserTable(this, "user", DefinitionSource.dsd));
@@ -39,6 +49,11 @@ public class CuratorDatabaseBase extends PoemDatabase {
     redefineTable(tab_tableinfo = new TableInfoTable(this, "tableinfo", DefinitionSource.dsd));
     redefineTable(tab_columninfo = new ColumnInfoTable(this, "columninfo", DefinitionSource.dsd));
     redefineTable(tab_setting = new SettingTable(this, "setting", DefinitionSource.dsd));
+    redefineTable(tab_widget = new WidgetTable(this, "widget", DefinitionSource.dsd));
+    redefineTable(tab_request = new RequestTable(this, "request", DefinitionSource.dsd));
+    redefineTable(tab_method = new MethodTable(this, "method", DefinitionSource.dsd));
+    redefineTable(tab_event = new EventTable(this, "event", DefinitionSource.dsd));
+    redefineTable(tab_url = new UrlTable(this, "url", DefinitionSource.dsd));
   }
 
 
@@ -139,6 +154,61 @@ public class CuratorDatabaseBase extends PoemDatabase {
   */
   public SettingTable getSettingTable() {
     return tab_setting;
+  }
+
+
+ /**
+  * Retrieves the WidgetTable table.
+  *
+  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * @return the WidgetTable from this database
+  */
+  public WidgetTable getWidgetTable() {
+    return tab_widget;
+  }
+
+
+ /**
+  * Retrieves the RequestTable table.
+  *
+  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * @return the RequestTable from this database
+  */
+  public RequestTable getRequestTable() {
+    return tab_request;
+  }
+
+
+ /**
+  * Retrieves the MethodTable table.
+  *
+  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * @return the MethodTable from this database
+  */
+  public MethodTable getMethodTable() {
+    return tab_method;
+  }
+
+
+ /**
+  * Retrieves the EventTable table.
+  *
+  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * @return the EventTable from this database
+  */
+  public EventTable getEventTable() {
+    return tab_event;
+  }
+
+
+ /**
+  * Retrieves the UrlTable table.
+  *
+  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * @return the UrlTable from this database
+  */
+  public UrlTable getUrlTable() {
+    return tab_url;
   }
 }
 

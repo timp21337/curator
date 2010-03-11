@@ -2,7 +2,7 @@
 
 package com.ical.curator.poem.generated;
 
-// 10 tables in database
+// 15 tables in database
 import org.melati.poem.UserTable;
 import org.melati.poem.GroupTable;
 import org.melati.poem.CapabilityTable;
@@ -13,6 +13,11 @@ import org.melati.poem.TableInfoTable;
 // abstract import org.melati.poem.ValueInfoTable;
 import org.melati.poem.ColumnInfoTable;
 import org.melati.poem.SettingTable;
+import com.ical.curator.poem.WidgetTable;
+import com.ical.curator.poem.RequestTable;
+import com.ical.curator.poem.MethodTable;
+import com.ical.curator.poem.EventTable;
+import com.ical.curator.poem.UrlTable;
 
 /**
  * Melati POEM generated base interface to the tables in 
@@ -92,6 +97,46 @@ public interface CuratorDatabaseTablesBase {
   * @return the SettingTable from this database
   */
   SettingTable getSettingTable();
+
+ /**
+  * Retrieves the <code>WidgetTable</code> table.
+  * 
+  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * @return the WidgetTable from this database
+  */
+  WidgetTable getWidgetTable();
+
+ /**
+  * Retrieves the <code>RequestTable</code> table.
+  * 
+  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * @return the RequestTable from this database
+  */
+  RequestTable getRequestTable();
+
+ /**
+  * Retrieves the <code>MethodTable</code> table.
+  * 
+  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * @return the MethodTable from this database
+  */
+  MethodTable getMethodTable();
+
+ /**
+  * Retrieves the <code>EventTable</code> table.
+  * 
+  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * @return the EventTable from this database
+  */
+  EventTable getEventTable();
+
+ /**
+  * Retrieves the <code>UrlTable</code> table.
+  * 
+  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * @return the UrlTable from this database
+  */
+  UrlTable getUrlTable();
 }
 
 
