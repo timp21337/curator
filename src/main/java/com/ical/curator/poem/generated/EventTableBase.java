@@ -92,7 +92,7 @@ public class EventTableBase extends CuratorTable {
           }
 
           protected DisplayLevel defaultDisplayLevel() {
-            return DisplayLevel.summary;
+            return DisplayLevel.record;
           }
 
           protected Searchability defaultSearchability() {
@@ -169,6 +169,10 @@ public class EventTableBase extends CuratorTable {
 
           protected Searchability defaultSearchability() {
             return Searchability.primary;
+          }
+
+          protected Integer defaultDisplayOrderPriority() {
+            return new Integer(1);
           }
 
           protected String defaultDisplayName() {
