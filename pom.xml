@@ -109,6 +109,12 @@ http://sourceforge.net/mailarchive/forum.php?forum=melati-users
       <version>1.5.8</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>org.webmacro</groupId>
+      <artifactId>webmacro</artifactId>
+      <version>2.1</version>
+      <scope>compile</scope>
+    </dependency>
 
 
     <!-- Test dependencies -->
@@ -176,14 +182,20 @@ http://sourceforge.net/mailarchive/forum.php?forum=melati-users
       <include>**/*.dsd</include>
      </includes>
     </resource>
-     <resource>
+    <resource>
       <directory>src/main/conf</directory>
       <filtering>true</filtering>
       <includes>
        <include>**/*.properties</include>
        <include>**/*.wm</include>
       </includes>
-      </resource>
+    </resource>
+    <resource>
+     <directory>src/meta</directory>
+     <includes>
+       <include>**/*.wm</include>
+     </includes>
+    </resource>
    </resources>
    <testResources>
     <testResource>
@@ -282,8 +294,42 @@ http://sourceforge.net/mailarchive/forum.php?forum=melati-users
         <scanIntervalSeconds>3</scanIntervalSeconds>
      </configuration>
     </plugin>
+		
+     <plugin>
+       <groupId>org.codehaus.mojo</groupId>
+       <artifactId>exec-maven-plugin</artifactId>
+       <executions>
+         <execution>
+          <id>generate</id>
+          <phase>test</phase>
+          <goals>
+           <goal>java</goal>
+          </goals>
+          <configuration>
+           <mainClass>org.melati.app.TemplateApp</mainClass>
+           <arguments>
+             <argument>curator</argument>
+             <argument>widget</argument>
+             <argument>0</argument>
+             <argument>generate.sh</argument>
+             <argument>-output</argument>
+             <argument>${basedir}/generate.sh</argument>
+           </arguments>
+           <cleanupDaemonThreads>true</cleanupDaemonThreads>
+          </configuration>
+         </execution>
+       </executions>
+    </plugin>
+		
    </plugins>
-  </build>
+
+	</build>
+
+
+
+
+
+
   <reporting>
    <plugins>
     <plugin>
