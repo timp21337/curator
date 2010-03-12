@@ -5,6 +5,7 @@ package com.ical.curator.poem.generated;
 
 import com.ical.curator.poem.CuratorDatabaseTables;
 import com.ical.curator.poem.RequestTable;
+import com.ical.curator.poem.Url;
 import com.ical.curator.poem.Widget;
 import org.melati.poem.AccessPoemException;
 import org.melati.poem.Column;
@@ -62,6 +63,10 @@ public abstract class RequestBase extends JdbcPersistent {
   * Method - HTTP method 
   */
   protected String method;
+ /**
+  * URL - The Url 
+  */
+  protected Integer url;
 
 
  /**
@@ -355,6 +360,121 @@ public abstract class RequestBase extends JdbcPersistent {
   */
   public Field getMethodField() throws AccessPoemException {
     Column c = _getRequestTable().getMethodColumn();
+    return new Field(c.getRaw(this), c);
+  }
+
+
+ /**
+  * Retrieves the <code>Url</code> value, without locking, 
+  * for this <code>Request</code> <code>Persistent</code>.
+  *
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @return the Integer url
+  */
+  public Integer getUrl_unsafe() {
+    return url;
+  }
+
+
+ /**
+  * Sets the <code>Url</code> value directly, without checking, 
+  * for this Request <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @param cooked  the pre-validated value to set
+  */
+  public void setUrl_unsafe(Integer cooked) {
+    url = cooked;
+  }
+
+ /**
+  * Retrieves the Table Row Object ID. 
+  *
+  * @generator org.melati.poem.prepro.ReferenceFieldDef#generateBaseMethods 
+  * @throws AccessPoemException  
+  *         if the current <code>AccessToken</code> 
+  *         does not confer read access rights 
+  * @return the TROID as an <code>Integer</code> 
+  */
+
+  public Integer getUrlTroid()
+      throws AccessPoemException {
+    readLock();
+    return getUrl_unsafe();
+  }
+
+
+ /**
+  * Sets the Table Row Object ID. 
+  * 
+  * @generator org.melati.poem.prepro.ReferenceFieldDef#generateBaseMethods 
+  * @param raw  a Table Row Object Id 
+  * @throws AccessPoemException  
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  */
+  public void setUrlTroid(Integer raw)
+      throws AccessPoemException {
+    setUrl(raw == null ? null : 
+        getCuratorDatabaseTables().getUrlTable().getUrlObject(raw));
+  }
+
+
+ /**
+  * Retrieves the <code>Url</code> object referred to.
+  *  
+  * @generator org.melati.poem.prepro.ReferenceFieldDef#generateBaseMethods 
+  * @throws AccessPoemException  
+  *         if the current <code>AccessToken</code> 
+  *         does not confer read access rights 
+  * @throws NoSuchRowPoemException  
+  *         if the <code>Persistent</code> has yet to be allocated a TROID 
+  * @return the <code>Url</code> as a <code>Url</code> 
+  */
+  public Url getUrl()
+      throws AccessPoemException, NoSuchRowPoemException {
+    Integer troid = getUrlTroid();
+    return troid == null ? null :
+        getCuratorDatabaseTables().getUrlTable().getUrlObject(troid);
+  }
+
+
+ /**
+  * Set the Url.
+  * 
+  * @generator org.melati.poem.prepro.ReferenceFieldDef#generateBaseMethods 
+  * @param cooked  a validated <code>Url</code>
+  * @throws AccessPoemException  
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights 
+  */
+  public void setUrl(Url cooked)
+      throws AccessPoemException {
+    _getRequestTable().
+      getUrlColumn().
+        getType().assertValidCooked(cooked);
+    writeLock();
+    if (cooked == null)
+      setUrl_unsafe(null);
+    else {
+      cooked.existenceLock();
+      setUrl_unsafe(cooked.troid());
+    }
+  }
+
+
+ /**
+  * Retrieves the <code>Url</code> value as a <code>Field</code>
+  * from this <code>Request</code> <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateFieldCreator 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  * @return the Integer url
+  */
+  public Field getUrlField() throws AccessPoemException {
+    Column c = _getRequestTable().getUrlColumn();
     return new Field(c.getRaw(this), c);
   }
 }
