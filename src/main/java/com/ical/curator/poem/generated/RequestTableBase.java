@@ -5,6 +5,7 @@ package com.ical.curator.poem.generated;
 import com.ical.curator.poem.CuratorDatabaseTables;
 import com.ical.curator.poem.CuratorTable;
 import com.ical.curator.poem.Request;
+import com.ical.curator.poem.Url;
 import com.ical.curator.poem.Widget;
 import org.melati.poem.AccessPoemException;
 import org.melati.poem.Column;
@@ -35,6 +36,7 @@ public class RequestTableBase extends CuratorTable {
   private Column col_id = null;
   private Column col_widget = null;
   private Column col_method = null;
+  private Column col_url = null;
 
  /**
   * Constructor. 
@@ -92,7 +94,7 @@ public class RequestTableBase extends CuratorTable {
           }
 
           protected DisplayLevel defaultDisplayLevel() {
-            return DisplayLevel.summary;
+            return DisplayLevel.record;
           }
 
           protected Searchability defaultSearchability() {
@@ -294,6 +296,82 @@ public class RequestTableBase extends CuratorTable {
             ((Request)g).setMethod((String)raw);
           }
         });
+
+    defineColumn(col_url =
+        new Column(this, "url",
+                   new ReferencePoemType(getCuratorDatabaseTables().
+                                             getUrlTable(), false),
+                   DefinitionSource.dsd) { 
+          public Object getCooked(Persistent g)
+              throws AccessPoemException, PoemException {
+            return ((Request)g).getUrl();
+          }
+
+          public void setCooked(Persistent g, Object cooked)
+              throws AccessPoemException, ValidationPoemException {
+            ((Request)g).setUrl((Url)cooked);
+          }
+
+          public Field asField(Persistent g) {
+            return ((Request)g).getUrlField();
+          }
+
+          protected DisplayLevel defaultDisplayLevel() {
+            return DisplayLevel.primary;
+          }
+
+          protected Searchability defaultSearchability() {
+            return Searchability.primary;
+          }
+
+          protected String defaultDisplayName() {
+            return "URL";
+          }
+
+          protected int defaultDisplayOrder() {
+            return 30;
+          }
+
+          protected String defaultDescription() {
+            return "The Url";
+          }
+
+          protected boolean defaultIndexed() {
+            return true;
+          }
+
+          protected int defaultWidth() {
+            return 1;
+          }
+
+          protected int defaultHeight() {
+            return 1;
+          }
+
+          public Object getRaw_unsafe(Persistent g)
+              throws AccessPoemException {
+            return ((Request)g).getUrl_unsafe();
+          }
+
+          public void setRaw_unsafe(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Request)g).setUrl_unsafe((Integer)raw);
+          }
+
+          public Object getRaw(Persistent g)
+              throws AccessPoemException {
+            return ((Request)g).getUrlTroid();
+          }
+
+          public void setRaw(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Request)g).setUrlTroid((Integer)raw);
+          }
+
+          public StandardIntegrityFix defaultIntegrityFix() {
+            return StandardIntegrityFix.delete;
+          }
+        });
   }
 
 
@@ -330,6 +408,18 @@ public class RequestTableBase extends CuratorTable {
   */
   public final Column getMethodColumn() {
     return col_method;
+  }
+
+
+ /**
+  * Retrieves the <code>Url</code> <code>Column</code> for this 
+  * <code>Request</code> <code>Table</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * @return the url <code>Column</code>
+  */
+  public final Column getUrlColumn() {
+    return col_url;
   }
 
 
