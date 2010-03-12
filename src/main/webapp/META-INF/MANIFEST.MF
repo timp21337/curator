@@ -3,7 +3,7 @@ Archiver-Version: Plexus Archiver
 Created-By: Apache Maven
 Built-By: hudson
 Build-Jdk: 1.6.0_12
-Hudson-Build-Number: 60
+Hudson-Build-Number: 62
 Hudson-Project: melati
 Hudson-Version: 1.345
 
