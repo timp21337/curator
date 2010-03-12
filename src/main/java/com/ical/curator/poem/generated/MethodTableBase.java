@@ -92,11 +92,15 @@ public class MethodTableBase extends CuratorTable {
           }
 
           protected DisplayLevel defaultDisplayLevel() {
-            return DisplayLevel.summary;
+            return DisplayLevel.record;
           }
 
           protected Searchability defaultSearchability() {
             return Searchability.yes;
+          }
+
+          protected Integer defaultDisplayOrderPriority() {
+            return new Integer(1);
           }
 
           protected String defaultDisplayName() {
@@ -104,7 +108,7 @@ public class MethodTableBase extends CuratorTable {
           }
 
           protected int defaultDisplayOrder() {
-            return 100;
+            return 1;
           }
 
           protected boolean defaultIndexed() {
@@ -244,6 +248,10 @@ public class MethodTableBase extends CuratorTable {
 
           protected Searchability defaultSearchability() {
             return Searchability.primary;
+          }
+
+          protected Integer defaultDisplayOrderPriority() {
+            return new Integer(2);
           }
 
           protected String defaultDisplayName() {
