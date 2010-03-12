@@ -35,7 +35,6 @@ public class RequestTableBase extends CuratorTable {
   private Column col_id = null;
   private Column col_widget = null;
   private Column col_method = null;
-  private Column col_url = null;
 
  /**
   * Constructor. 
@@ -295,85 +294,6 @@ public class RequestTableBase extends CuratorTable {
             ((Request)g).setMethod((String)raw);
           }
         });
-
-    defineColumn(col_url =
-        new Column(this, "url",
-                   new StringPoemType(false, -1),
-                   DefinitionSource.dsd) { 
-          public Object getCooked(Persistent g)
-              throws AccessPoemException, PoemException {
-            return ((Request)g).getUrl();
-          }
-
-          public void setCooked(Persistent g, Object cooked)
-              throws AccessPoemException, ValidationPoemException {
-            ((Request)g).setUrl((String)cooked);
-          }
-
-          public Field asField(Persistent g) {
-            return ((Request)g).getUrlField();
-          }
-
-          protected DisplayLevel defaultDisplayLevel() {
-            return DisplayLevel.primary;
-          }
-
-          protected Searchability defaultSearchability() {
-            return Searchability.primary;
-          }
-
-          protected Integer defaultDisplayOrderPriority() {
-            return new Integer(20);
-          }
-
-          protected String defaultDisplayName() {
-            return "URL";
-          }
-
-          protected int defaultDisplayOrder() {
-            return 20;
-          }
-
-          protected String defaultDescription() {
-            return "The request url";
-          }
-
-          protected boolean defaultIndexed() {
-            return true;
-          }
-
-          protected boolean defaultUnique() {
-            return true;
-          }
-
-          protected int defaultWidth() {
-            return 40;
-          }
-
-          protected int defaultHeight() {
-            return 1;
-          }
-
-          public Object getRaw_unsafe(Persistent g)
-              throws AccessPoemException {
-            return ((Request)g).getUrl_unsafe();
-          }
-
-          public void setRaw_unsafe(Persistent g, Object raw)
-              throws AccessPoemException {
-            ((Request)g).setUrl_unsafe((String)raw);
-          }
-
-          public Object getRaw(Persistent g)
-              throws AccessPoemException {
-            return ((Request)g).getUrl();
-          }
-
-          public void setRaw(Persistent g, Object raw)
-              throws AccessPoemException {
-            ((Request)g).setUrl((String)raw);
-          }
-        });
   }
 
 
@@ -414,18 +334,6 @@ public class RequestTableBase extends CuratorTable {
 
 
  /**
-  * Retrieves the <code>Url</code> <code>Column</code> for this 
-  * <code>Request</code> <code>Table</code>.
-  * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
-  * @return the url <code>Column</code>
-  */
-  public final Column getUrlColumn() {
-    return col_url;
-  }
-
-
- /**
   * Retrieve the <code>Request</code> as a <code>Request</code>.
   *
   * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
@@ -452,7 +360,7 @@ public class RequestTableBase extends CuratorTable {
     return new Request();
   }
   protected String defaultDisplayName() {
-    return "WS API";
+    return "Request";
   }
 
   protected String defaultDescription() {
