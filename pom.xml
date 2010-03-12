@@ -198,42 +198,12 @@ http://sourceforge.net/mailarchive/forum.php?forum=melati-users
    </testResources>
    <plugins>
     <plugin>
-     <artifactId>maven-antrun-plugin</artifactId>
-     <!-- Delete this once it has run once -->
-     <!-- It is called twice as the pom is validated twice :( -->
-     <executions>
-      <execution>
-       <id>moveGeneratedFiles</id>
-       <phase>validate</phase>
-        <configuration>
-         <tasks>
-
-    <move failonerror="false" 
-      file="${project.build.sourceDirectory}/com/ical/AppServlet.java" 
-      tofile="${project.build.sourceDirectory}/com/ical/curator/CuratorServlet.java" />
-    <move failonerror="false" 
-      file="${project.build.sourceDirectory}/com/ical/poem/App.dsd" 
-      tofile="${project.build.sourceDirectory}/com/ical/curator/poem/curator.dsd" />
-    <move failonerror="false" 
-      file="${project.build.testSourceDirectory}/com/ical/poem/test/PoemTest.java" 
-      tofile="${project.build.testSourceDirectory}/com/ical/curator/poem/test/PoemTest.java" />
-    <move failonerror="false" 
-      file="${project.build.testSourceDirectory}/com/ical/melati/test/JettyWebTestCase.java" 
-      tofile="${project.build.testSourceDirectory}/com/ical/curator/melati/test/CuratorJettyWebTestCase.java" />
-    <delete failonerror="false" 
-      dir="${project.build.sourceDirectory}/com/ical/poem" />
-    <delete failonerror="false" 
-      dir="${project.build.testSourceDirectory}/com/ical/poem" />
-    <delete failonerror="false" 
-      dir="${project.build.testSourceDirectory}/com/ical/melati" />
-
-         </tasks>
-       </configuration>
-       <goals>
-        <goal>run</goal>
-       </goals>
-      </execution>
-     </executions>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-compiler-plugin</artifactId>
+     <configuration>
+      <source>1.6</source>
+      <target>1.6</target>
+     </configuration>
     </plugin>
     <plugin>
      <groupId>org.melati</groupId>
