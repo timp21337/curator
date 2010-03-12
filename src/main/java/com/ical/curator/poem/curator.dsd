@@ -125,7 +125,7 @@ table Request
       // (renderinfo = null)
       (displayorder = 100)
       // usercreateable
-      (displaylevel = summary)
+      (displaylevel = record)
       (searchability = yes)
       // (displayorderpriority = null)
       // Not sortdescending
@@ -174,6 +174,27 @@ table Request
       // Not indexed
       // Not unique
       ;
+    //request.url: reference to url (INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
+    Url url
+      (displayname = "URL")
+      (description = "The Url")
+      // usereditable
+      // Not nullable
+      (width = 1)
+      (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
+      (displayorder = 30)
+      // usercreateable
+      (displaylevel = primary)
+      (searchability = primary)
+      // (displayorderpriority = null)
+      // (sortdescending = null)
+      (indexed)
+      // Not unique
+      (integrityfix = delete)
+      ;
  }
 
 //   method (from the data structure definition)
@@ -201,11 +222,11 @@ table Method
       (width = 20)
       (height = 1)
       // (renderinfo = null)
-      (displayorder = 100)
+      (displayorder = 1)
       // usercreateable
-      (displaylevel = summary)
+      (displaylevel = record)
       (searchability = yes)
-      // (displayorderpriority = null)
+      (displayorderpriority = 1)
       // Not sortdescending
       (indexed)
       (unique)
@@ -247,7 +268,7 @@ table Method
       // usercreateable
       (displaylevel = primary)
       (searchability = primary)
-      // (displayorderpriority = null)
+      (displayorderpriority = 2)
       // (sortdescending = null)
       // Not indexed
       // Not unique
@@ -281,7 +302,7 @@ table Event
       // (renderinfo = null)
       (displayorder = 100)
       (uncreateable)
-      (displaylevel = summary)
+      (displaylevel = record)
       (searchability = yes)
       // (displayorderpriority = null)
       // Not sortdescending
@@ -303,7 +324,7 @@ table Event
       // usercreateable
       (displaylevel = summary)
       (searchability = primary)
-      // (displayorderpriority = null)
+      (displayorderpriority = 1)
       // Not sortdescending
       (indexed)
       // Not unique
