@@ -62,10 +62,6 @@ public abstract class RequestBase extends JdbcPersistent {
   * Method - HTTP method 
   */
   protected String method;
- /**
-  * URL - The request url 
-  */
-  protected String url;
 
 
  /**
@@ -359,89 +355,6 @@ public abstract class RequestBase extends JdbcPersistent {
   */
   public Field getMethodField() throws AccessPoemException {
     Column c = _getRequestTable().getMethodColumn();
-    return new Field(c.getRaw(this), c);
-  }
-
-
- /**
-  * Retrieves the <code>Url</code> value, without locking, 
-  * for this <code>Request</code> <code>Persistent</code>.
-  *
-  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
-  * @return the String url
-  */
-  public String getUrl_unsafe() {
-    return url;
-  }
-
-
- /**
-  * Sets the <code>Url</code> value directly, without checking, 
-  * for this Request <code>Persistent</code>.
-  * 
-  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
-  * @param cooked  the pre-validated value to set
-  */
-  public void setUrl_unsafe(String cooked) {
-    url = cooked;
-  }
-
- /**
-  * Retrieves the Url value, with locking, for this 
-  * <code>Request</code> <code>Persistent</code>.
-  * Field description: 
-  *   The request url 
-  * 
-  * @generator org.melati.poem.prepro.AtomFieldDef#generateBaseMethods 
-  * @throws AccessPoemException 
-  *         if the current <code>AccessToken</code> 
-  *         does not confer write access rights 
-  * @return the value of the field <code>Url</code> for this 
-  *         <code>Request</code> <code>Persistent</code>  
-  */
-
-  public String getUrl()
-      throws AccessPoemException {
-    readLock();
-    return getUrl_unsafe();
-  }
-
-
- /**
-  * Sets the <code>Url</code> value, with checking, for this 
-  * <code>Request</code> <code>Persistent</code>.
-  * Field description: 
-  *   The request url 
-  * 
-  * @generator org.melati.poem.prepro.AtomFieldDef#generateBaseMethods  
-  * @param cooked  a validated <code>int</code> 
-  * @throws AccessPoemException 
-  *         if the current <code>AccessToken</code> 
-  *         does not confer write access rights
-  * @throws ValidationPoemException 
-  *         if the value is not valid
-  */
-  public void setUrl(String cooked)
-      throws AccessPoemException, ValidationPoemException {
-    _getRequestTable().getUrlColumn().
-      getType().assertValidCooked(cooked);
-    writeLock();
-    setUrl_unsafe(cooked);
-  }
-
-
- /**
-  * Retrieves the <code>Url</code> value as a <code>Field</code>
-  * from this <code>Request</code> <code>Persistent</code>.
-  * 
-  * @see org.melati.poem.prepro.FieldDef#generateFieldCreator 
-  * @throws AccessPoemException 
-  *         if the current <code>AccessToken</code> 
-  *         does not confer write access rights
-  * @return the String url
-  */
-  public Field getUrlField() throws AccessPoemException {
-    Column c = _getRequestTable().getUrlColumn();
     return new Field(c.getRaw(this), c);
   }
 }
