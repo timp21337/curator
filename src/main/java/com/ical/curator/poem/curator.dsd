@@ -1,7 +1,7 @@
 /*
  * DSD for jdbc:hsqldb:db/curator (com.ical.curator.poem.CuratorDatabase)
  * 
- *  Generated for _administrator_
+ *  Generated for _guest_
  * 
  * WARNING
  * This export is not necessarily information preserving.
@@ -12,10 +12,6 @@
  *    not preserved, all tables are in a single package namespace.
  *    
  * NOTE
- * This template can include comments for defaulted items
- * (add comments=true to URL)
- *    
- * NOTE
  * This template can include all system and inherited tables but then 
  * should NOT be used to replace an existing DSD.
  * (add all=true to URL)
@@ -24,228 +20,370 @@
 
 package com.ical.curator.poem;
 
+//   widget (from the data structure definition)
+//   com.ical.curator.poem.WidgetTable
 table Widget
 
   (displayname = "Widget")
   (description = "A GWT Widget")
   (displayorder = 1)
+  // (defaultcanread = null)
+  // (defaultcanwrite = null)
+  // (defaultcandelete = null)
+  // (cancreate = null)
+  // (cachelimit = null)
   (seqcached)
   (category = "Normal")
 {
+    //widget.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
     Integer id
       (primary)
       (displayname = "Id")
+      // (description = null)
+      // usereditable
+      // Not nullable
       (width = 20)
       (height = 1)
+      // (renderinfo = null)
       (displayorder = 100)
+      // usercreateable
       (displaylevel = summary)
       (searchability = yes)
       (displayorderpriority = 1)
+      // Not sortdescending
       (indexed)
       (unique)
       ;
+    //widget.owner: reference to widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
     Widget owner
       (displayname = "Owner")
       (description = "The owning widget")
+      // usereditable
       (nullable)
       (width = 30)
       (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
       (displayorder = 20)
+      // usercreateable
       (displaylevel = summary)
       (searchability = primary)
+      // (displayorderpriority = null)
+      // (sortdescending = null)
       (indexed)
+      // Not unique
       (integrityfix = prevent)
       ;
+    //widget.name: String(-1) (from the data structure definition) 
     String name
       (displayname = "Name")
       (description = "The widget name")
+      // usereditable
+      // Not nullable
       (size = unlimited)
       (width = 40)
       (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
       (displayorder = 10)
+      // usercreateable
       (displaylevel = primary)
       (searchability = primary)
       (displayorderpriority = 2)
+      // (sortdescending = null)
       (indexed)
       (unique)
       ;
  }
 
+//   request (from the data structure definition)
+//   com.ical.curator.poem.RequestTable
 table Request
 
-  (displayname = "WS API")
+  (displayname = "Request")
   (description = "Web Service API Request")
   (displayorder = 2)
+  // (defaultcanread = null)
+  // (defaultcanwrite = null)
+  // (defaultcandelete = null)
+  // (cancreate = null)
+  // (cachelimit = null)
   (seqcached)
   (category = "Normal")
 {
+    //request.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
     Integer id
       (primary)
       (displayname = "Id")
+      // (description = null)
+      // usereditable
+      // Not nullable
       (width = 20)
       (height = 1)
+      // (renderinfo = null)
       (displayorder = 100)
+      // usercreateable
       (displaylevel = summary)
       (searchability = yes)
+      // (displayorderpriority = null)
+      // Not sortdescending
       (indexed)
       (unique)
       ;
+    //request.widget: reference to widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
     Widget widget
       (displayname = "Widget")
       (description = "The reqesting widget")
+      // usereditable
       (nullable)
       (width = 30)
       (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
       (displayorder = 10)
+      // usercreateable
       (displaylevel = summary)
       (searchability = yes)
       (displayorderpriority = 10)
+      // Not sortdescending
       (indexed)
+      // Not unique
       (integrityfix = prevent)
       ;
+    //request.method: String(-1) (from the data structure definition) 
     String method
       (displayname = "Method")
       (description = "HTTP method")
+      // usereditable
+      // Not nullable
       (size = unlimited)
       (width = 6)
       (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
       (displayorder = 20)
+      // usercreateable
       (displaylevel = summary)
       (searchability = yes)
       (displayorderpriority = 20)
-      ;
-    String url
-      (displayname = "URL")
-      (description = "The request url")
-      (size = unlimited)
-      (width = 40)
-      (height = 1)
-      (displayorder = 20)
-      (displaylevel = primary)
-      (searchability = primary)
-      (displayorderpriority = 20)
-      (indexed)
-      (unique)
+      // Not sortdescending
+      // Not indexed
+      // Not unique
       ;
  }
 
+//   method (from the data structure definition)
+//   com.ical.curator.poem.MethodTable
 table Method
 
   (displayname = "Method")
   (description = "Method for changing widget state")
   (displayorder = 3)
+  // (defaultcanread = null)
+  // (defaultcanwrite = null)
+  // (defaultcandelete = null)
+  // (cancreate = null)
+  // (cachelimit = null)
   (seqcached)
   (category = "Normal")
 {
+    //method.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
     Integer id
       (primary)
       (displayname = "Id")
+      // (description = null)
+      // usereditable
+      // Not nullable
       (width = 20)
       (height = 1)
+      // (renderinfo = null)
       (displayorder = 100)
+      // usercreateable
       (displaylevel = summary)
       (searchability = yes)
+      // (displayorderpriority = null)
+      // Not sortdescending
       (indexed)
       (unique)
       ;
+    //method.widget: reference to widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
     Widget widget
       (displayname = "Widget")
       (description = "The widget")
+      // usereditable
       (nullable)
       (width = 30)
       (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
       (displayorder = 20)
+      // usercreateable
       (displaylevel = summary)
       (searchability = primary)
+      // (displayorderpriority = null)
+      // Not sortdescending
       (indexed)
+      // Not unique
       (integrityfix = prevent)
       ;
+    //method.name: String(-1) (from the data structure definition) 
     String name
       (displayname = "name")
       (description = "method name, with arguments")
+      // usereditable
+      // Not nullable
       (size = unlimited)
       (width = 40)
       (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
       (displayorder = 20)
+      // usercreateable
       (displaylevel = primary)
       (searchability = primary)
+      // (displayorderpriority = null)
+      // (sortdescending = null)
+      // Not indexed
+      // Not unique
       ;
  }
 
+//   event (from the data structure definition)
+//   com.ical.curator.poem.EventTable
 table Event
 
   (displayname = "Event")
   (description = "Widget event")
   (displayorder = 4)
+  // (defaultcanread = null)
+  // (defaultcanwrite = null)
+  // (defaultcandelete = null)
+  // (cancreate = null)
   (cachelimit = 100)
   (seqcached)
   (category = "Normal")
 {
+    //event.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
     Integer id
       (primary)
       (displayname = "Id")
+      // (description = null)
       (uneditable)
+      // Not nullable
       (width = 20)
       (height = 1)
+      // (renderinfo = null)
       (displayorder = 100)
       (uncreateable)
       (displaylevel = summary)
       (searchability = yes)
+      // (displayorderpriority = null)
+      // Not sortdescending
       (indexed)
       (unique)
       ;
+    //event.widget: reference to widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
     Widget widget
       (displayname = "Widget")
       (description = "The widget")
+      // usereditable
       (nullable)
       (width = 30)
       (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
       (displayorder = 20)
+      // usercreateable
       (displaylevel = summary)
       (searchability = primary)
+      // (displayorderpriority = null)
+      // Not sortdescending
       (indexed)
+      // Not unique
       (integrityfix = prevent)
       ;
+    //event.name: String(-1) (from the data structure definition) 
     String name
       (displayname = "name")
       (description = "Event name")
+      // usereditable
+      // Not nullable
       (size = unlimited)
       (width = 40)
       (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
       (displayorder = 20)
+      // usercreateable
       (displaylevel = primary)
       (searchability = primary)
+      // (displayorderpriority = null)
+      // Not sortdescending
+      // Not indexed
+      // Not unique
       ;
  }
 
+//   url (from the data structure definition)
+//   com.ical.curator.poem.UrlTable
 table Url
 
   (displayname = "URL")
   (description = "The url")
   (displayorder = 5)
+  // (defaultcanread = null)
+  // (defaultcanwrite = null)
+  // (defaultcandelete = null)
+  // (cancreate = null)
+  // (cachelimit = null)
   (seqcached)
   (category = "Normal")
 {
+    //url.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
     Integer id
       (primary)
       (displayname = "Id")
+      // (description = null)
+      // usereditable
+      // Not nullable
       (width = 20)
       (height = 1)
+      // (renderinfo = null)
       (displayorder = 100)
+      // usercreateable
       (displaylevel = summary)
       (searchability = yes)
+      // (displayorderpriority = null)
+      // Not sortdescending
       (indexed)
       (unique)
       ;
+    //url.url: String(-1) (from the data structure definition) 
     String url
       (displayname = "URL")
       (description = "The url")
+      // usereditable
+      // Not nullable
       (size = unlimited)
       (width = 40)
       (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
       (displayorder = 1)
+      // usercreateable
       (displaylevel = primary)
       (searchability = primary)
+      // (displayorderpriority = null)
+      // (sortdescending = null)
       (indexed)
       (unique)
       ;
