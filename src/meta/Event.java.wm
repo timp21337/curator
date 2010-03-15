@@ -1,0 +1,17 @@
+import com.google.gwt.event.shared.GwtEvent;
+
+public class $(melati.Object.Name)Event extends GwtEvent<$(melati.Object.Name)Handler> {
+
+	public static final Type<$(melati.Object.Name)Handler> TYPE = new Type<$(melati.Object.Name)Handler>();
+	
+	@Override
+	protected void dispatch($(melati.Object.Name)Handler h) {
+		h.onNavigation(this);
+	}
+
+	@Override
+	public com.google.gwt.event.shared.GwtEvent.Type<$(melati.Object.Name)Handler> getAssociatedType() {
+		return TYPE;
+	}
+
+}
