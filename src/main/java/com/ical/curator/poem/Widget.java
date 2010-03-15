@@ -1,5 +1,11 @@
 package com.ical.curator.poem;
 
+import java.util.Enumeration;
+import java.util.Vector;
+
+import org.melati.poem.Persistent;
+import org.melati.poem.Treeable;
+
 import com.ical.curator.poem.generated.WidgetBase;
 
 /**
@@ -37,8 +43,36 @@ public class Widget extends WidgetBase {
   */
   public Widget() { 
     super();
-}
+  }
+
 
   // programmer's domain-specific code here
+  
+  @Override
+  public Treeable[] getChildren() {
+	  Enumeration<Persistent> refs = getDatabase().referencesTo(this);
+	  Vector<Persistent> v = new Vector<Persistent>();
+	  while (refs.hasMoreElements()) {
+	    Persistent p = refs.nextElement();
+	    if (p instanceof Widgetwidget) {
+	      if (! ((Widgetwidget)p).getChild().equals(this))
+          v.addElement(((Widgetwidget)p).getChild());
+	    } else
+  	    v.addElement(p);
+	  }
+	  Treeable[] kids;
+	  synchronized (v) {
+	    kids = new Treeable[v.size()];
+	    v.copyInto(kids);
+	  }
+
+	  return kids;
+  }
+  
+  public Enumeration getChildWidgets() { 
+    Widgetwidget criterion = (Widgetwidget)((CuratorDatabase)getDatabase()).getWidgetwidgetTable().newPersistent();
+    criterion.setOwner_unsafe(getTroid());
+    return ((CuratorDatabase)getDatabase()).getWidgetwidgetTable().selection(criterion);
+  }
 }
 

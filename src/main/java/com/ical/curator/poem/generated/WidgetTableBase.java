@@ -14,9 +14,7 @@ import org.melati.poem.Field;
 import org.melati.poem.JdbcPersistent;
 import org.melati.poem.Persistent;
 import org.melati.poem.PoemException;
-import org.melati.poem.ReferencePoemType;
 import org.melati.poem.Searchability;
-import org.melati.poem.StandardIntegrityFix;
 import org.melati.poem.StringPoemType;
 import org.melati.poem.TroidPoemType;
 import org.melati.poem.ValidationPoemException;
@@ -32,7 +30,6 @@ import org.melati.poem.ValidationPoemException;
 public class WidgetTableBase extends CuratorTable {
 
   private Column col_id = null;
-  private Column col_owner = null;
   private Column col_name = null;
 
  /**
@@ -147,82 +144,6 @@ public class WidgetTableBase extends CuratorTable {
           }
         });
 
-    defineColumn(col_owner =
-        new Column(this, "owner",
-                   new ReferencePoemType(getCuratorDatabaseTables().
-                                             getWidgetTable(), true),
-                   DefinitionSource.dsd) { 
-          public Object getCooked(Persistent g)
-              throws AccessPoemException, PoemException {
-            return ((Widget)g).getOwner();
-          }
-
-          public void setCooked(Persistent g, Object cooked)
-              throws AccessPoemException, ValidationPoemException {
-            ((Widget)g).setOwner((Widget)cooked);
-          }
-
-          public Field asField(Persistent g) {
-            return ((Widget)g).getOwnerField();
-          }
-
-          protected DisplayLevel defaultDisplayLevel() {
-            return DisplayLevel.summary;
-          }
-
-          protected Searchability defaultSearchability() {
-            return Searchability.primary;
-          }
-
-          protected String defaultDisplayName() {
-            return "Owner";
-          }
-
-          protected int defaultDisplayOrder() {
-            return 20;
-          }
-
-          protected String defaultDescription() {
-            return "The owning widget";
-          }
-
-          protected boolean defaultIndexed() {
-            return true;
-          }
-
-          protected int defaultWidth() {
-            return 30;
-          }
-
-          protected int defaultHeight() {
-            return 1;
-          }
-
-          public Object getRaw_unsafe(Persistent g)
-              throws AccessPoemException {
-            return ((Widget)g).getOwner_unsafe();
-          }
-
-          public void setRaw_unsafe(Persistent g, Object raw)
-              throws AccessPoemException {
-            ((Widget)g).setOwner_unsafe((Integer)raw);
-          }
-
-          public Object getRaw(Persistent g)
-              throws AccessPoemException {
-            return ((Widget)g).getOwnerTroid();
-          }
-
-          public void setRaw(Persistent g, Object raw)
-              throws AccessPoemException {
-            ((Widget)g).setOwnerTroid((Integer)raw);
-          }
-
-          public StandardIntegrityFix defaultIntegrityFix() {
-            return StandardIntegrityFix.prevent;
-          }
-        });
-
     defineColumn(col_name =
         new Column(this, "name",
                    new StringPoemType(false, -1),
@@ -313,18 +234,6 @@ public class WidgetTableBase extends CuratorTable {
   */
   public final Column getIdColumn() {
     return col_id;
-  }
-
-
- /**
-  * Retrieves the <code>Owner</code> <code>Column</code> for this 
-  * <code>Widget</code> <code>Table</code>.
-  * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
-  * @return the owner <code>Column</code>
-  */
-  public final Column getOwnerColumn() {
-    return col_owner;
   }
 
 

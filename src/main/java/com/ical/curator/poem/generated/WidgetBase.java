@@ -4,13 +4,11 @@ package com.ical.curator.poem.generated;
 
 
 import com.ical.curator.poem.CuratorDatabaseTables;
-import com.ical.curator.poem.Widget;
 import com.ical.curator.poem.WidgetTable;
 import org.melati.poem.AccessPoemException;
 import org.melati.poem.Column;
 import org.melati.poem.Field;
 import org.melati.poem.JdbcPersistent;
-import org.melati.poem.NoSuchRowPoemException;
 import org.melati.poem.ValidationPoemException;
 
 
@@ -54,10 +52,6 @@ public abstract class WidgetBase extends JdbcPersistent {
   * Id 
   */
   protected Integer id;
- /**
-  * Owner - The owning widget 
-  */
-  protected Integer owner;
  /**
   * Name - The widget name 
   */
@@ -157,121 +151,6 @@ public abstract class WidgetBase extends JdbcPersistent {
   */
   public Field getIdField() throws AccessPoemException {
     Column c = _getWidgetTable().getIdColumn();
-    return new Field(c.getRaw(this), c);
-  }
-
-
- /**
-  * Retrieves the <code>Owner</code> value, without locking, 
-  * for this <code>Widget</code> <code>Persistent</code>.
-  *
-  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
-  * @return the Integer owner
-  */
-  public Integer getOwner_unsafe() {
-    return owner;
-  }
-
-
- /**
-  * Sets the <code>Owner</code> value directly, without checking, 
-  * for this Widget <code>Persistent</code>.
-  * 
-  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
-  * @param cooked  the pre-validated value to set
-  */
-  public void setOwner_unsafe(Integer cooked) {
-    owner = cooked;
-  }
-
- /**
-  * Retrieves the Table Row Object ID. 
-  *
-  * @generator org.melati.poem.prepro.ReferenceFieldDef#generateBaseMethods 
-  * @throws AccessPoemException  
-  *         if the current <code>AccessToken</code> 
-  *         does not confer read access rights 
-  * @return the TROID as an <code>Integer</code> 
-  */
-
-  public Integer getOwnerTroid()
-      throws AccessPoemException {
-    readLock();
-    return getOwner_unsafe();
-  }
-
-
- /**
-  * Sets the Table Row Object ID. 
-  * 
-  * @generator org.melati.poem.prepro.ReferenceFieldDef#generateBaseMethods 
-  * @param raw  a Table Row Object Id 
-  * @throws AccessPoemException  
-  *         if the current <code>AccessToken</code> 
-  *         does not confer write access rights
-  */
-  public void setOwnerTroid(Integer raw)
-      throws AccessPoemException {
-    setOwner(raw == null ? null : 
-        getCuratorDatabaseTables().getWidgetTable().getWidgetObject(raw));
-  }
-
-
- /**
-  * Retrieves the <code>Owner</code> object referred to.
-  *  
-  * @generator org.melati.poem.prepro.ReferenceFieldDef#generateBaseMethods 
-  * @throws AccessPoemException  
-  *         if the current <code>AccessToken</code> 
-  *         does not confer read access rights 
-  * @throws NoSuchRowPoemException  
-  *         if the <code>Persistent</code> has yet to be allocated a TROID 
-  * @return the <code>Owner</code> as a <code>Widget</code> 
-  */
-  public Widget getOwner()
-      throws AccessPoemException, NoSuchRowPoemException {
-    Integer troid = getOwnerTroid();
-    return troid == null ? null :
-        getCuratorDatabaseTables().getWidgetTable().getWidgetObject(troid);
-  }
-
-
- /**
-  * Set the Owner.
-  * 
-  * @generator org.melati.poem.prepro.ReferenceFieldDef#generateBaseMethods 
-  * @param cooked  a validated <code>Widget</code>
-  * @throws AccessPoemException  
-  *         if the current <code>AccessToken</code> 
-  *         does not confer write access rights 
-  */
-  public void setOwner(Widget cooked)
-      throws AccessPoemException {
-    _getWidgetTable().
-      getOwnerColumn().
-        getType().assertValidCooked(cooked);
-    writeLock();
-    if (cooked == null)
-      setOwner_unsafe(null);
-    else {
-      cooked.existenceLock();
-      setOwner_unsafe(cooked.troid());
-    }
-  }
-
-
- /**
-  * Retrieves the <code>Owner</code> value as a <code>Field</code>
-  * from this <code>Widget</code> <code>Persistent</code>.
-  * 
-  * @see org.melati.poem.prepro.FieldDef#generateFieldCreator 
-  * @throws AccessPoemException 
-  *         if the current <code>AccessToken</code> 
-  *         does not confer write access rights
-  * @return the Integer owner
-  */
-  public Field getOwnerField() throws AccessPoemException {
-    Column c = _getWidgetTable().getOwnerColumn();
     return new Field(c.getRaw(this), c);
   }
 

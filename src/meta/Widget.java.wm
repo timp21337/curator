@@ -3,13 +3,10 @@
  */
 package org.cggh.chassis.wwarn.ui.curator.client;
 
-import org.cggh.chassis.generic.async.client.Deferred;
 import org.cggh.chassis.generic.log.client.Log;
 import org.cggh.chassis.generic.log.client.LogFactory;
 import org.cggh.chassis.generic.widget.client.DelegatingWidget;
 import org.cggh.chassis.generic.widget.client.WidgetEventChannel;
-
-import com.google.gwt.xml.client.Document;
 
 #set $u=$melati.getContextUtil("org.melati.poem.util.StringUtils")
 
@@ -25,10 +22,10 @@ public class $(melati.Object.Name)Widget
 
 	private $(melati.Object.Name)WidgetController controller;
 	
-	#foreach $kid in $melati.Object.Children #begin
-	
+#foreach $kid in $melati.Object.ChildWidgets #begin
 	private $(kid.Name)Widget $u.uncapitalised($kid.Name)Widget;
-    #end
+
+#end
 
 	@Override
 	protected $(melati.Object.Name)WidgetModel createModel() {

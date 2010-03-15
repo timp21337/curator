@@ -1,5 +1,5 @@
 
-export DEST=/home/timp/dist/dsn-chassis/trunk/wwarn/ui/src/main/java/org/cggh/chassis/wwarn/ui/curator/client
+export DEST=/home/timp/dist/dsn-chassis/wwarn/ui/src/main/java/org/cggh/chassis/wwarn/ui/curator/client
 
   # =============================================================
   #  A generated generator script for $melati.Database.DisplayName

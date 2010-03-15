@@ -220,7 +220,7 @@ public class EventTableBase extends CuratorTable {
           }
 
           public StandardIntegrityFix defaultIntegrityFix() {
-            return StandardIntegrityFix.prevent;
+            return StandardIntegrityFix.delete;
           }
         });
 
