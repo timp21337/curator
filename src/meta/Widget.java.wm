@@ -11,31 +11,38 @@ import org.cggh.chassis.generic.widget.client.WidgetEventChannel;
 
 import com.google.gwt.xml.client.Document;
 
+#set $u=$melati.getContextUtil("org.melati.poem.util.StringUtils")
 
 /**
  * @author timp
  *
  */
-public class CuratorHomeWidget 
-	extends DelegatingWidget<CuratorHomeWidgetModel, CuratorHomeWidgetRenderer> {
+public class $(melati.Object.Name)Widget 
+	extends DelegatingWidget<$(melati.Object.Name)WidgetModel, $(melati.Object.Name)WidgetRenderer> {
 
-	private static final Log log = LogFactory.getLog(CuratorHomeWidget.class);
-
-	private CuratorHomeWidgetController controller;
+	private static final Log log = LogFactory.getLog($(melati.Object.Name)Widget.class);
 	
+
+	private $(melati.Object.Name)WidgetController controller;
+	
+	#foreach $kid in $melati.Object.Children #begin
+	
+	private $(kid.Name)Widget $u.uncapitalised($kid.Name)Widget;
+    #end
+
 	@Override
-	protected CuratorHomeWidgetModel createModel() {
-		return new CuratorHomeWidgetModel();
+	protected $(melati.Object.Name)WidgetModel createModel() {
+		return new $(melati.Object.Name)WidgetModel();
 	}
 
-	public CuratorHomeWidgetModel getModel() {
+	public $(melati.Object.Name)WidgetModel getModel() {
 		return model;
 	}
 	
 
 	@Override
-	protected CuratorHomeWidgetRenderer createRenderer() {
-		return new CuratorHomeWidgetRenderer(this);
+	protected $(melati.Object.Name)WidgetRenderer createRenderer() {
+		return new $(melati.Object.Name)WidgetRenderer(this);
 	}
 
 	// Using init() rather than constructor because reset() uses init().
@@ -43,7 +50,7 @@ public class CuratorHomeWidget
 		
 		super.init();
 		
-		this.controller = new CuratorHomeWidgetController(this, this.model);
+		this.controller = new $(melati.Object.Name)WidgetController(this, this.model);
 
 
 	}
@@ -57,6 +64,45 @@ public class CuratorHomeWidget
 	public final WidgetEventChannel submitDataNavigationEventChannel = new WidgetEventChannel(this);
 
 	
+	@Override
+	public void renderMainChildren() {
+		log.enter("renderMainChildren");
+		
+		this. $(u.uncapitalised($melati.Object.Name))Widget = new $(melati.Object.Name)Widget();
+		this.mainChildren.add(this.$u.uncapitalised($melati.Object.Name)Widget);
+
+		
+		this.defaultChild = this.$u.uncapitalised($melati.Object.Name)Widget;
+		this.$u.uncapitalised($melati.Object.Name)Widget.refresh();
+
+		log.leave();
+
+	}
+
+	
+	
+	
+	@Override
+	public void registerHandlersForChildWidgetEvents() {
+		super.registerHandlersForChildWidgetEvents();
+/*		
+		HandlerRegistration a = $u.uncapitalised($melati.Object.Name)Widget.submitDataNavigationEventChannel.addHandler(new WidgetEventHandler() {
+			public void onEvent(WidgetEvent e) {
+				selectStudyWidget.setSelectedStudy(null);
+				selectStudyWidget.refresh();
+				setActiveChild(selectStudyWidget);
+			}
+		});
+		this.childWidgetEventHandlerRegistrations.add(a);
+		
+*/		
+
+	}
+	
+	
+	
+	
+
 	
 
 }
