@@ -64,43 +64,6 @@ public class $(melati.Object.Name)Widget
 	public final WidgetEventChannel submitDataNavigationEventChannel = new WidgetEventChannel(this);
 
 	
-	@Override
-	public void renderMainChildren() {
-		log.enter("renderMainChildren");
-		
-		this. $(u.uncapitalised($melati.Object.Name))Widget = new $(melati.Object.Name)Widget();
-		this.mainChildren.add(this.$u.uncapitalised($melati.Object.Name)Widget);
-
-		
-		this.defaultChild = this.$u.uncapitalised($melati.Object.Name)Widget;
-		this.$u.uncapitalised($melati.Object.Name)Widget.refresh();
-
-		log.leave();
-
-	}
-
-	
-	
-	
-	@Override
-	public void registerHandlersForChildWidgetEvents() {
-		super.registerHandlersForChildWidgetEvents();
-/*		
-		HandlerRegistration a = $u.uncapitalised($melati.Object.Name)Widget.submitDataNavigationEventChannel.addHandler(new WidgetEventHandler() {
-			public void onEvent(WidgetEvent e) {
-				selectStudyWidget.setSelectedStudy(null);
-				selectStudyWidget.refresh();
-				setActiveChild(selectStudyWidget);
-			}
-		});
-		this.childWidgetEventHandlerRegistrations.add(a);
-		
-*/		
-
-	}
-	
-	
-	
 	
 
 	

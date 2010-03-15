@@ -1,0 +1,10 @@
+package org.cggh.chassis.wwarn.ui.curator.client;
+
+import com.google.gwt.event.shared.EventHandler;
+
+public interface $(melati.Object.Name)Handler extends EventHandler {
+
+	void onNavigation($(melati.Object.Name)Event e);
+
+}
+
