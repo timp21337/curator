@@ -1794,6 +1794,573 @@ $M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
 $M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
    org.melati.app.TemplateApp curator widget 26  WidgetRenderer.java -o $DEST/StudyRevisionSummaryWidgetRenderer.java
 
+  # ViewStudyMetadata
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 27  Widget.ui.xml -o $DEST/ViewStudyMetadataWidget.ui.xml
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 27  Widget.java -o $DEST/ViewStudyMetadataWidget.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 27  WidgetModel.java -o $DEST/ViewStudyMetadataWidgetModel.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 27  WidgetRenderer.java -o $DEST/ViewStudyMetadataWidgetRenderer.java
+
+  # ListSubmissions
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 28  Widget.ui.xml -o $DEST/ListSubmissionsWidget.ui.xml
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 28  Widget.java -o $DEST/ListSubmissionsWidget.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 28  WidgetModel.java -o $DEST/ListSubmissionsWidgetModel.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 28  WidgetRenderer.java -o $DEST/ListSubmissionsWidgetRenderer.java
+
+  # ListCurations
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 29  Widget.ui.xml -o $DEST/ListCurationsWidget.ui.xml
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 29  Widget.java -o $DEST/ListCurationsWidget.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 29  WidgetModel.java -o $DEST/ListCurationsWidgetModel.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 29  WidgetRenderer.java -o $DEST/ListCurationsWidgetRenderer.java
+
+  # AddCuration
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 30  Widget.ui.xml -o $DEST/AddCurationWidget.ui.xml
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 30  Widget.java -o $DEST/AddCurationWidget.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 30  WidgetModel.java -o $DEST/AddCurationWidgetModel.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 30  WidgetRenderer.java -o $DEST/AddCurationWidgetRenderer.java
+
+  # UploadCuratedDateFiles
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 31  Widget.ui.xml -o $DEST/UploadCuratedDateFilesWidget.ui.xml
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 31  Widget.java -o $DEST/UploadCuratedDateFilesWidget.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 31  WidgetModel.java -o $DEST/UploadCuratedDateFilesWidgetModel.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 31  WidgetRenderer.java -o $DEST/UploadCuratedDateFilesWidgetRenderer.java
+
+  # SelectDerivationFiles
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 32  Widget.ui.xml -o $DEST/SelectDerivationFilesWidget.ui.xml
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 32  Widget.java -o $DEST/SelectDerivationFilesWidget.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 32  WidgetModel.java -o $DEST/SelectDerivationFilesWidgetModel.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 32  WidgetRenderer.java -o $DEST/SelectDerivationFilesWidgetRenderer.java
+
+  # CurationSummary
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 33  Widget.ui.xml -o $DEST/CurationSummaryWidget.ui.xml
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 33  Widget.java -o $DEST/CurationSummaryWidget.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 33  WidgetModel.java -o $DEST/CurationSummaryWidgetModel.java
+
+java -cp target/classes:\
+$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
+$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\
+$M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar:\
+$M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar:\
+$M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:\
+$M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:\
+$M2_REPO/org/webmacro/webmacro/2.2-SNAPSHOT/webmacro-2.2-SNAPSHOT.jar:\
+$M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:\
+$M2_REPO/velocity/velocity/1.5/velocity-1.5.jar:\
+$M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:\
+$M2_REPO/javax/mail/mail/1.4/mail-1.4.jar:\
+$M2_REPO/javax/activation/activation/1.1/activation-1.1.jar:\
+$M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
+$M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
+$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
+$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
+   org.melati.app.TemplateApp curator widget 33  WidgetRenderer.java -o $DEST/CurationSummaryWidgetRenderer.java
+
 
 # ----------------------------
 #   Events
