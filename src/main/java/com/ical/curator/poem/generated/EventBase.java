@@ -59,7 +59,7 @@ public abstract class EventBase extends JdbcPersistent {
   */
   protected Integer widget;
  /**
-  * name - Event name 
+  * Name - Event name 
   */
   protected String name;
 

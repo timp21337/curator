@@ -1,6 +1,6 @@
 //
 // $Source: /usr/cvsroot/melati/melati/src/main/java/org/melati/admin/static/statictrees.js,v $
-// $Revision: 1.12 $
+// $Revision: 1.13 $
 //
 // Copyright MJ Chippendale 12/02/2002
 //
@@ -145,7 +145,7 @@ function StaticTree(contentDiv,
   // Subclassed TreeNode variables
   // -----------------------------
   TreeNode.prototype.index = 0; // index in the Tree's flattened array
-  TreeNode.prototype.isOpen = false;
+  TreeNode.prototype.isOpen = true; //Default to open; less clicking
   TreeNode.prototype.chosen = false;
   TreeNode.prototype.selected = false;
   TreeNode.prototype.spacerImage = spacerImage;

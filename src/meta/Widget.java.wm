@@ -5,28 +5,59 @@ package org.cggh.chassis.wwarn.ui.curator.client;
 
 import org.cggh.chassis.generic.log.client.Log;
 import org.cggh.chassis.generic.log.client.LogFactory;
+#if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
+
 import org.cggh.chassis.generic.widget.client.DelegatingWidget;
+
+#end 
+
+#if($melati.Object.ExtendedFrom.equals("ChassisWidget")) #begin
+import org.cggh.chassis.generic.widget.client.ChassisWidget;
+
+#end 
+
+
+#if($melati.Object.ExtendedFrom.equals("MultiWidget")) #begin
+import org.cggh.chassis.generic.widget.client.MultiWidget;
+
+#end 
 import org.cggh.chassis.generic.widget.client.WidgetEventChannel;
 
 #set $u=$melati.getContextUtil("org.melati.poem.util.StringUtils")
 
 /**
+ * BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT
+ *
+ * DELETE_TO_MANUALLY_EDIT
+ *
  * @author timp
  *
  */
 public class $(melati.Object.Name)Widget 
+	 
+#if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
 	extends DelegatingWidget<$(melati.Object.Name)WidgetModel, $(melati.Object.Name)WidgetRenderer> {
+#end 
+#if($melati.Object.ExtendedFrom.equals("MultiWidget")) #begin
+	extends MultiWidget {
+#end 
+#if($melati.Object.ExtendedFrom.equals("ChassisWidget")) #begin
+	extends ChassisWidget {
+#end  
 
 	private static final Log log = LogFactory.getLog($(melati.Object.Name)Widget.class);
 	
 
+#if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
 	private $(melati.Object.Name)WidgetController controller;
-	
+#end
+
 #foreach $kid in $melati.Object.ChildWidgets #begin
 	private $(kid.Name)Widget $u.uncapitalised($kid.Name)Widget;
 
 #end
 
+#if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
 	@Override
 	protected $(melati.Object.Name)WidgetModel createModel() {
 		return new $(melati.Object.Name)WidgetModel();
@@ -35,20 +66,21 @@ public class $(melati.Object.Name)Widget
 	public $(melati.Object.Name)WidgetModel getModel() {
 		return model;
 	}
-	
 
 	@Override
 	protected $(melati.Object.Name)WidgetRenderer createRenderer() {
 		return new $(melati.Object.Name)WidgetRenderer(this);
 	}
+#end	
 
 	// Using init() rather than constructor because reset() uses init().
 	public void init() {
 		
 		super.init();
 		
+#if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
 		this.controller = new $(melati.Object.Name)WidgetController(this, this.model);
-
+#end
 
 	}
 	

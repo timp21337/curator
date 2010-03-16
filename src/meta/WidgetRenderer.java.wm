@@ -33,8 +33,11 @@ import com.google.gwt.xml.client.Document;
 import com.google.gwt.xml.client.Element;
 
 /**
+ * BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT
+ *
+ * DELETE_TO_MANUALLY_EDIT
+ *
  * @author timp
- * @since 13 Jan 2010
  */
 public class $(melati.Object.Name)WidgetRenderer extends
 		ChassisWidgetRenderer<$(melati.Object.Name)WidgetModel> {
@@ -48,22 +51,25 @@ public class $(melati.Object.Name)WidgetRenderer extends
 	private static $(melati.Object.Name)WidgetRendererUiBinder uiBinder = 
 		GWT.create($(melati.Object.Name)WidgetRendererUiBinder.class);
 
-//	@UiField HTMLPanel bodyPanel;
-//	@UiField FlowPanel mainActionsPanel;
+	@UiField HTMLPanel mainPanel;
+	@UiField FlowPanel contentPanel;
 	@UiField HTMLPanel pendingPanel;
 	@UiField HTMLPanel errorPanel;
 	@UiField FlowPanel errorMessage;
 
 	private $(melati.Object.Name)Widget owner;
-	private $(melati.Object.Name)WidgetController controller;
-
-	public $(melati.Object.Name)WidgetRenderer($(melati.Object.Name)Widget owner) {
+  public $(melati.Object.Name)WidgetRenderer($(melati.Object.Name)Widget owner) {
 		this.owner = owner;
 	}
+
+#if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
+	private $(melati.Object.Name)WidgetController controller;
 
 	public void setController($(melati.Object.Name)WidgetController controller) {
 		this.controller = controller;
 	}
+#end
+
 
 	@Override
 	protected void renderUI() {

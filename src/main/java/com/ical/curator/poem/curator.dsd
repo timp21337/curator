@@ -75,6 +75,27 @@ table Widget
       (indexed)
       (unique)
       ;
+    //widget.extendedFrom: String(-1) (from the data structure definition) 
+    String extendedFrom
+      (displayname = "extendedFrom")
+      (description = "The Chassis widget this extendedFrom")
+      // usereditable
+      // Not nullable
+      (size = unlimited)
+      (width = 30)
+      (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
+      (displayorder = 20)
+      // usercreateable
+      (displaylevel = summary)
+      (searchability = yes)
+      (displayorderpriority = 20)
+      // Not sortdescending
+      (indexed)
+      // Not unique
+      ;
  }
 
 //   request (from the data structure definition)
@@ -173,6 +194,48 @@ table Request
       (indexed)
       // Not unique
       (integrityfix = delete)
+      ;
+    //request.name: String(-1) (from the data structure definition) 
+    String name
+      (displayname = "Name")
+      (description = "The name of static variable")
+      // usereditable
+      // Not nullable
+      (size = unlimited)
+      (width = 20)
+      (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
+      (displayorder = 33)
+      // usercreateable
+      (displaylevel = record)
+      (searchability = yes)
+      (displayorderpriority = 33)
+      // (sortdescending = null)
+      (indexed)
+      // Not unique
+      ;
+    //request.methodName: String(-1) (from the data structure definition) 
+    String methodName
+      (displayname = "Java Method")
+      (description = "The  method which calls this resource")
+      // usereditable
+      // Not nullable
+      (size = unlimited)
+      (width = 30)
+      (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
+      (displayorder = 40)
+      // usercreateable
+      (displaylevel = record)
+      (searchability = no)
+      (displayorderpriority = 40)
+      // (sortdescending = null)
+      // Not indexed
+      // Not unique
       ;
  }
 
@@ -311,7 +374,7 @@ table Event
       ;
     //event.name: String(-1) (from the data structure definition) 
     String name
-      (displayname = "name")
+      (displayname = "Name")
       (description = "Event name")
       // usereditable
       // Not nullable

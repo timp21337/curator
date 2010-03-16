@@ -251,7 +251,7 @@ public class EventTableBase extends CuratorTable {
           }
 
           protected String defaultDisplayName() {
-            return "name";
+            return "Name";
           }
 
           protected int defaultDisplayOrder() {

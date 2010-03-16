@@ -67,6 +67,14 @@ public abstract class RequestBase extends JdbcPersistent {
   * URL - The Url 
   */
   protected Integer url;
+ /**
+  * Name - The name of static variable 
+  */
+  protected String name;
+ /**
+  * Java Method - The  method which calls this resource 
+  */
+  protected String methodName;
 
 
  /**
@@ -475,6 +483,172 @@ public abstract class RequestBase extends JdbcPersistent {
   */
   public Field getUrlField() throws AccessPoemException {
     Column c = _getRequestTable().getUrlColumn();
+    return new Field(c.getRaw(this), c);
+  }
+
+
+ /**
+  * Retrieves the <code>Name</code> value, without locking, 
+  * for this <code>Request</code> <code>Persistent</code>.
+  *
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @return the String name
+  */
+  public String getName_unsafe() {
+    return name;
+  }
+
+
+ /**
+  * Sets the <code>Name</code> value directly, without checking, 
+  * for this Request <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @param cooked  the pre-validated value to set
+  */
+  public void setName_unsafe(String cooked) {
+    name = cooked;
+  }
+
+ /**
+  * Retrieves the Name value, with locking, for this 
+  * <code>Request</code> <code>Persistent</code>.
+  * Field description: 
+  *   The name of static variable 
+  * 
+  * @generator org.melati.poem.prepro.AtomFieldDef#generateBaseMethods 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights 
+  * @return the value of the field <code>Name</code> for this 
+  *         <code>Request</code> <code>Persistent</code>  
+  */
+
+  public String getName()
+      throws AccessPoemException {
+    readLock();
+    return getName_unsafe();
+  }
+
+
+ /**
+  * Sets the <code>Name</code> value, with checking, for this 
+  * <code>Request</code> <code>Persistent</code>.
+  * Field description: 
+  *   The name of static variable 
+  * 
+  * @generator org.melati.poem.prepro.AtomFieldDef#generateBaseMethods  
+  * @param cooked  a validated <code>int</code> 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  * @throws ValidationPoemException 
+  *         if the value is not valid
+  */
+  public void setName(String cooked)
+      throws AccessPoemException, ValidationPoemException {
+    _getRequestTable().getNameColumn().
+      getType().assertValidCooked(cooked);
+    writeLock();
+    setName_unsafe(cooked);
+  }
+
+
+ /**
+  * Retrieves the <code>Name</code> value as a <code>Field</code>
+  * from this <code>Request</code> <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateFieldCreator 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  * @return the String name
+  */
+  public Field getNameField() throws AccessPoemException {
+    Column c = _getRequestTable().getNameColumn();
+    return new Field(c.getRaw(this), c);
+  }
+
+
+ /**
+  * Retrieves the <code>MethodName</code> value, without locking, 
+  * for this <code>Request</code> <code>Persistent</code>.
+  *
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @return the String methodName
+  */
+  public String getMethodName_unsafe() {
+    return methodName;
+  }
+
+
+ /**
+  * Sets the <code>MethodName</code> value directly, without checking, 
+  * for this Request <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @param cooked  the pre-validated value to set
+  */
+  public void setMethodName_unsafe(String cooked) {
+    methodName = cooked;
+  }
+
+ /**
+  * Retrieves the MethodName value, with locking, for this 
+  * <code>Request</code> <code>Persistent</code>.
+  * Field description: 
+  *   The  method which calls this resource 
+  * 
+  * @generator org.melati.poem.prepro.AtomFieldDef#generateBaseMethods 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights 
+  * @return the value of the field <code>MethodName</code> for this 
+  *         <code>Request</code> <code>Persistent</code>  
+  */
+
+  public String getMethodName()
+      throws AccessPoemException {
+    readLock();
+    return getMethodName_unsafe();
+  }
+
+
+ /**
+  * Sets the <code>MethodName</code> value, with checking, for this 
+  * <code>Request</code> <code>Persistent</code>.
+  * Field description: 
+  *   The  method which calls this resource 
+  * 
+  * @generator org.melati.poem.prepro.AtomFieldDef#generateBaseMethods  
+  * @param cooked  a validated <code>int</code> 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  * @throws ValidationPoemException 
+  *         if the value is not valid
+  */
+  public void setMethodName(String cooked)
+      throws AccessPoemException, ValidationPoemException {
+    _getRequestTable().getMethodNameColumn().
+      getType().assertValidCooked(cooked);
+    writeLock();
+    setMethodName_unsafe(cooked);
+  }
+
+
+ /**
+  * Retrieves the <code>MethodName</code> value as a <code>Field</code>
+  * from this <code>Request</code> <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateFieldCreator 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  * @return the String methodName
+  */
+  public Field getMethodNameField() throws AccessPoemException {
+    Column c = _getRequestTable().getMethodNameColumn();
     return new Field(c.getRaw(this), c);
   }
 }

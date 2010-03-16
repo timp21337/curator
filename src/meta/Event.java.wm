@@ -2,6 +2,12 @@ package org.cggh.chassis.wwarn.ui.curator.client;
 
 import com.google.gwt.event.shared.GwtEvent;
 
+/**
+ * BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT
+ *
+ * DELETE_TO_MANUALLY_EDIT
+ *
+ */
 public class $(melati.Object.Name)Event extends GwtEvent<$(melati.Object.Name)Handler> {
 
 	public static final Type<$(melati.Object.Name)Handler> TYPE = new Type<$(melati.Object.Name)Handler>();

@@ -37,6 +37,8 @@ public class RequestTableBase extends CuratorTable {
   private Column col_widget = null;
   private Column col_method = null;
   private Column col_url = null;
+  private Column col_name = null;
+  private Column col_methodName = null;
 
  /**
   * Constructor. 
@@ -372,6 +374,152 @@ public class RequestTableBase extends CuratorTable {
             return StandardIntegrityFix.delete;
           }
         });
+
+    defineColumn(col_name =
+        new Column(this, "name",
+                   new StringPoemType(false, -1),
+                   DefinitionSource.dsd) { 
+          public Object getCooked(Persistent g)
+              throws AccessPoemException, PoemException {
+            return ((Request)g).getName();
+          }
+
+          public void setCooked(Persistent g, Object cooked)
+              throws AccessPoemException, ValidationPoemException {
+            ((Request)g).setName((String)cooked);
+          }
+
+          public Field asField(Persistent g) {
+            return ((Request)g).getNameField();
+          }
+
+          protected DisplayLevel defaultDisplayLevel() {
+            return DisplayLevel.record;
+          }
+
+          protected Searchability defaultSearchability() {
+            return Searchability.yes;
+          }
+
+          protected Integer defaultDisplayOrderPriority() {
+            return new Integer(33);
+          }
+
+          protected String defaultDisplayName() {
+            return "Name";
+          }
+
+          protected int defaultDisplayOrder() {
+            return 33;
+          }
+
+          protected String defaultDescription() {
+            return "The name of static variable";
+          }
+
+          protected boolean defaultIndexed() {
+            return true;
+          }
+
+          protected int defaultWidth() {
+            return 20;
+          }
+
+          protected int defaultHeight() {
+            return 1;
+          }
+
+          public Object getRaw_unsafe(Persistent g)
+              throws AccessPoemException {
+            return ((Request)g).getName_unsafe();
+          }
+
+          public void setRaw_unsafe(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Request)g).setName_unsafe((String)raw);
+          }
+
+          public Object getRaw(Persistent g)
+              throws AccessPoemException {
+            return ((Request)g).getName();
+          }
+
+          public void setRaw(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Request)g).setName((String)raw);
+          }
+        });
+
+    defineColumn(col_methodName =
+        new Column(this, "methodName",
+                   new StringPoemType(false, -1),
+                   DefinitionSource.dsd) { 
+          public Object getCooked(Persistent g)
+              throws AccessPoemException, PoemException {
+            return ((Request)g).getMethodName();
+          }
+
+          public void setCooked(Persistent g, Object cooked)
+              throws AccessPoemException, ValidationPoemException {
+            ((Request)g).setMethodName((String)cooked);
+          }
+
+          public Field asField(Persistent g) {
+            return ((Request)g).getMethodNameField();
+          }
+
+          protected DisplayLevel defaultDisplayLevel() {
+            return DisplayLevel.record;
+          }
+
+          protected Searchability defaultSearchability() {
+            return Searchability.no;
+          }
+
+          protected Integer defaultDisplayOrderPriority() {
+            return new Integer(40);
+          }
+
+          protected String defaultDisplayName() {
+            return "Java Method";
+          }
+
+          protected int defaultDisplayOrder() {
+            return 40;
+          }
+
+          protected String defaultDescription() {
+            return "The  method which calls this resource";
+          }
+
+          protected int defaultWidth() {
+            return 30;
+          }
+
+          protected int defaultHeight() {
+            return 1;
+          }
+
+          public Object getRaw_unsafe(Persistent g)
+              throws AccessPoemException {
+            return ((Request)g).getMethodName_unsafe();
+          }
+
+          public void setRaw_unsafe(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Request)g).setMethodName_unsafe((String)raw);
+          }
+
+          public Object getRaw(Persistent g)
+              throws AccessPoemException {
+            return ((Request)g).getMethodName();
+          }
+
+          public void setRaw(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Request)g).setMethodName((String)raw);
+          }
+        });
   }
 
 
@@ -420,6 +568,30 @@ public class RequestTableBase extends CuratorTable {
   */
   public final Column getUrlColumn() {
     return col_url;
+  }
+
+
+ /**
+  * Retrieves the <code>Name</code> <code>Column</code> for this 
+  * <code>Request</code> <code>Table</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * @return the name <code>Column</code>
+  */
+  public final Column getNameColumn() {
+    return col_name;
+  }
+
+
+ /**
+  * Retrieves the <code>MethodName</code> <code>Column</code> for this 
+  * <code>Request</code> <code>Table</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * @return the methodName <code>Column</code>
+  */
+  public final Column getMethodNameColumn() {
+    return col_methodName;
   }
 
 

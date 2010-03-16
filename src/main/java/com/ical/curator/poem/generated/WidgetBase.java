@@ -56,6 +56,10 @@ public abstract class WidgetBase extends JdbcPersistent {
   * Name - The widget name 
   */
   protected String name;
+ /**
+  * extendedFrom - The Chassis widget this extendedFrom 
+  */
+  protected String extendedFrom;
 
 
  /**
@@ -234,6 +238,89 @@ public abstract class WidgetBase extends JdbcPersistent {
   */
   public Field getNameField() throws AccessPoemException {
     Column c = _getWidgetTable().getNameColumn();
+    return new Field(c.getRaw(this), c);
+  }
+
+
+ /**
+  * Retrieves the <code>ExtendedFrom</code> value, without locking, 
+  * for this <code>Widget</code> <code>Persistent</code>.
+  *
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @return the String extendedFrom
+  */
+  public String getExtendedFrom_unsafe() {
+    return extendedFrom;
+  }
+
+
+ /**
+  * Sets the <code>ExtendedFrom</code> value directly, without checking, 
+  * for this Widget <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @param cooked  the pre-validated value to set
+  */
+  public void setExtendedFrom_unsafe(String cooked) {
+    extendedFrom = cooked;
+  }
+
+ /**
+  * Retrieves the ExtendedFrom value, with locking, for this 
+  * <code>Widget</code> <code>Persistent</code>.
+  * Field description: 
+  *   The Chassis widget this extendedFrom 
+  * 
+  * @generator org.melati.poem.prepro.AtomFieldDef#generateBaseMethods 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights 
+  * @return the value of the field <code>ExtendedFrom</code> for this 
+  *         <code>Widget</code> <code>Persistent</code>  
+  */
+
+  public String getExtendedFrom()
+      throws AccessPoemException {
+    readLock();
+    return getExtendedFrom_unsafe();
+  }
+
+
+ /**
+  * Sets the <code>ExtendedFrom</code> value, with checking, for this 
+  * <code>Widget</code> <code>Persistent</code>.
+  * Field description: 
+  *   The Chassis widget this extendedFrom 
+  * 
+  * @generator org.melati.poem.prepro.AtomFieldDef#generateBaseMethods  
+  * @param cooked  a validated <code>int</code> 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  * @throws ValidationPoemException 
+  *         if the value is not valid
+  */
+  public void setExtendedFrom(String cooked)
+      throws AccessPoemException, ValidationPoemException {
+    _getWidgetTable().getExtendedFromColumn().
+      getType().assertValidCooked(cooked);
+    writeLock();
+    setExtendedFrom_unsafe(cooked);
+  }
+
+
+ /**
+  * Retrieves the <code>ExtendedFrom</code> value as a <code>Field</code>
+  * from this <code>Widget</code> <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateFieldCreator 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  * @return the String extendedFrom
+  */
+  public Field getExtendedFromField() throws AccessPoemException {
+    Column c = _getWidgetTable().getExtendedFromColumn();
     return new Field(c.getRaw(this), c);
   }
 }

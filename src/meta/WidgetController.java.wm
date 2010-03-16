@@ -1,54 +1,69 @@
 #set $u=$melati.getContextUtil("org.melati.poem.util.StringUtils")
 
-/**
- * 
- */
 package org.cggh.chassis.wwarn.ui.curator.client;
-
-import java.util.List;
 
 import org.cggh.chassis.generic.async.client.Deferred;
 import org.cggh.chassis.generic.async.client.Function;
-import org.cggh.chassis.generic.async.client.QueryParams;
 import org.cggh.chassis.generic.log.client.Log;
 import org.cggh.chassis.generic.log.client.LogFactory;
 import org.cggh.chassis.generic.miniatom.client.Atom;
-import org.cggh.chassis.generic.miniatom.client.AtomHelper;
-import org.cggh.chassis.generic.miniatom.client.ext.Chassis;
 import org.cggh.chassis.generic.widget.client.AsyncWidgetModel;
 import org.cggh.chassis.generic.widget.client.ChassisWidget;
 import org.cggh.chassis.generic.widget.client.ErrorEvent;
-import org.cggh.chassis.generic.xquestion.client.XQuestionnaire;
 import org.cggh.chassis.wwarn.ui.common.client.Config;
 
 import com.google.gwt.xml.client.Document;
 import com.google.gwt.xml.client.Element;
 
 /**
+ * BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT
+ *
+ * DELETE_TO_MANUALLY_EDIT
+ *
  * @author timp
  *
  */
 public class $(melati.Object.Name)WidgetController {
-
-	
 	
 	
 	private Log log = LogFactory.getLog($(melati.Object.Name)WidgetController.class);
-	
-	
 	
 	
 	private $(melati.Object.Name)Widget owner;
 	private $(melati.Object.Name)WidgetModel model;
 
 
-	
-	
-	public $(melati.Object.Name)WidgetController($(melati.Object.Name)Widget owner, $(melati.Object.Name)WidgetModel model) {
-		this.owner = owner;
-		this.model = model;
-	}
+#foreach $kid in $melati.Object.Children #begin
 
+  #if($kid.Table.Name.equals("widget")) #begin
+
+	private $(kid.Name)Widget $u.uncapitalised($kid.Name)Widget;
+
+  #end #else #begin 
+    #if($kid.Table.Name.equals("request")) #begin
+
+	    #if($kid.Method.equals("GET")) #begin
+
+	private static String $kid.Name = "$kid.Url.Url";
+
+			
+	public Deferred<Document> retrieve$(kid.MethodName)() {
+		log.enter("retrieve$(kid.MethodName)");
+		// Set the model's status to pending.
+		//model.setStatus($(melati.Object.Name)WidgetModel.STATUS_RETRIEVE_STUDIES_PENDING);
+		
+		String studyQueryServiceUrl = Config.get(Config.QUERY_STUDIES_URL);
+		
+		Deferred<Document> deferredDoc = Atom.getFeed(studyQueryServiceUrl);
+		
+		// Add a call-back and error-back for the asynchronous feed.
+		deferredDoc.addCallback(new Retrieve$(kid.MethodName)Callback());
+		deferredDoc.addErrback(new DefaultErrback());
+		
+		log.leave();
+		return deferredDoc;
+	}
+	
 	
 	
 	public Deferred<ChassisWidget> refreshAndCallback() {
@@ -103,88 +118,73 @@ public class $(melati.Object.Name)WidgetController {
 
 
 
-	/**
-	 * @return
-	 */
-	public Deferred<Element> retrieveStudy() {
-		log.enter("retrieveStudy");
-		
-		model.status.set($(melati.Object.Name)WidgetModel.STATUS_RETRIEVE_STUDY_PENDING);
-		
-		Deferred<Element> d;
-		
-		if (!model.studyUrl.isNull()) {
-			
-			d = Atom.getEntry(model.studyUrl.get()).adapt(new Function<Document, Element>() {
 
-				public Element apply(Document in) {
-					return in.getDocumentElement();
-				}
+	
+	private class Retrieve$(kid.MethodName)Callback implements Function<Element, Deferred<Document>> {
+
+		public Deferred<Document> apply(Element $u.uncapitalised($(kid.MethodName))EntryElement) {
+			
+			// model.set$(kid.MethodName)EntryElement($u.uncapitalised($(kid.MethodName))EntryElement);
+			
+			Deferred<Document> deferredFilesFeedDoc = null;
+			
+			if ($u.uncapitalised($(kid.MethodName))EntryElement != null) {
+
+				// we have one, so lets try retrieving the list of files uploaded so far
+				// deferredFilesFeedDoc = retrieveFiles();
 				
-			});
+			}
 			
-		}
-		else {
-			d = new Deferred<Element>();
-			d.callback(null);
+			else {
+				
+				//model.setStatus($(melati.Object.Name)WidgetModel.STATUS_STUDY_NOT_FOUND);
+				deferredFilesFeedDoc = new Deferred<Document>();
+				deferredFilesFeedDoc.callback(null);
+
+			}
+			
+			// return the deferred feed of files uploaded, for chaining of callbacks
+			return deferredFilesFeedDoc;
 		}
 		
-		log.leave();
-		return d;
 	}
 	
 	
+      #end 
+    #end #else #begin 
+      #if($kid.Table.Name.equals("method")) #begin
+			
+	public void $(kid.Name) { 
+	  // TODO Generated stub 
+	}
 	
-	public final Function<Element, Element> retrieveStudyCallback = new Function<Element, Element>() {
-		
-		public Element apply(Element in) {
-			log.enter("apply");
-			
-			model.studyEntryElement.set(in);
-			model.status.set($(melati.Object.Name)WidgetModel.STATUS_READY_FOR_INTERACTION);
-			
-			log.leave();
-			return in;
-		}
-	};
+      #end #else #begin 
+        #if($kid.Table.Name.equals("widget")) #begin
+				
+  private $kid.Name;
+	
+        #end #else #begin 
+          #if($kid.Table.Name.equals("event")) #begin
+					
+  private $kid.Name;
+	
+          #end #else #begin 
+	//eeek $kid 
+	      #end 
+	      #end 
+	    #end 
+	  #end 	
+	#end 
+#end
 
-
-
-	/**
-	 * 
-	 */
-	public void saveStudy() {
-		log.enter("saveStudy");
-		
-		model.status.set($(melati.Object.Name)WidgetModel.STATUS_SAVE_STUDY_PENDING);
-		
-		Deferred<Document> d = Atom.putEntry(model.studyUrl.get(), model.studyEntryElement.get().getOwnerDocument());
-
-		d.addCallback(saveStudyCallback);
-		d.addErrback(new DefaultErrback());
-		
-		log.leave();
+	
+	
+	public $(melati.Object.Name)WidgetController($(melati.Object.Name)Widget owner, $(melati.Object.Name)WidgetModel model) {
+		this.owner = owner;
+		this.model = model;
 	}
 
 	
 	
-	protected final Function<Document, Document> saveStudyCallback = new Function<Document, Document>() {
-		
-		public Document apply(Document in) {
-			log.enter("apply");
-			
-			model.studyEntryElement.set(in.getDocumentElement());
-			model.status.set($(melati.Object.Name)WidgetModel.STATUS_READY_FOR_INTERACTION);
-			
-			log.leave();
-			return in;
-		}
-	};
-
-
-
-
-
-
 
 }

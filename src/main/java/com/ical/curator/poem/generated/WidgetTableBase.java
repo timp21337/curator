@@ -31,6 +31,7 @@ public class WidgetTableBase extends CuratorTable {
 
   private Column col_id = null;
   private Column col_name = null;
+  private Column col_extendedFrom = null;
 
  /**
   * Constructor. 
@@ -222,6 +223,81 @@ public class WidgetTableBase extends CuratorTable {
             ((Widget)g).setName((String)raw);
           }
         });
+
+    defineColumn(col_extendedFrom =
+        new Column(this, "extendedFrom",
+                   new StringPoemType(false, -1),
+                   DefinitionSource.dsd) { 
+          public Object getCooked(Persistent g)
+              throws AccessPoemException, PoemException {
+            return ((Widget)g).getExtendedFrom();
+          }
+
+          public void setCooked(Persistent g, Object cooked)
+              throws AccessPoemException, ValidationPoemException {
+            ((Widget)g).setExtendedFrom((String)cooked);
+          }
+
+          public Field asField(Persistent g) {
+            return ((Widget)g).getExtendedFromField();
+          }
+
+          protected DisplayLevel defaultDisplayLevel() {
+            return DisplayLevel.summary;
+          }
+
+          protected Searchability defaultSearchability() {
+            return Searchability.yes;
+          }
+
+          protected Integer defaultDisplayOrderPriority() {
+            return new Integer(20);
+          }
+
+          protected String defaultDisplayName() {
+            return "extendedFrom";
+          }
+
+          protected int defaultDisplayOrder() {
+            return 20;
+          }
+
+          protected String defaultDescription() {
+            return "The Chassis widget this extendedFrom";
+          }
+
+          protected boolean defaultIndexed() {
+            return true;
+          }
+
+          protected int defaultWidth() {
+            return 30;
+          }
+
+          protected int defaultHeight() {
+            return 1;
+          }
+
+          public Object getRaw_unsafe(Persistent g)
+              throws AccessPoemException {
+            return ((Widget)g).getExtendedFrom_unsafe();
+          }
+
+          public void setRaw_unsafe(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Widget)g).setExtendedFrom_unsafe((String)raw);
+          }
+
+          public Object getRaw(Persistent g)
+              throws AccessPoemException {
+            return ((Widget)g).getExtendedFrom();
+          }
+
+          public void setRaw(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Widget)g).setExtendedFrom((String)raw);
+          }
+        });
   }
 
 
@@ -246,6 +322,18 @@ public class WidgetTableBase extends CuratorTable {
   */
   public final Column getNameColumn() {
     return col_name;
+  }
+
+
+ /**
+  * Retrieves the <code>ExtendedFrom</code> <code>Column</code> for this 
+  * <code>Widget</code> <code>Table</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * @return the extendedFrom <code>Column</code>
+  */
+  public final Column getExtendedFromColumn() {
+    return col_extendedFrom;
   }
 
 
