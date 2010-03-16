@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+	xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	ui:generateFormat="com.google.gwt.i18n.rebind.format.PropertiesFormat"
+	ui:generateKeys="com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator"
+	ui:generateLocales="default"
+	>
+<!-- 
+    BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT
+		
+    DELETE_TO_MANUALLY_EDIT 
+-->
+	<ui:style>
+	
+		.error {
+			color: red;
+		}
+		
+		.number {
+			font-weight: bold;
+		}
+		
+	</ui:style>
+
+
+	<g:HTMLPanel ui:field="mainPanel" >
+
+    <g:HTMLPanel ui:field="errorPanel">
+			<g:Label>
+        		<ui:msg>There has been an unexpected error: </ui:msg>
+			</g:Label>
+			<g:FlowPanel ui:field="errorMessage"></g:FlowPanel>
+    </g:HTMLPanel>
+
+		<g:HTMLPanel ui:field="pendingPanel">
+			<p>
+				<ui:msg>pending... </ui:msg>
+			</p>
+		</g:HTMLPanel>
+
+		<g:HTMLPanel ui:field="contentPanel">
+
+            <h3><ui:msg>$melati.Object.Name</ui:msg></h3>
+		</g:HTMLPanel>
+
+	</g:HTMLPanel>
+
+</ui:UiBinder>
+
+
