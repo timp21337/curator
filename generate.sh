@@ -2118,7 +2118,7 @@ $M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
 $M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
    org.melati.app.TemplateApp curator widget 30  WidgetRenderer.java -o $DEST/AddCurationWidgetRenderer.java
 
-  # UploadCuratedDateFiles
+  # UploadCuratedDataFiles
 java -cp target/classes:\
 $M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
 $M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\
@@ -2137,7 +2137,7 @@ $M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
 $M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
 $M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
 $M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
-   org.melati.app.TemplateApp curator widget 31  Widget.ui.xml -o $DEST/UploadCuratedDateFilesWidget.ui.xml
+   org.melati.app.TemplateApp curator widget 31  Widget.ui.xml -o $DEST/UploadCuratedDataFilesWidget.ui.xml
 
 java -cp target/classes:\
 $M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
@@ -2157,7 +2157,7 @@ $M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
 $M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
 $M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
 $M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
-   org.melati.app.TemplateApp curator widget 31  Widget.java -o $DEST/UploadCuratedDateFilesWidget.java
+   org.melati.app.TemplateApp curator widget 31  Widget.java -o $DEST/UploadCuratedDataFilesWidget.java
 
 java -cp target/classes:\
 $M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
@@ -2177,7 +2177,7 @@ $M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
 $M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
 $M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
 $M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
-   org.melati.app.TemplateApp curator widget 31  WidgetModel.java -o $DEST/UploadCuratedDateFilesWidgetModel.java
+   org.melati.app.TemplateApp curator widget 31  WidgetModel.java -o $DEST/UploadCuratedDataFilesWidgetModel.java
 
 java -cp target/classes:\
 $M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\
@@ -2197,7 +2197,7 @@ $M2_REPO/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar:\
 $M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:\
 $M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\
 $M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \
-   org.melati.app.TemplateApp curator widget 31  WidgetRenderer.java -o $DEST/UploadCuratedDateFilesWidgetRenderer.java
+   org.melati.app.TemplateApp curator widget 31  WidgetRenderer.java -o $DEST/UploadCuratedDataFilesWidgetRenderer.java
 
   # SelectDerivationFiles
 java -cp target/classes:\
