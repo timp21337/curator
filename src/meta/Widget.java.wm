@@ -1,3 +1,4 @@
+#set $u=$melati.getContextUtil("org.melati.poem.util.StringUtils")
 /**
  * 
  */
@@ -23,7 +24,6 @@ import org.cggh.chassis.generic.widget.client.MultiWidget;
 #end 
 import org.cggh.chassis.generic.widget.client.WidgetEventChannel;
 
-#set $u=$melati.getContextUtil("org.melati.poem.util.StringUtils")
 
 /**
  * BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT
@@ -52,9 +52,13 @@ public class $(melati.Object.Name)Widget
 	private $(melati.Object.Name)WidgetController controller;
 #end
 
+
+
+#if(!$melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
 #foreach $kid in $melati.Object.ChildWidgets #begin
 	private $(kid.Name)Widget $u.uncapitalised($kid.Name)Widget;
 
+#end
 #end
 
 #if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin

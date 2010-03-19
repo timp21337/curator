@@ -62,6 +62,10 @@ public abstract class EventBase extends JdbcPersistent {
   * Name - Event name 
   */
   protected String name;
+ /**
+  * Manual - Whether to over write 
+  */
+  protected Boolean manual;
 
 
  /**
@@ -355,6 +359,111 @@ public abstract class EventBase extends JdbcPersistent {
   */
   public Field getNameField() throws AccessPoemException {
     Column c = _getEventTable().getNameColumn();
+    return new Field(c.getRaw(this), c);
+  }
+
+
+ /**
+  * Retrieves the <code>Manual</code> value, without locking, 
+  * for this <code>Event</code> <code>Persistent</code>.
+  *
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @return the Boolean manual
+  */
+  public Boolean getManual_unsafe() {
+    return manual;
+  }
+
+
+ /**
+  * Sets the <code>Manual</code> value directly, without checking, 
+  * for this Event <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @param cooked  the pre-validated value to set
+  */
+  public void setManual_unsafe(Boolean cooked) {
+    manual = cooked;
+  }
+
+ /**
+  * Retrieves the Manual value, with locking, for this 
+  * <code>Event</code> <code>Persistent</code>.
+  * Field description: 
+  *   Whether to over write 
+  * 
+  * @generator org.melati.poem.prepro.AtomFieldDef#generateBaseMethods 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights 
+  * @return the value of the field <code>Manual</code> for this 
+  *         <code>Event</code> <code>Persistent</code>  
+  */
+
+  public Boolean getManual()
+      throws AccessPoemException {
+    readLock();
+    return getManual_unsafe();
+  }
+
+
+ /**
+  * Sets the <code>Manual</code> value, with checking, for this 
+  * <code>Event</code> <code>Persistent</code>.
+  * Field description: 
+  *   Whether to over write 
+  * 
+  * @generator org.melati.poem.prepro.AtomFieldDef#generateBaseMethods  
+  * @param cooked  a validated <code>int</code> 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  * @throws ValidationPoemException 
+  *         if the value is not valid
+  */
+  public void setManual(Boolean cooked)
+      throws AccessPoemException, ValidationPoemException {
+    _getEventTable().getManualColumn().
+      getType().assertValidCooked(cooked);
+    writeLock();
+    setManual_unsafe(cooked);
+  }
+
+ /**
+  * Sets the <code>Manual</code> value, with checking, 
+  * from a <code>boolean</code>, for this 
+  * <code>Event</code> <code>Persistent</code>.
+  * Field description: 
+  *   Whether to over write 
+  * 
+  * 
+  * @generator org.melati.poem.prepro.BooleanFieldDef#generateBaseMethods 
+  * @param cooked  a <code>boolean</code> 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  * @throws ValidationPoemException 
+  *         if the value is not valid
+  */
+
+  public final void setManual(boolean cooked)
+      throws AccessPoemException, ValidationPoemException {
+    setManual(cooked ? Boolean.TRUE : Boolean.FALSE);
+  }
+
+
+ /**
+  * Retrieves the <code>Manual</code> value as a <code>Field</code>
+  * from this <code>Event</code> <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateFieldCreator 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  * @return the Boolean manual
+  */
+  public Field getManualField() throws AccessPoemException {
+    Column c = _getEventTable().getManualColumn();
     return new Field(c.getRaw(this), c);
   }
 }

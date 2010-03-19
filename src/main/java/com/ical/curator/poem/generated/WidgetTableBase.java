@@ -6,6 +6,7 @@ import com.ical.curator.poem.CuratorDatabaseTables;
 import com.ical.curator.poem.CuratorTable;
 import com.ical.curator.poem.Widget;
 import org.melati.poem.AccessPoemException;
+import org.melati.poem.BooleanPoemType;
 import org.melati.poem.Column;
 import org.melati.poem.Database;
 import org.melati.poem.DefinitionSource;
@@ -32,6 +33,7 @@ public class WidgetTableBase extends CuratorTable {
   private Column col_id = null;
   private Column col_name = null;
   private Column col_extendedFrom = null;
+  private Column col_manual = null;
 
  /**
   * Constructor. 
@@ -298,6 +300,73 @@ public class WidgetTableBase extends CuratorTable {
             ((Widget)g).setExtendedFrom((String)raw);
           }
         });
+
+    defineColumn(col_manual =
+        new Column(this, "manual",
+                   new BooleanPoemType(false),
+                   DefinitionSource.dsd) { 
+          public Object getCooked(Persistent g)
+              throws AccessPoemException, PoemException {
+            return ((Widget)g).getManual();
+          }
+
+          public void setCooked(Persistent g, Object cooked)
+              throws AccessPoemException, ValidationPoemException {
+            ((Widget)g).setManual((Boolean)cooked);
+          }
+
+          public Field asField(Persistent g) {
+            return ((Widget)g).getManualField();
+          }
+
+          protected DisplayLevel defaultDisplayLevel() {
+            return DisplayLevel.record;
+          }
+
+          protected Searchability defaultSearchability() {
+            return Searchability.no;
+          }
+
+          protected String defaultDisplayName() {
+            return "Manual";
+          }
+
+          protected int defaultDisplayOrder() {
+            return 40;
+          }
+
+          protected String defaultDescription() {
+            return "Whether this Widget's files have been written";
+          }
+
+          protected int defaultWidth() {
+            return 1;
+          }
+
+          protected int defaultHeight() {
+            return 1;
+          }
+
+          public Object getRaw_unsafe(Persistent g)
+              throws AccessPoemException {
+            return ((Widget)g).getManual_unsafe();
+          }
+
+          public void setRaw_unsafe(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Widget)g).setManual_unsafe((Boolean)raw);
+          }
+
+          public Object getRaw(Persistent g)
+              throws AccessPoemException {
+            return ((Widget)g).getManual();
+          }
+
+          public void setRaw(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Widget)g).setManual((Boolean)raw);
+          }
+        });
   }
 
 
@@ -334,6 +403,18 @@ public class WidgetTableBase extends CuratorTable {
   */
   public final Column getExtendedFromColumn() {
     return col_extendedFrom;
+  }
+
+
+ /**
+  * Retrieves the <code>Manual</code> <code>Column</code> for this 
+  * <code>Widget</code> <code>Table</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * @return the manual <code>Column</code>
+  */
+  public final Column getManualColumn() {
+    return col_manual;
   }
 
 

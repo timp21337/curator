@@ -1,3 +1,4 @@
+#set $u=$melati.getContextUtil("org.melati.poem.util.StringUtils")
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder 
@@ -6,6 +7,7 @@
 	ui:generateFormat="com.google.gwt.i18n.rebind.format.PropertiesFormat"
 	ui:generateKeys="com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator"
 	ui:generateLocales="default"
+	xmlns:local="urn:import:org.cggh.chassis.wwarn.ui.curator.client"
 	>
 <!-- 
     BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT
@@ -27,7 +29,7 @@
 
 	<g:HTMLPanel ui:field="mainPanel" >
 
-    <g:HTMLPanel ui:field="errorPanel">
+    <g:HTMLPanel ui:field="errorPanel" styleName="{style.error}" >
 			<g:Label>
         		<ui:msg>There has been an unexpected error: </ui:msg>
 			</g:Label>
@@ -43,6 +45,10 @@
 		<g:HTMLPanel ui:field="contentPanel">
 
             <h3><ui:msg>$melati.Object.Name</ui:msg></h3>
+
+#foreach $kid in $melati.Object.ChildWidgets #begin
+			<local:$(kid.Name)Widget ui:field="$u.uncapitalised($kid.Name)WidgetUiField"/>
+#end
 		</g:HTMLPanel>
 
 	</g:HTMLPanel>

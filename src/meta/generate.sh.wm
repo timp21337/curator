@@ -28,6 +28,7 @@ export DEST=/home/timp/dist/dsn-chassis/wwarn/ui/src/main/java/org/cggh/chassis/
 export M2_REPO=/home/timp/.m2/repository
 
 #foreach $rec in $melati.Database.WidgetTable.selection() #begin  
+#if (!$rec.Manual) #begin
   # $rec.Name
 java -cp target/classes:\\
 \$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\\
@@ -132,6 +133,7 @@ java -cp target/classes:\\
 \$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \\
    org.melati.app.TemplateApp curator widget $rec.Troid  WidgetRenderer.java -o \$DEST/$(rec.Name)WidgetRenderer.java
 
+#end 
 #end
 
 # ----------------------------
@@ -140,6 +142,7 @@ java -cp target/classes:\\
 
 
 #foreach $rec in $melati.Database.EventTable.selection() #begin  
+#if (!$rec.Manual) #begin
   # $rec.Name
 java -cp target/classes:\\
 \$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\\
@@ -181,5 +184,6 @@ java -cp target/classes:\\
 \$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \\
    org.melati.app.TemplateApp curator event $rec.Troid  Handler.java -o \$DEST/$(rec.Name)Handler.java
 
+#end 
 #end
 

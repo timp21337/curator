@@ -96,6 +96,26 @@ table Widget
       (indexed)
       // Not unique
       ;
+    //widget.manual: BOOLEAN (org.melati.poem.BooleanPoemType) (from the data structure definition) 
+    Boolean manual
+      (displayname = "Manual")
+      (description = "Whether this Widget's files have been written")
+      // usereditable
+      // Not nullable
+      (width = 1)
+      (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
+      (displayorder = 40)
+      // usercreateable
+      (displaylevel = record)
+      (searchability = no)
+      // (displayorderpriority = null)
+      // (sortdescending = null)
+      // Not indexed
+      // Not unique
+      ;
  }
 
 //   request (from the data structure definition)
@@ -390,6 +410,26 @@ table Event
       (searchability = primary)
       // (displayorderpriority = null)
       // Not sortdescending
+      // Not indexed
+      // Not unique
+      ;
+    //event.manual: BOOLEAN (org.melati.poem.BooleanPoemType) (from the data structure definition) 
+    Boolean manual
+      (displayname = "Manual")
+      (description = "Whether to over write")
+      // usereditable
+      // Not nullable
+      (width = 1)
+      (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
+      (displayorder = 40)
+      // usercreateable
+      (displaylevel = record)
+      (searchability = no)
+      // (displayorderpriority = null)
+      // (sortdescending = null)
       // Not indexed
       // Not unique
       ;

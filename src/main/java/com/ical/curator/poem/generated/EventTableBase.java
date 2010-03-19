@@ -7,6 +7,7 @@ import com.ical.curator.poem.CuratorTable;
 import com.ical.curator.poem.Event;
 import com.ical.curator.poem.Widget;
 import org.melati.poem.AccessPoemException;
+import org.melati.poem.BooleanPoemType;
 import org.melati.poem.Column;
 import org.melati.poem.Database;
 import org.melati.poem.DefinitionSource;
@@ -35,6 +36,7 @@ public class EventTableBase extends CuratorTable {
   private Column col_id = null;
   private Column col_widget = null;
   private Column col_name = null;
+  private Column col_manual = null;
 
  /**
   * Constructor. 
@@ -290,6 +292,73 @@ public class EventTableBase extends CuratorTable {
             ((Event)g).setName((String)raw);
           }
         });
+
+    defineColumn(col_manual =
+        new Column(this, "manual",
+                   new BooleanPoemType(false),
+                   DefinitionSource.dsd) { 
+          public Object getCooked(Persistent g)
+              throws AccessPoemException, PoemException {
+            return ((Event)g).getManual();
+          }
+
+          public void setCooked(Persistent g, Object cooked)
+              throws AccessPoemException, ValidationPoemException {
+            ((Event)g).setManual((Boolean)cooked);
+          }
+
+          public Field asField(Persistent g) {
+            return ((Event)g).getManualField();
+          }
+
+          protected DisplayLevel defaultDisplayLevel() {
+            return DisplayLevel.record;
+          }
+
+          protected Searchability defaultSearchability() {
+            return Searchability.no;
+          }
+
+          protected String defaultDisplayName() {
+            return "Manual";
+          }
+
+          protected int defaultDisplayOrder() {
+            return 40;
+          }
+
+          protected String defaultDescription() {
+            return "Whether to over write";
+          }
+
+          protected int defaultWidth() {
+            return 1;
+          }
+
+          protected int defaultHeight() {
+            return 1;
+          }
+
+          public Object getRaw_unsafe(Persistent g)
+              throws AccessPoemException {
+            return ((Event)g).getManual_unsafe();
+          }
+
+          public void setRaw_unsafe(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Event)g).setManual_unsafe((Boolean)raw);
+          }
+
+          public Object getRaw(Persistent g)
+              throws AccessPoemException {
+            return ((Event)g).getManual();
+          }
+
+          public void setRaw(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Event)g).setManual((Boolean)raw);
+          }
+        });
   }
 
 
@@ -326,6 +395,18 @@ public class EventTableBase extends CuratorTable {
   */
   public final Column getNameColumn() {
     return col_name;
+  }
+
+
+ /**
+  * Retrieves the <code>Manual</code> <code>Column</code> for this 
+  * <code>Event</code> <code>Table</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * @return the manual <code>Column</code>
+  */
+  public final Column getManualColumn() {
+    return col_manual;
   }
 
 
