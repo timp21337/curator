@@ -74,5 +74,11 @@ public class Widget extends WidgetBase {
     criterion.setOwner_unsafe(getTroid());
     return ((CuratorDatabase)getDatabase()).getWidgetwidgetTable().selection(criterion);
   }
+  
+  public Enumeration getEvents() { 
+    Event criterion = (Event)((CuratorDatabase)getDatabase()).getEventTable().newPersistent();
+    criterion.setWidget_unsafe(getTroid());
+    return ((CuratorDatabase)getDatabase()).getEventTable().selection(criterion);
+  }
 }
 

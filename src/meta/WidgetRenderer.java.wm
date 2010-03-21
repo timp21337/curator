@@ -65,10 +65,15 @@ public class $(melati.Object.Name)WidgetRenderer extends
 	@UiField HTMLPanel errorPanel;
 	@UiField FlowPanel errorMessage;
 
-	private $(melati.Object.Name)Widget owner;
-  public $(melati.Object.Name)WidgetRenderer($(melati.Object.Name)Widget owner) {
-		this.owner = owner;
-	}
+#if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
+#foreach $kid in $melati.Object.ChildWidgets #begin
+
+    @UiField $(kid.Name)Widget $u.uncapitalised($kid.Name)WidgetUiField;
+
+#end
+#end
+
+
 
 #if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
 	private $(melati.Object.Name)WidgetController controller;
@@ -76,7 +81,20 @@ public class $(melati.Object.Name)WidgetRenderer extends
 	public void setController($(melati.Object.Name)WidgetController controller) {
 		this.controller = controller;
 	}
+#end 
+
+	private $(melati.Object.Name)Widget owner;
+	
+    public $(melati.Object.Name)WidgetRenderer($(melati.Object.Name)Widget owner) {
+		this.owner = owner;
+#if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
+#foreach $kid in $melati.Object.ChildWidgets #begin
+
+        this.$u.uncapitalised($kid.Name)WidgetUiField = owner.$u.uncapitalised($kid.Name)Widget;
+
 #end
+#end
+	}
 
 
 	@Override
@@ -85,6 +103,7 @@ public class $(melati.Object.Name)WidgetRenderer extends
 		this.canvas.clear();
 		this.canvas.add(uiBinder.createAndBindUi(this));
 		
+		pendingPanel.setVisible(true);	
 	}
 	
 	@Override
@@ -104,10 +123,15 @@ public class $(melati.Object.Name)WidgetRenderer extends
 		errorPanel.setVisible(false);	
 		if (status instanceof AsyncWidgetModel.InitialStatus) {
 
-			// Everything off, hidden.
+			pendingPanel.setVisible(true);	
 		}
 		
 		//TODO Widget specific statii
+		
+		else if (status instanceof AsyncWidgetModel.ReadyStatus) {
+
+			pendingPanel.setVisible(false);	
+		}			
 		
 		else if (status instanceof AsyncWidgetModel.ErrorStatus) {
 
@@ -122,18 +146,6 @@ public class $(melati.Object.Name)WidgetRenderer extends
 
 		log.leave();
 	}
-	
-	/** Clear and re-initialise, setting selected id. 
-	 * @param studyFeedDoc */
-	void syncUiWithStudyFeedDoc(Document studyFeedDoc) {
-		
-		log.enter("syncUiWithStudyFeedDoc");
-		
-		// Turn everything off (that is made visible/enabled here) first, then show/enable as required.
-		
-		log.leave();
-	}
-	
 	
 	public void error(String err) {
 		log.enter("error");

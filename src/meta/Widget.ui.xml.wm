@@ -33,11 +33,11 @@
 			<g:Label>
         		<ui:msg>There has been an unexpected error: </ui:msg>
 			</g:Label>
-			<g:FlowPanel ui:field="errorMessage"></g:FlowPanel>
+			<g:FlowPanel ui:field="errorMessage"  title="$melati.Object.Name"></g:FlowPanel>
     </g:HTMLPanel>
 
 		<g:HTMLPanel ui:field="pendingPanel">
-			<p>
+			<p title="$melati.Object.Name">
 				<ui:msg>pending... </ui:msg>
 			</p>
 		</g:HTMLPanel>
