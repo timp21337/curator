@@ -75,13 +75,6 @@ public class $(melati.Object.Name)WidgetRenderer extends
 
 
 
-#if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
-	private $(melati.Object.Name)WidgetController controller;
-
-	public void setController($(melati.Object.Name)WidgetController controller) {
-		this.controller = controller;
-	}
-#end 
 
 	private $(melati.Object.Name)Widget owner;
 	
@@ -95,7 +88,19 @@ public class $(melati.Object.Name)WidgetRenderer extends
 #end
 #end
 	}
+	
+#if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
+	private $(melati.Object.Name)WidgetController controller;
 
+	public void setController($(melati.Object.Name)WidgetController controller) {
+		this.controller = controller;
+	}
+#end
+
+	@Override
+	protected void registerHandlersForModelChanges() {
+		
+	}
 
 	@Override
 	protected void renderUI() {
@@ -106,14 +111,10 @@ public class $(melati.Object.Name)WidgetRenderer extends
 		pendingPanel.setVisible(true);	
 	}
 	
-	@Override
-	protected void registerHandlersForModelChanges() {
-		
-	}
 
 	@Override
 	protected void syncUI() {
-		syncUIWithStatus(model.getStatus());
+		syncUIWithStatus(model.status.get());
 	}
 
 	protected void syncUIWithStatus(Status status) {
@@ -121,7 +122,11 @@ public class $(melati.Object.Name)WidgetRenderer extends
 		log.enter("syncUIWithStatus");		
 		
 		errorPanel.setVisible(false);	
-		if (status instanceof AsyncWidgetModel.InitialStatus) {
+		if (status == null) {
+		// null before being set
+		log.debug("Called with null status");
+		}
+		else if (status instanceof AsyncWidgetModel.InitialStatus) {
 
 			pendingPanel.setVisible(true);	
 		}

@@ -69,12 +69,20 @@ public class Widget extends WidgetBase {
 	  return kids;
   }
   
-  public Enumeration getChildWidgets() { 
+  @SuppressWarnings("unchecked")
+  public Vector<Widget> getChildWidgets() { 
     Widgetwidget criterion = (Widgetwidget)((CuratorDatabase)getDatabase()).getWidgetwidgetTable().newPersistent();
     criterion.setOwner_unsafe(getTroid());
-    return ((CuratorDatabase)getDatabase()).getWidgetwidgetTable().selection(criterion);
+    Vector<Widget> them = new Vector<Widget>();
+    Enumeration wws = ((CuratorDatabase)getDatabase()).getWidgetwidgetTable().selection(criterion);
+    while (wws.hasMoreElements()) { 
+      Widgetwidget ww = (Widgetwidget)wws.nextElement();
+      them.add(ww.getChild());
+    }
+    return them;
   }
   
+  @SuppressWarnings("unchecked")
   public Enumeration getEvents() { 
     Event criterion = (Event)((CuratorDatabase)getDatabase()).getEventTable().newPersistent();
     criterion.setWidget_unsafe(getTroid());

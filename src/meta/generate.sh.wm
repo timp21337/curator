@@ -93,6 +93,8 @@ java -cp target/classes:\\
    org.melati.app.TemplateApp curator widget $rec.Troid  WidgetController.java -o \$DEST/$(rec.Name)WidgetController.java
 #end
 
+#if(! $rec.ExtendedFrom.equals("ChassisWidget")) #begin
+
 java -cp target/classes:\\
 \$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\\
@@ -112,6 +114,10 @@ java -cp target/classes:\\
 \$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\\
 \$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \\
    org.melati.app.TemplateApp curator widget $rec.Troid  WidgetModel.java -o \$DEST/$(rec.Name)WidgetModel.java
+
+#end
+
+#if(! $rec.ExtendedFrom.equals("ChassisWidget")) #begin
 
 java -cp target/classes:\\
 \$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\\
@@ -133,6 +139,7 @@ java -cp target/classes:\\
 \$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \\
    org.melati.app.TemplateApp curator widget $rec.Troid  WidgetRenderer.java -o \$DEST/$(rec.Name)WidgetRenderer.java
 
+#end 
 #end 
 #end
 
