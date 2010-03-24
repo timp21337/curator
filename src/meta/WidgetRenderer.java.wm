@@ -7,12 +7,14 @@ import org.cggh.chassis.generic.log.client.Log;
 import org.cggh.chassis.generic.log.client.LogFactory;
 import org.cggh.chassis.generic.miniatom.client.AtomHelper;
 import org.cggh.chassis.generic.widget.client.AsyncWidgetModel;
-import org.cggh.chassis.generic.widget.client.ChassisWidgetRenderer;
-import org.cggh.chassis.generic.widget.client.PropertyChangeEvent;
-import org.cggh.chassis.generic.widget.client.PropertyChangeHandler;
 import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.Status;
 import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.StatusChangeEvent;
 import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.StatusChangeHandler;
+import org.cggh.chassis.generic.widget.client.ChassisWidgetRenderer;
+import org.cggh.chassis.generic.widget.client.PropertyChangeEvent;
+import org.cggh.chassis.generic.widget.client.PropertyChangeHandler;
+import org.cggh.chassis.generic.widget.client.WidgetEvent;
+import org.cggh.chassis.generic.widget.client.WidgetEventHandler;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
@@ -68,8 +70,7 @@ public class $(melati.Object.Name)WidgetRenderer extends
 #if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
 #foreach $kid in $melati.Object.ChildWidgets #begin
 
-    @UiField $(kid.Name)Widget $u.uncapitalised($kid.Name)WidgetUiField;
-
+	@UiField $(kid.Name)Widget $u.uncapitalised($kid.Name)WidgetUiField;
 #end
 #end
 
@@ -78,17 +79,17 @@ public class $(melati.Object.Name)WidgetRenderer extends
 
 	private $(melati.Object.Name)Widget owner;
 	
-    public $(melati.Object.Name)WidgetRenderer($(melati.Object.Name)Widget owner) {
+	public $(melati.Object.Name)WidgetRenderer($(melati.Object.Name)Widget owner) {
 		this.owner = owner;
 #if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
 #foreach $kid in $melati.Object.ChildWidgets #begin
 
         this.$u.uncapitalised($kid.Name)WidgetUiField = owner.$u.uncapitalised($kid.Name)Widget;
-
 #end
 #end
 	}
-	
+
+
 #if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
 	private $(melati.Object.Name)WidgetController controller;
 
@@ -97,10 +98,65 @@ public class $(melati.Object.Name)WidgetRenderer extends
 	}
 #end
 
+
+##start
+
 	@Override
 	protected void registerHandlersForModelChanges() {
 		
+		this.modelChangeHandlerRegistrations.add(model.status.addChangeHandler(new PropertyChangeHandler<Status>() {
+			public void onChange(PropertyChangeEvent<Status> e) {
+				log.enter("onChange<Status>");		
+				syncUIWithStatus(e.getAfter());
+				log.leave();
+			}
+		}));
+
+		this.modelChangeHandlerRegistrations.add(model.message.addChangeHandler(new PropertyChangeHandler<String>() {
+			public void onChange(PropertyChangeEvent<String> e) {
+				log.enter("onChange<String>");		
+				syncUIWithMessage(e.getAfter());
+				log.leave();
+			}
+		}));
+
+
+#foreach $property in $melati.Object.Properties #begin
+	
+		this.modelChangeHandlerRegistrations.add(model.$(property.Name).addChangeHandler(new PropertyChangeHandler<$property.Type>() {
+			public void onChange(PropertyChangeEvent<$property.Type> e) {
+				log.enter("onchange($(property.Name))");
+				syncUIWith$u.capitalised($(property.Name))(e.getAfter());
+				log.leave();
+			}
+		}));
+
+#end
+
 	}
+	
+	
+	@Override
+	protected void registerHandlersForChildWidgetEvents() {
+		log.enter("registerHandlersForChildWidgetEvents");
+		
+#foreach $kid in $melati.Object.ChildWidgets #begin
+  #foreach $event in $kid.Events #begin
+		this.childWidgetEventHandlerRegistrations.add(
+				$u.uncapitalised($kid.Name)WidgetUiField.$u.uncapitalised($event.Widget.Name)$(event.Name)EventChannel.addHandler(new WidgetEventHandler() {
+			public void onEvent(WidgetEvent e) {
+				log.enter("onEvent($u.uncapitalised($kid.Name)WidgetUiField.$u.uncapitalised($event.Widget.Name)$(event.Name))");
+				owner.$u.uncapitalised($event.Widget.Name)$(event.Name)EventChannel.fireEvent(e);
+				log.leave();
+			}
+		}));
+  #end
+#end
+		
+		log.leave();
+	}
+
+
 
 	@Override
 	protected void renderUI() {
@@ -113,56 +169,63 @@ public class $(melati.Object.Name)WidgetRenderer extends
 	
 
 	@Override
-	protected void syncUI() {
-		syncUIWithStatus(model.status.get());
+	protected void bindUI(ViewStudyWidgetModel model) {
+		super.bindUI(model);
+		errorPanel.setVisible(false);	
 	}
 
-	protected void syncUIWithStatus(Status status) {
 
+	protected void syncUIWithStatus(Status status) {
 		log.enter("syncUIWithStatus");		
 		
 		errorPanel.setVisible(false);	
 		if (status == null) {
-		// null before being set
-		log.debug("Called with null status");
+			// null before being set
+			log.debug("Called with null status");
 		}
 		else if (status instanceof AsyncWidgetModel.InitialStatus) {
-
 			pendingPanel.setVisible(true);	
 		}
 		
 		//TODO Widget specific statii
 		
 		else if (status instanceof AsyncWidgetModel.ReadyStatus) {
-
 			pendingPanel.setVisible(false);	
 		}			
-		
 		else if (status instanceof AsyncWidgetModel.ErrorStatus) {
-
-			
-			error("Error status given on asynchronous call.");
+			model.message.set("Error status given on asynchronous call.");
 		}			
-		
 		else {
-
-			error("Unhandled status:" + status);
+			model.message.set("Unhandled status:" + status);
 		}
 
 		log.leave();
 	}
-	
-	public void error(String err) {
-		log.enter("error");
-		log.debug("Error:" + err);
-		pendingPanel.setVisible(false);	
-		contentPanel.setVisible(false);
-		errorMessage.clear();
-		errorMessage.add(new HTML(err));
-		errorPanel.setVisible(true);
+
+	protected void syncUIWithMessage(String message) {
+		log.enter("syncUIWithMessage");
+
+		if (message != null) {
+			pendingPanel.setVisible(false);	
+			contentPanel.setVisible(false);
+			errorMessage.clear();
+			errorMessage.add(new HTML(message));
+			errorPanel.setVisible(true);
+		}
+
 		log.leave();
 	}
+
+
+#foreach $property in $melati.Object.Properties #begin
 	
-	
+	protected void syncUIWith$u.capitalised($(property.Name))($(property.Type) $(property.Name)) {
+		log.enter("syncUIWith$u.capitalised($(property.Name))");
+		// TODO needs to be a method in an extension
+		log.leave();
+	}
+
+#end
+
 }
 
