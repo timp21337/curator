@@ -23,7 +23,9 @@
 		.number {
 			font-weight: bold;
 		}
-		
+		.widget {
+			border: 1px solid teal;
+		}
 	</ui:style>
 
 
@@ -44,11 +46,13 @@
 
 		<g:HTMLPanel ui:field="contentPanel">
 
-            <h3><ui:msg>$melati.Object.Name</ui:msg></h3>
+            <div id="$melati.Object.Name" title="$melati.Object.Name" class="widget">
+            	<g:FlowPanel ui:field="$u.uncapitalised($melati.Object.Name)Panel"></g:FlowPanel>
 
 #foreach $kid in $melati.Object.ChildWidgets #begin
-			<local:$(kid.Name)Widget ui:field="$u.uncapitalised($kid.Name)WidgetUiField"/>
+				<local:$(kid.Name)Widget ui:field="$u.uncapitalised($kid.Name)WidgetUiField"/>
 #end
+			</div>
 		</g:HTMLPanel>
 
 	</g:HTMLPanel>

@@ -492,6 +492,105 @@ table Url
       ;
  }
 
+//   property (from the data structure definition)
+//   com.ical.curator.poem.PropertyTable
+table Property
+
+  (displayname = "Property")
+  (description = "Observable property")
+  (displayorder = 6)
+  // (defaultcanread = null)
+  // (defaultcanwrite = null)
+  // (defaultcandelete = null)
+  // (cancreate = null)
+  // (cachelimit = null)
+  // Not seqcached
+  (category = "Normal")
+{
+    //property.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
+    Integer id
+      (primary)
+      (displayname = "Id")
+      // (description = null)
+      // usereditable
+      // Not nullable
+      (width = 20)
+      (height = 1)
+      // (renderinfo = null)
+      (displayorder = 100)
+      // usercreateable
+      (displaylevel = summary)
+      (searchability = yes)
+      // (displayorderpriority = null)
+      // Not sortdescending
+      (indexed)
+      (unique)
+      ;
+    //property.name: String(-1) (from the data structure definition) 
+    String name
+      (displayname = "Name")
+      (description = "The identifier for the member")
+      // usereditable
+      // Not nullable
+      (size = unlimited)
+      (width = 20)
+      (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
+      (displayorder = 10)
+      // usercreateable
+      (displaylevel = primary)
+      (searchability = primary)
+      // (displayorderpriority = null)
+      // (sortdescending = null)
+      // Not indexed
+      // Not unique
+      ;
+    //property.type: String(-1) (from the data structure definition) 
+    String type
+      (displayname = "Type")
+      (description = "The class name of the member")
+      // usereditable
+      // Not nullable
+      (size = unlimited)
+      (width = 20)
+      (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
+      (displayorder = 20)
+      // usercreateable
+      (displaylevel = summary)
+      (searchability = yes)
+      // (displayorderpriority = null)
+      // (sortdescending = null)
+      // Not indexed
+      // Not unique
+      ;
+    //property.widget: reference to widget (INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
+    Widget widget
+      (displayname = "Widget")
+      (description = "The widget this property belongs to")
+      // usereditable
+      // Not nullable
+      (width = 1)
+      (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
+      (displayorder = 5)
+      // usercreateable
+      (displaylevel = summary)
+      (searchability = primary)
+      // (displayorderpriority = null)
+      // (sortdescending = null)
+      (indexed)
+      // Not unique
+      // (integrityfix = null)
+      ;
+ }
+
 //   widgetwidget (from the data structure definition)
 //   com.ical.curator.poem.WidgetwidgetTable
 table Widgetwidget

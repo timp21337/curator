@@ -2,7 +2,7 @@
 
 package com.ical.curator.poem.generated;
 
-// 16 tables in database
+// 17 tables in database
 import org.melati.poem.UserTable;
 import org.melati.poem.GroupTable;
 import org.melati.poem.CapabilityTable;
@@ -18,6 +18,7 @@ import com.ical.curator.poem.RequestTable;
 import com.ical.curator.poem.MethodTable;
 import com.ical.curator.poem.EventTable;
 import com.ical.curator.poem.UrlTable;
+import com.ical.curator.poem.PropertyTable;
 import com.ical.curator.poem.WidgetwidgetTable;
 
 /**
@@ -138,6 +139,14 @@ public interface CuratorDatabaseTablesBase {
   * @return the UrlTable from this database
   */
   UrlTable getUrlTable();
+
+ /**
+  * Retrieves the <code>PropertyTable</code> table.
+  * 
+  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * @return the PropertyTable from this database
+  */
+  PropertyTable getPropertyTable();
 
  /**
   * Retrieves the <code>WidgetwidgetTable</code> table.

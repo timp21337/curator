@@ -83,10 +83,26 @@ public class Widget extends WidgetBase {
   }
   
   @SuppressWarnings("unchecked")
-  public Enumeration getEvents() { 
+  public Vector<Event> getEvents() { 
+    Vector<Event> them = new Vector<Event>();
     Event criterion = (Event)((CuratorDatabase)getDatabase()).getEventTable().newPersistent();
     criterion.setWidget_unsafe(getTroid());
-    return ((CuratorDatabase)getDatabase()).getEventTable().selection(criterion);
+    Enumeration ours = ((CuratorDatabase)getDatabase()).getEventTable().selection(criterion);
+    while (ours.hasMoreElements())
+      them.add((Event)ours.nextElement());
+    for (Widget kid : getChildWidgets())
+      them.addAll(kid.getEvents());
+    return them;
+  }
+  @SuppressWarnings("unchecked")
+  public Vector<Property> getProperties() { 
+    Vector<Property> them = new Vector<Property>();
+    Property criterion = (Property)((CuratorDatabase)getDatabase()).getPropertyTable().newPersistent();
+    criterion.setWidget_unsafe(getTroid());
+    Enumeration ours = ((CuratorDatabase)getDatabase()).getPropertyTable().selection(criterion);
+    while (ours.hasMoreElements())
+      them.add((Property)ours.nextElement());
+    return them;
   }
 }
 

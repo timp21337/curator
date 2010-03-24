@@ -18,6 +18,7 @@ import com.ical.curator.poem.RequestTable;
 import com.ical.curator.poem.MethodTable;
 import com.ical.curator.poem.EventTable;
 import com.ical.curator.poem.UrlTable;
+import com.ical.curator.poem.PropertyTable;
 import com.ical.curator.poem.WidgetwidgetTable;
 
 /**
@@ -39,6 +40,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
   private MethodTable tab_method = null;
   private EventTable tab_event = null;
   private UrlTable tab_url = null;
+  private PropertyTable tab_property = null;
   private WidgetwidgetTable tab_widgetwidget = null;
 
   protected CuratorDatabaseBase() {
@@ -56,6 +58,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
     redefineTable(tab_method = new MethodTable(this, "method", DefinitionSource.dsd));
     redefineTable(tab_event = new EventTable(this, "event", DefinitionSource.dsd));
     redefineTable(tab_url = new UrlTable(this, "url", DefinitionSource.dsd));
+    redefineTable(tab_property = new PropertyTable(this, "property", DefinitionSource.dsd));
     redefineTable(tab_widgetwidget = new WidgetwidgetTable(this, "widgetwidget", DefinitionSource.dsd));
   }
 
@@ -212,6 +215,17 @@ public class CuratorDatabaseBase extends PoemDatabase {
   */
   public UrlTable getUrlTable() {
     return tab_url;
+  }
+
+
+ /**
+  * Retrieves the PropertyTable table.
+  *
+  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * @return the PropertyTable from this database
+  */
+  public PropertyTable getPropertyTable() {
+    return tab_property;
   }
 
 
