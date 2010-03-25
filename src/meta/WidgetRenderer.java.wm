@@ -81,12 +81,6 @@ public class $(melati.Object.Name)WidgetRenderer extends
 	
 	public $(melati.Object.Name)WidgetRenderer($(melati.Object.Name)Widget owner) {
 		this.owner = owner;
-#if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
-#foreach $kid in $melati.Object.ChildWidgets #begin
-
-        this.$u.uncapitalised($kid.Name)WidgetUiField = owner.$u.uncapitalised($kid.Name)Widget;
-#end
-#end
 	}
 
 
@@ -169,7 +163,7 @@ public class $(melati.Object.Name)WidgetRenderer extends
 	
 
 	@Override
-	protected void bindUI(ViewStudyWidgetModel model) {
+	protected void bindUI($(melati.Object.Name)WidgetModel model) {
 		super.bindUI(model);
 		errorPanel.setVisible(false);	
 	}

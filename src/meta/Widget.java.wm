@@ -11,19 +11,22 @@ import org.cggh.chassis.generic.widget.client.ObservableProperty;
 #end 
 
 import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.Status;
-import com.google.gwt.xml.client.Element;
 
 #if(!$melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
 import org.cggh.chassis.generic.widget.client.ObservableProperty;
 #end
-#if($melati.Object.ExtendedFrom.equals("ChassisWidget")) #begin
 
+#if($melati.Object.ExtendedFrom.equals("ChassisWidget")) #begin
 
 import org.cggh.chassis.generic.widget.client.AsyncWidgetModel;
 import org.cggh.chassis.generic.widget.client.ChassisWidget;
+
+#if($melati.Object.Events.size() > 0) #begin
+
 import org.cggh.chassis.generic.widget.client.WidgetEvent;
 import org.cggh.chassis.generic.widget.client.WidgetEventHandler;
 
+#end
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -34,13 +37,19 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 
 #end 
 
+#if($melati.Object.Properties.size() > 0) #begin
+
+import com.google.gwt.xml.client.Element;
+#end
 
 #if($melati.Object.ExtendedFrom.equals("MultiWidget")) #begin
 import org.cggh.chassis.generic.widget.client.MultiWidget;
 
 #end 
-import org.cggh.chassis.generic.widget.client.WidgetEventChannel;
+#if($melati.Object.Events.size() > 0) #begin
 
+import org.cggh.chassis.generic.widget.client.WidgetEventChannel;
+#end
 
 /**
  * BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT
@@ -136,6 +145,7 @@ public class $(melati.Object.Name)Widget
 #end
 	public final ObservableProperty<Status> status = new ObservableProperty<Status>();
 	public final ObservableProperty<String> message = new ObservableProperty<String>();
+
 
 #foreach $event in $melati.Object.Events #begin
 	public final WidgetEventChannel $u.uncapitalised($event.Widget.Name)$(event.Name)EventChannel = new WidgetEventChannel(this);

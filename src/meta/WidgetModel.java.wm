@@ -32,15 +32,12 @@ public class $(melati.Object.Name)WidgetModel {
 	
 	public static class ReadyForInteractionStatus extends ReadyStatus {}
 	public static final ReadyForInteractionStatus STATUS_READY_FOR_INTERACTION = new ReadyForInteractionStatus();
-	
-	
-	
-	
+
 #foreach $property in $melati.Object.Properties #begin
 
 	public final ObservableProperty<$property.Type> $property.Name = new ObservableProperty<$property.Type>();
-
 #end
+
 	public final ObservableProperty<Status> status = new ObservableProperty<Status>();
 	public final ObservableProperty<String> message = new ObservableProperty<String>();
 	
