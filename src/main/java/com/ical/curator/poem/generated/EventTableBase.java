@@ -102,12 +102,16 @@ public class EventTableBase extends CuratorTable {
             return Searchability.yes;
           }
 
+          protected Integer defaultDisplayOrderPriority() {
+            return new Integer(1);
+          }
+
           protected String defaultDisplayName() {
             return "Id";
           }
 
           protected int defaultDisplayOrder() {
-            return 100;
+            return 1;
           }
 
           protected boolean defaultIndexed() {
@@ -318,6 +322,10 @@ public class EventTableBase extends CuratorTable {
 
           protected Searchability defaultSearchability() {
             return Searchability.no;
+          }
+
+          protected Integer defaultDisplayOrderPriority() {
+            return new Integer(40);
           }
 
           protected String defaultDisplayName() {

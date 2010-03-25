@@ -362,11 +362,11 @@ table Event
       (width = 20)
       (height = 1)
       // (renderinfo = null)
-      (displayorder = 100)
+      (displayorder = 1)
       (uncreateable)
       (displaylevel = record)
       (searchability = yes)
-      // (displayorderpriority = null)
+      (displayorderpriority = 1)
       // Not sortdescending
       (indexed)
       (unique)
@@ -428,7 +428,7 @@ table Event
       // usercreateable
       (displaylevel = summary)
       (searchability = no)
-      // (displayorderpriority = null)
+      (displayorderpriority = 40)
       // (sortdescending = null)
       // Not indexed
       // Not unique

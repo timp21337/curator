@@ -32,6 +32,10 @@ public class $(melati.Object.Name)WidgetController {
 	private $(melati.Object.Name)Widget owner;
 	private $(melati.Object.Name)WidgetModel model;
 
+	public $(melati.Object.Name)WidgetController($(melati.Object.Name)Widget owner, $(melati.Object.Name)WidgetModel model) {
+		this.owner = owner;
+		this.model = model;
+	}
 
 #foreach $kid in $melati.Object.Children #begin
 
@@ -49,8 +53,8 @@ public class $(melati.Object.Name)WidgetController {
 			
 	public Deferred<Document> retrieve$(kid.MethodName)() {
 		log.enter("retrieve$(kid.MethodName)");
-		// Set the model's status to pending.
-		//model.setStatus($(melati.Object.Name)WidgetModel.STATUS_RETRIEVE_STUDIES_PENDING);
+		
+		model.status.set(AsyncWidgetModel.STATUS_ASYNC_REQUEST_PENDING);
 		
 		String studyQueryServiceUrl = Config.get(Config.QUERY_STUDIES_URL);
 		
@@ -185,10 +189,6 @@ public class $(melati.Object.Name)WidgetController {
 
 	
 	
-	public $(melati.Object.Name)WidgetController($(melati.Object.Name)Widget owner, $(melati.Object.Name)WidgetModel model) {
-		this.owner = owner;
-		this.model = model;
-	}
 
 	
 	

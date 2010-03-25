@@ -8,7 +8,8 @@ import org.cggh.chassis.generic.widget.client.WidgetEvent;
 import com.google.gwt.xml.client.Element;
 
 /**
- * Generated event $melati.Object.Name for $(melati.Object.Widget.Name).
+ * Generated event $melati.Object.Name from $(melati.Object.Widget.Name) to 
+ * $(melati.Object.To.Name).
  *
  * BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT
  *
@@ -20,7 +21,7 @@ public class $(melati.Object.Name)Event extends WidgetEvent {
 	private static final Log log = LogFactory.getLog($(melati.Object.Name)Event.class);	
 	
 
-#foreach $property in $melati.Object.Widget.Properties #begin
+#foreach $property in $melati.Object.To.Properties #begin
 	private $property.Type $property.Name;
 
 
