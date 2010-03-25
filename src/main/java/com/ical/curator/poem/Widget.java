@@ -94,6 +94,7 @@ public class Widget extends WidgetBase {
       them.addAll(kid.getEvents());
     return them;
   }
+  
   @SuppressWarnings("unchecked")
   public Vector<Property> getProperties() { 
     Vector<Property> them = new Vector<Property>();
@@ -104,5 +105,17 @@ public class Widget extends WidgetBase {
       them.add((Property)ours.nextElement());
     return them;
   }
+  
+  @SuppressWarnings("unchecked")
+  public Vector<Request> getRequests() { 
+    Vector<Request> them = new Vector<Request>();
+    Request criterion = (Request)((CuratorDatabase)getDatabase()).getRequestTable().newPersistent();
+    criterion.setWidget_unsafe(getTroid());
+    Enumeration ours = ((CuratorDatabase)getDatabase()).getRequestTable().selection(criterion);
+    while (ours.hasMoreElements())
+      them.add((Request)ours.nextElement());
+    return them;
+  }
+
 }
 

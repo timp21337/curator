@@ -55,7 +55,7 @@ public abstract class EventBase extends JdbcPersistent {
   */
   protected Integer id;
  /**
-  * Widget - The widget 
+  * Origination - The widget from which the event is generated 
   */
   protected Integer widget;
  /**
@@ -66,6 +66,10 @@ public abstract class EventBase extends JdbcPersistent {
   * Manual - Whether to over write 
   */
   protected Boolean manual;
+ /**
+  * Destination - Where to, for Navigation Events 
+  */
+  protected Integer to;
 
 
  /**
@@ -464,6 +468,121 @@ public abstract class EventBase extends JdbcPersistent {
   */
   public Field getManualField() throws AccessPoemException {
     Column c = _getEventTable().getManualColumn();
+    return new Field(c.getRaw(this), c);
+  }
+
+
+ /**
+  * Retrieves the <code>To</code> value, without locking, 
+  * for this <code>Event</code> <code>Persistent</code>.
+  *
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @return the Integer to
+  */
+  public Integer getTo_unsafe() {
+    return to;
+  }
+
+
+ /**
+  * Sets the <code>To</code> value directly, without checking, 
+  * for this Event <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @param cooked  the pre-validated value to set
+  */
+  public void setTo_unsafe(Integer cooked) {
+    to = cooked;
+  }
+
+ /**
+  * Retrieves the Table Row Object ID. 
+  *
+  * @generator org.melati.poem.prepro.ReferenceFieldDef#generateBaseMethods 
+  * @throws AccessPoemException  
+  *         if the current <code>AccessToken</code> 
+  *         does not confer read access rights 
+  * @return the TROID as an <code>Integer</code> 
+  */
+
+  public Integer getToTroid()
+      throws AccessPoemException {
+    readLock();
+    return getTo_unsafe();
+  }
+
+
+ /**
+  * Sets the Table Row Object ID. 
+  * 
+  * @generator org.melati.poem.prepro.ReferenceFieldDef#generateBaseMethods 
+  * @param raw  a Table Row Object Id 
+  * @throws AccessPoemException  
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  */
+  public void setToTroid(Integer raw)
+      throws AccessPoemException {
+    setTo(raw == null ? null : 
+        getCuratorDatabaseTables().getWidgetTable().getWidgetObject(raw));
+  }
+
+
+ /**
+  * Retrieves the <code>To</code> object referred to.
+  *  
+  * @generator org.melati.poem.prepro.ReferenceFieldDef#generateBaseMethods 
+  * @throws AccessPoemException  
+  *         if the current <code>AccessToken</code> 
+  *         does not confer read access rights 
+  * @throws NoSuchRowPoemException  
+  *         if the <code>Persistent</code> has yet to be allocated a TROID 
+  * @return the <code>To</code> as a <code>Widget</code> 
+  */
+  public Widget getTo()
+      throws AccessPoemException, NoSuchRowPoemException {
+    Integer troid = getToTroid();
+    return troid == null ? null :
+        getCuratorDatabaseTables().getWidgetTable().getWidgetObject(troid);
+  }
+
+
+ /**
+  * Set the To.
+  * 
+  * @generator org.melati.poem.prepro.ReferenceFieldDef#generateBaseMethods 
+  * @param cooked  a validated <code>Widget</code>
+  * @throws AccessPoemException  
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights 
+  */
+  public void setTo(Widget cooked)
+      throws AccessPoemException {
+    _getEventTable().
+      getToColumn().
+        getType().assertValidCooked(cooked);
+    writeLock();
+    if (cooked == null)
+      setTo_unsafe(null);
+    else {
+      cooked.existenceLock();
+      setTo_unsafe(cooked.troid());
+    }
+  }
+
+
+ /**
+  * Retrieves the <code>To</code> value as a <code>Field</code>
+  * from this <code>Event</code> <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateFieldCreator 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  * @return the Integer to
+  */
+  public Field getToField() throws AccessPoemException {
+    Column c = _getEventTable().getToColumn();
     return new Field(c.getRaw(this), c);
   }
 }

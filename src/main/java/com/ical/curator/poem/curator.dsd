@@ -342,7 +342,7 @@ table Method
 table Event
 
   (displayname = "Event")
-  (description = "Widget event")
+  (description = "Widget Navigation event")
   (displayorder = 4)
   // (defaultcanread = null)
   // (defaultcanwrite = null)
@@ -373,8 +373,8 @@ table Event
       ;
     //event.widget: reference to widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
     Widget widget
-      (displayname = "Widget")
-      (description = "The widget")
+      (displayname = "Origination")
+      (description = "The widget from which the event is generated")
       // usereditable
       (nullable)
       (width = 30)
@@ -426,12 +426,33 @@ table Event
       // (rangelimit_string = null)
       (displayorder = 40)
       // usercreateable
-      (displaylevel = record)
+      (displaylevel = summary)
       (searchability = no)
       // (displayorderpriority = null)
       // (sortdescending = null)
       // Not indexed
       // Not unique
+      ;
+    //event.to: reference to widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
+    Widget to
+      (displayname = "Destination")
+      (description = "Where to, for Navigation Events")
+      // usereditable
+      (nullable)
+      (width = 1)
+      (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
+      (displayorder = 50)
+      // usercreateable
+      (displaylevel = summary)
+      (searchability = yes)
+      (displayorderpriority = 20)
+      // (sortdescending = null)
+      (indexed)
+      // Not unique
+      (integrityfix = prevent)
       ;
  }
 

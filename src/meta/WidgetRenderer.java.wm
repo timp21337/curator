@@ -61,17 +61,20 @@ public class $(melati.Object.Name)WidgetRenderer extends
 	private static $(melati.Object.Name)WidgetRendererUiBinder uiBinder = 
 		GWT.create($(melati.Object.Name)WidgetRendererUiBinder.class);
 
+
 	@UiField HTMLPanel mainPanel;
 	@UiField HTMLPanel contentPanel;
+#if ($melati.Object.Requests.size() > 0) #begin
+
 	@UiField HTMLPanel pendingPanel;
+#end
+
 	@UiField HTMLPanel errorPanel;
 	@UiField FlowPanel errorMessage;
 
-#if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
 #foreach $kid in $melati.Object.ChildWidgets #begin
 
 	@UiField $(kid.Name)Widget $u.uncapitalised($kid.Name)WidgetUiField;
-#end
 #end
 
 
@@ -97,7 +100,9 @@ public class $(melati.Object.Name)WidgetRenderer extends
 
 	@Override
 	protected void registerHandlersForModelChanges() {
-		
+
+	
+#if($melati.Object.Requests.size() > 0) #begin
 		this.modelChangeHandlerRegistrations.add(model.status.addChangeHandler(new PropertyChangeHandler<Status>() {
 			public void onChange(PropertyChangeEvent<Status> e) {
 				log.enter("onChange<Status>");		
@@ -105,6 +110,7 @@ public class $(melati.Object.Name)WidgetRenderer extends
 				log.leave();
 			}
 		}));
+#end
 
 		this.modelChangeHandlerRegistrations.add(model.message.addChangeHandler(new PropertyChangeHandler<String>() {
 			public void onChange(PropertyChangeEvent<String> e) {
@@ -158,7 +164,9 @@ public class $(melati.Object.Name)WidgetRenderer extends
 		this.canvas.clear();
 		this.canvas.add(uiBinder.createAndBindUi(this));
 		
+#if($melati.Object.Requests.size() > 0) #begin
 		pendingPanel.setVisible(true);	
+#end		
 	}
 	
 
@@ -168,6 +176,12 @@ public class $(melati.Object.Name)WidgetRenderer extends
 		errorPanel.setVisible(false);	
 	}
 
+#if($melati.Object.Requests.size() > 0) #begin
+
+	@Override
+	protected void syncUI() {
+		syncUIWithStatus(model.status.get());
+	}
 
 	protected void syncUIWithStatus(Status status) {
 		log.enter("syncUIWithStatus");		
@@ -196,11 +210,16 @@ public class $(melati.Object.Name)WidgetRenderer extends
 		log.leave();
 	}
 
+#end
+
 	protected void syncUIWithMessage(String message) {
 		log.enter("syncUIWithMessage");
 
 		if (message != null) {
+
+#if($melati.Object.Requests.size() > 0) #begin
 			pendingPanel.setVisible(false);	
+#end
 			contentPanel.setVisible(false);
 			errorMessage.clear();
 			errorMessage.add(new HTML(message));

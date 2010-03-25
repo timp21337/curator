@@ -37,6 +37,7 @@ public class EventTableBase extends CuratorTable {
   private Column col_widget = null;
   private Column col_name = null;
   private Column col_manual = null;
+  private Column col_to = null;
 
  /**
   * Constructor. 
@@ -178,7 +179,7 @@ public class EventTableBase extends CuratorTable {
           }
 
           protected String defaultDisplayName() {
-            return "Widget";
+            return "Origination";
           }
 
           protected int defaultDisplayOrder() {
@@ -186,7 +187,7 @@ public class EventTableBase extends CuratorTable {
           }
 
           protected String defaultDescription() {
-            return "The widget";
+            return "The widget from which the event is generated";
           }
 
           protected boolean defaultIndexed() {
@@ -312,7 +313,7 @@ public class EventTableBase extends CuratorTable {
           }
 
           protected DisplayLevel defaultDisplayLevel() {
-            return DisplayLevel.record;
+            return DisplayLevel.summary;
           }
 
           protected Searchability defaultSearchability() {
@@ -357,6 +358,86 @@ public class EventTableBase extends CuratorTable {
           public void setRaw(Persistent g, Object raw)
               throws AccessPoemException {
             ((Event)g).setManual((Boolean)raw);
+          }
+        });
+
+    defineColumn(col_to =
+        new Column(this, "to",
+                   new ReferencePoemType(getCuratorDatabaseTables().
+                                             getWidgetTable(), true),
+                   DefinitionSource.dsd) { 
+          public Object getCooked(Persistent g)
+              throws AccessPoemException, PoemException {
+            return ((Event)g).getTo();
+          }
+
+          public void setCooked(Persistent g, Object cooked)
+              throws AccessPoemException, ValidationPoemException {
+            ((Event)g).setTo((Widget)cooked);
+          }
+
+          public Field asField(Persistent g) {
+            return ((Event)g).getToField();
+          }
+
+          protected DisplayLevel defaultDisplayLevel() {
+            return DisplayLevel.summary;
+          }
+
+          protected Searchability defaultSearchability() {
+            return Searchability.yes;
+          }
+
+          protected Integer defaultDisplayOrderPriority() {
+            return new Integer(20);
+          }
+
+          protected String defaultDisplayName() {
+            return "Destination";
+          }
+
+          protected int defaultDisplayOrder() {
+            return 50;
+          }
+
+          protected String defaultDescription() {
+            return "Where to, for Navigation Events";
+          }
+
+          protected boolean defaultIndexed() {
+            return true;
+          }
+
+          protected int defaultWidth() {
+            return 1;
+          }
+
+          protected int defaultHeight() {
+            return 1;
+          }
+
+          public Object getRaw_unsafe(Persistent g)
+              throws AccessPoemException {
+            return ((Event)g).getTo_unsafe();
+          }
+
+          public void setRaw_unsafe(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Event)g).setTo_unsafe((Integer)raw);
+          }
+
+          public Object getRaw(Persistent g)
+              throws AccessPoemException {
+            return ((Event)g).getToTroid();
+          }
+
+          public void setRaw(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Event)g).setToTroid((Integer)raw);
+          }
+
+          public StandardIntegrityFix defaultIntegrityFix() {
+            return StandardIntegrityFix.prevent;
           }
         });
   }
@@ -411,6 +492,18 @@ public class EventTableBase extends CuratorTable {
 
 
  /**
+  * Retrieves the <code>To</code> <code>Column</code> for this 
+  * <code>Event</code> <code>Table</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * @return the to <code>Column</code>
+  */
+  public final Column getToColumn() {
+    return col_to;
+  }
+
+
+ /**
   * Retrieve the <code>Event</code> as a <code>Event</code>.
   *
   * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
@@ -441,7 +534,7 @@ public class EventTableBase extends CuratorTable {
   }
 
   protected String defaultDescription() {
-    return "Widget event";
+    return "Widget Navigation event";
   }
 
   protected boolean defaultRememberAllTroids() {

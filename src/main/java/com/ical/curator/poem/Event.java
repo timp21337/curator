@@ -8,7 +8,7 @@ import com.ical.curator.poem.generated.EventBase;
  * 
  * <p> 
  * Description: 
- *   Widget event. 
+ *   Widget Navigation event. 
  * </p>
  * 
  * <table> 
@@ -17,9 +17,12 @@ import com.ical.curator.poem.generated.EventBase;
  * </th></tr>
  * <tr><th>Name</th><th>Type</th><th>Description</th></tr>
  * <tr><td> id </td><td> Integer </td><td> &nbsp; </td></tr> 
- * <tr><td> widget </td><td> Widget </td><td> The widget </td></tr> 
+ * <tr><td> widget </td><td> Widget </td><td> The widget from which the event 
+ * is generated </td></tr> 
  * <tr><td> name </td><td> String </td><td> Event name </td></tr> 
  * <tr><td> manual </td><td> Boolean </td><td> Whether to over write 
+ * </td></tr> 
+ * <tr><td> to </td><td> Widget </td><td> Where to, for Navigation Events 
  * </td></tr> 
  * </table> 
  * 
@@ -32,7 +35,7 @@ public class Event extends EventBase {
   * for a <code>Persistent</code> <code>Event</code> object.
   * <p>
   * Description: 
-  *   Widget event. 
+  *   Widget Navigation event. 
   * </p>
   * 
   * @see org.melati.poem.prepro.TableDef#generatePersistentJava 

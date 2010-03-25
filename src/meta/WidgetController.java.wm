@@ -161,16 +161,22 @@ public class $(melati.Object.Name)WidgetController {
       #end #else #begin 
         #if($kid.Table.Name.equals("widget")) #begin
 				
-  private $(kid.Name)Event $u.uncapitalised($kid.Name)Event;
+	private $(kid.Name)Event $u.uncapitalised($kid.Name)Event;
 	
         #end #else #begin 
           #if($kid.Table.Name.equals("event")) #begin
 					
-  private $(kid.Name)Event $u.uncapitalised($kid.Name)Event;
+  //private $(kid.Name)Event $u.uncapitalised($kid.Name)Event;
 	
           #end #else #begin 
+            #if($kid.Table.Name.equals("property")) #begin
+					
+  //private $(kid.Name) property;
+	
+            #end #else #begin 
 	//eeek $kid 
-	      #end 
+  	        #end
+					#end
 	      #end 
 	    #end 
 	  #end 	
