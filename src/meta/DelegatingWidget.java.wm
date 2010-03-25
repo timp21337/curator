@@ -1,0 +1,106 @@
+#set $u=$melati.getContextUtil("org.melati.poem.util.StringUtils")
+package org.cggh.chassis.wwarn.ui.curator.client;
+
+import org.cggh.chassis.generic.log.client.Log;
+import org.cggh.chassis.generic.log.client.LogFactory;
+
+import org.cggh.chassis.generic.widget.client.DelegatingWidget;
+import org.cggh.chassis.generic.widget.client.ObservableProperty;
+
+
+import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.Status;
+
+
+#if($melati.Object.Events.size() > 0) #begin
+
+import org.cggh.chassis.generic.widget.client.WidgetEvent;
+import org.cggh.chassis.generic.widget.client.WidgetEventHandler;
+import org.cggh.chassis.generic.widget.client.WidgetEventChannel;
+
+#end
+
+#if($melati.Object.Properties.size() > 0) #begin
+
+import com.google.gwt.xml.client.Element;
+#end
+
+/**
+ * BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT
+ *
+ * DELETE_TO_MANUALLY_EDIT
+ *
+ * @author timp
+ *
+ */
+public class $(melati.Object.Name)Widget 
+	extends DelegatingWidget<$(melati.Object.Name)WidgetModel, $(melati.Object.Name)WidgetRenderer> {
+
+	private static final Log log = LogFactory.getLog($(melati.Object.Name)Widget.class);
+	
+
+	private $(melati.Object.Name)WidgetController controller;
+
+#foreach $property in $melati.Object.Properties #begin
+
+	public final ObservableProperty<$property.Type> $property.Name = new ObservableProperty<$property.Type>();
+
+#end
+#if ($melati.Object.Requests.size() > 0) #begin
+	public final ObservableProperty<Status> status = new ObservableProperty<Status>();
+#end
+
+	public final ObservableProperty<String> message = new ObservableProperty<String>();
+
+
+#foreach $event in $melati.Object.Events #begin
+	public final WidgetEventChannel $u.uncapitalised($event.Widget.Name)$(event.Name)EventChannel = new WidgetEventChannel(this);
+#end
+
+
+
+#foreach $kid in $melati.Object.ChildWidgets #begin
+
+	// public so as to be available to renderer 
+	public $(kid.Name)Widget $u.uncapitalised($kid.Name)Widget;
+
+#end
+
+	@Override
+	protected $(melati.Object.Name)WidgetModel createModel() {
+		return new $(melati.Object.Name)WidgetModel();
+	}
+
+	public $(melati.Object.Name)WidgetModel getModel() {
+		return model;
+	}
+
+	@Override
+	protected $(melati.Object.Name)WidgetRenderer createRenderer() {
+		return new $(melati.Object.Name)WidgetRenderer(this);
+	}
+	// Using init() rather than constructor because reset() uses init().
+	public void init() {
+		
+		super.init();
+		
+
+		this.controller = new $(melati.Object.Name)WidgetController(this, this.model);
+		this.renderer.setController(controller);
+
+	}
+	
+	@Override
+	public void refresh() {
+		log.enter("refresh");
+		
+		// TODO refresh this
+
+#foreach $kid in $melati.Object.ChildWidgets #begin
+
+		renderer.$u.uncapitalised($kid.Name)WidgetUiField.refresh();
+
+#end
+		log.leave();	
+	}
+	
+}

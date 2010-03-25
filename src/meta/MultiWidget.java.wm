@@ -1,0 +1,139 @@
+#set $u=$melati.getContextUtil("org.melati.poem.util.StringUtils")
+package org.cggh.chassis.wwarn.ui.curator.client;
+
+import org.cggh.chassis.generic.log.client.Log;
+import org.cggh.chassis.generic.log.client.LogFactory;
+
+import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.Status;
+
+
+
+import com.google.gwt.xml.client.Element;
+
+import org.cggh.chassis.generic.widget.client.MultiWidget;
+import org.cggh.chassis.generic.widget.client.ObservableProperty;
+import org.cggh.chassis.generic.widget.client.WidgetEvent;
+import org.cggh.chassis.generic.widget.client.WidgetEventChannel;
+import org.cggh.chassis.generic.widget.client.WidgetEventHandler;
+
+/**
+ * BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT
+ *
+ * DELETE_TO_MANUALLY_EDIT
+ *
+ * @author timp
+ *
+ */
+public class $(melati.Object.Name)Widget 
+	extends MultiWidget {
+
+	private static final Log log = LogFactory.getLog($(melati.Object.Name)Widget.class);
+
+#foreach $kid in $melati.Object.ChildWidgets #begin
+	private $(kid.Name)Widget $u.uncapitalised($kid.Name)Widget;
+
+#end
+
+
+#foreach $property in $melati.Object.Properties #begin
+
+	public final ObservableProperty<$property.Type> $property.Name = new ObservableProperty<$property.Type>();
+
+#end
+	public final ObservableProperty<Status> status = new ObservableProperty<Status>();
+	public final ObservableProperty<String> message = new ObservableProperty<String>();
+
+
+
+#foreach $kid in $melati.Object.ChildWidgets #begin
+#foreach $event in $kid.Events #begin
+	public final WidgetEventChannel $u.uncapitalised($kid.Name)$(event.Widget.Name)$(event.Name)EventChannel = new WidgetEventChannel(this);
+#end
+#end
+
+
+	
+	@Override
+	public void renderMainChildren() {
+		log.enter("renderMainChildren");
+
+#set $count = 0
+#foreach $kid in $melati.Object.ChildWidgets #begin
+#if ($count == 0) #begin
+		this.defaultChild = this.$u.uncapitalised($kid.Name)Widget;
+#set	$count = 1
+#end
+
+		this.$u.uncapitalised($kid.Name)Widget = new $(kid.Name)Widget();
+		this.mainChildren.add(this.$u.uncapitalised($kid.Name)Widget);
+
+#end
+
+		log.leave();
+
+	}
+
+
+	@Override
+	public void registerHandlersForChildWidgetEvents() {
+		log.enter("registerHandlersForChildWidgetEvents");
+		super.registerHandlersForChildWidgetEvents();
+		
+#foreach $kid in $melati.Object.ChildWidgets #begin
+
+		// $kid.Name
+#foreach $event in $kid.Events #begin
+
+		log.debug("Adding $kid.Name>$event.Widget.Name>$event.Name event handler");
+		this.childWidgetEventHandlerRegistrations.add(
+				$u.uncapitalised($kid.Name)$(event.Widget.Name)$(event.Name)EventChannel.addHandler(
+						new WidgetEventHandler() {
+			@Override
+			public void onEvent(WidgetEvent e) {
+				
+				log.enter("onEvent($(event.Name)Event)");
+
+#foreach $property in $event.To.Properties #begin
+				
+				$property.Type $property.Name =  (($(event.Name)Event) e).get$u.capitalised($(property.Name))();
+				log.debug("Setting $property.Name to " + $property.Name);
+				
+#if ($event.To.ExtendedFrom.equals("DelegatingWidget")) #begin
+				$u.uncapitalised($event.To.Name)Widget.getModel().$(property.Name).set($property.Name);
+				
+#end	#else #begin
+				$u.uncapitalised($event.To.Name)Widget.$(property.Name).set($property.Name);
+				
+#end
+#end
+				setActiveChild($u.uncapitalised($event.To.Name)Widget);
+				
+				log.leave();
+			}
+		}));
+
+#end
+#end
+
+		log.leave();
+	}
+	
+
+	
+	
+	@Override
+	public void refresh() {
+		log.enter("refresh");
+		
+
+#foreach $kid in $melati.Object.ChildWidgets #begin
+
+		$u.uncapitalised($kid.Name)Widget.refresh();
+
+#end
+		log.leave();	
+	}
+	
+	
+	
+}
