@@ -7,6 +7,7 @@ import com.google.gwt.xml.client.Element;
 import org.cggh.chassis.generic.log.client.Log;
 import org.cggh.chassis.generic.log.client.LogFactory;
 import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.Status;
+import org.cggh.chassis.generic.widget.client.ChassisWidget;
 import org.cggh.chassis.generic.widget.client.MultiWidget;
 import org.cggh.chassis.generic.widget.client.ObservableProperty;
 import org.cggh.chassis.generic.widget.client.WidgetEventChannel;
@@ -37,9 +38,6 @@ public class $(melati.Object.Name)Widget
 	public final ObservableProperty<$property.Type> $property.Name = new ObservableProperty<$property.Type>();
 
 #end
-	public final ObservableProperty<Status> status = new ObservableProperty<Status>();
-	public final ObservableProperty<String> message = new ObservableProperty<String>();
-
 
 
 #foreach $kid in $melati.Object.ChildWidgets #begin
@@ -61,6 +59,7 @@ public class $(melati.Object.Name)Widget
 		this.mainChildren.add(this.$u.uncapitalised($kid.Name)Widget);
 
 #if ($count == 0) #begin
+
 		this.defaultChild = this.$u.uncapitalised($kid.Name)Widget;
 #set	$count = 1
 #end
@@ -126,10 +125,11 @@ public class $(melati.Object.Name)Widget
 	public void refresh() {
 		log.enter("refresh");
 		
+		((ChassisWidget)this.defaultChild).refresh();
 
 #foreach $kid in $melati.Object.ChildWidgets #begin
 
-		$u.uncapitalised($kid.Name)Widget.refresh();
+		// $u.uncapitalised($kid.Name)Widget.refresh();
 
 #end
 		log.leave();	
@@ -142,8 +142,8 @@ public class $(melati.Object.Name)Widget
 		super.setActiveChild(child, memorise);
 		
 		// override to trigger refresh if set as active child
-		if (child == this.defaultChild) {
-			child.refresh();
+		if (child == this.defaultChild && child instanceof ChassisWidget) {
+			((ChassisWidget)child).refresh();
 		}
 
 		log.leave();

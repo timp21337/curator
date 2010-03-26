@@ -18,6 +18,8 @@ import org.cggh.chassis.generic.widget.client.AsyncWidgetModel;
 
 import org.cggh.chassis.generic.widget.client.ChassisWidget;
 import org.cggh.chassis.generic.widget.client.ObservableProperty;
+import org.cggh.chassis.generic.widget.client.PropertyChangeEvent;
+import org.cggh.chassis.generic.widget.client.PropertyChangeHandler;
 
 #if($melati.Object.Events.size() > 0) #begin
 
@@ -150,47 +152,47 @@ public class $(melati.Object.Name)Widget
 		}));
   #end
 #end
-		registerHandlersForModelChanges();
-	}
 
 
-
-	@Override
-	protected void registerHandlersForModelChanges() {
+	// Model changes
 
 	
 #if($melati.Object.Requests.size() > 0) #begin
-		this.modelChangeHandlerRegistrations.add(model.status.addChangeHandler(new PropertyChangeHandler<Status>() {
+		status.addChangeHandler(new PropertyChangeHandler<Status>() {
 			public void onChange(PropertyChangeEvent<Status> e) {
 				log.enter("onChange<Status>");		
 				syncUIWithStatus(e.getAfter());
 				log.leave();
 			}
-		}));
+		});
 #end
 
-		this.modelChangeHandlerRegistrations.add(model.message.addChangeHandler(new PropertyChangeHandler<String>() {
+		message.addChangeHandler(new PropertyChangeHandler<String>() {
 			public void onChange(PropertyChangeEvent<String> e) {
 				log.enter("onChange<String>");		
 				syncUIWithMessage(e.getAfter());
 				log.leave();
 			}
-		}));
+		});
 
 
 #foreach $property in $melati.Object.Properties #begin
 	
-		this.modelChangeHandlerRegistrations.add(model.$(property.Name).addChangeHandler(new PropertyChangeHandler<$property.Type>() {
+		$(property.Name).addChangeHandler(new PropertyChangeHandler<$property.Type>() {
 			public void onChange(PropertyChangeEvent<$property.Type> e) {
 				log.enter("onchange($(property.Name))");
 				syncUIWith$u.capitalised($(property.Name))(e.getAfter());
 				log.leave();
 			}
-		}));
+		});
 
 #end
 
+	
 	}
+
+
+
 	
 	
 
