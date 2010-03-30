@@ -35,6 +35,7 @@ public class PropertyTableBase extends CuratorTable {
   private Column col_name = null;
   private Column col_type = null;
   private Column col_widget = null;
+  private Column col_urlkey = null;
 
  /**
   * Constructor. 
@@ -349,6 +350,77 @@ public class PropertyTableBase extends CuratorTable {
             ((Property)g).setWidgetTroid((Integer)raw);
           }
         });
+
+    defineColumn(col_urlkey =
+        new Column(this, "urlkey",
+                   new StringPoemType(true, -1),
+                   DefinitionSource.dsd) { 
+          public Object getCooked(Persistent g)
+              throws AccessPoemException, PoemException {
+            return ((Property)g).getUrlkey();
+          }
+
+          public void setCooked(Persistent g, Object cooked)
+              throws AccessPoemException, ValidationPoemException {
+            ((Property)g).setUrlkey((String)cooked);
+          }
+
+          public Field asField(Persistent g) {
+            return ((Property)g).getUrlkeyField();
+          }
+
+          protected DisplayLevel defaultDisplayLevel() {
+            return DisplayLevel.record;
+          }
+
+          protected Searchability defaultSearchability() {
+            return Searchability.no;
+          }
+
+          protected Integer defaultDisplayOrderPriority() {
+            return new Integer(70);
+          }
+
+          protected String defaultDisplayName() {
+            return "Url Key";
+          }
+
+          protected int defaultDisplayOrder() {
+            return 70;
+          }
+
+          protected String defaultDescription() {
+            return "Key for an url";
+          }
+
+          protected int defaultWidth() {
+            return 20;
+          }
+
+          protected int defaultHeight() {
+            return 1;
+          }
+
+          public Object getRaw_unsafe(Persistent g)
+              throws AccessPoemException {
+            return ((Property)g).getUrlkey_unsafe();
+          }
+
+          public void setRaw_unsafe(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Property)g).setUrlkey_unsafe((String)raw);
+          }
+
+          public Object getRaw(Persistent g)
+              throws AccessPoemException {
+            return ((Property)g).getUrlkey();
+          }
+
+          public void setRaw(Persistent g, Object raw)
+              throws AccessPoemException {
+            ((Property)g).setUrlkey((String)raw);
+          }
+        });
   }
 
 
@@ -397,6 +469,18 @@ public class PropertyTableBase extends CuratorTable {
   */
   public final Column getWidgetColumn() {
     return col_widget;
+  }
+
+
+ /**
+  * Retrieves the <code>Urlkey</code> <code>Column</code> for this 
+  * <code>Property</code> <code>Table</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * @return the urlkey <code>Column</code>
+  */
+  public final Column getUrlkeyColumn() {
+    return col_urlkey;
   }
 
 

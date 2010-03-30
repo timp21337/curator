@@ -61,7 +61,6 @@ public class $(melati.Object.Name)Widget
 #end  
 
 	private static final Log log = LogFactory.getLog($(melati.Object.Name)Widget.class);
-	
 
 
 	@UiTemplate("$(melati.Object.Name)Widget.ui.xml")
@@ -113,8 +112,6 @@ public class $(melati.Object.Name)Widget
 	public void refresh() {
 		log.enter("refresh");
 		
-		// TODO refresh this
-
 #if($melati.Object.ExtendedFrom.equals("ChassisWidget")) #begin
 #foreach $kid in $melati.Object.ChildWidgets #begin
 
@@ -128,7 +125,6 @@ public class $(melati.Object.Name)Widget
 
 	@Override
 	protected void renderUI() {
-
 		log.enter("renderUI");
 		
 		this.clear();
@@ -147,7 +143,7 @@ public class $(melati.Object.Name)Widget
 #foreach $kid in $melati.Object.ChildWidgets #begin
   #foreach $event in $kid.AllEvents #begin
 		this.childWidgetEventHandlerRegistrations.add(
-				$u.uncapitalised($event.Widget.Name)WidgetUiField.$u.uncapitalised($event.Widget.Name)$(event.Name)EventChannel.addHandler(new WidgetEventHandler() {
+				$u.uncapitalised($event.Widget.Name)WidgetUiField.$u.uncapitalised($event.Widget.Name)$(event.Name)EventChannel.addHandler(new WidgetEventHandler<WidgetEvent>() {
 			public void onEvent(WidgetEvent e) {
 				log.enter("onEvent($(event.Widget.Name)$(event.Name))");
 				$u.uncapitalised($event.Widget.Name)$(event.Name)EventChannel.fireEvent(e);

@@ -22,7 +22,7 @@ import org.cggh.chassis.generic.widget.client.WidgetEventHandler;
  *
  */
 public class $(melati.Object.Name)Widget 
-	extends MultiWidget {
+		extends MultiWidget {
 
 	private static final Log log = LogFactory.getLog($(melati.Object.Name)Widget.class);
 
@@ -78,7 +78,7 @@ public class $(melati.Object.Name)Widget
 		
 #foreach $kid in $melati.Object.ChildWidgets #begin
 
-		// $kid.Name
+		// $kid.Name events
 #foreach $event in $kid.AllEvents #begin
 
 		log.debug("Adding $kid.Name>$event.Widget.Name>$event.Name event handler");

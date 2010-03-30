@@ -98,6 +98,7 @@ public class $(melati.Object.Name)Widget
 	protected $(melati.Object.Name)WidgetRenderer createRenderer() {
 		return new $(melati.Object.Name)WidgetRenderer(this);
 	}
+	
 	// Using init() rather than constructor because reset() uses init().
 	public void init() {
 		

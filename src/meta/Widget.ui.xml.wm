@@ -46,7 +46,7 @@
 			</p>
 		</g:HTMLPanel>
 #end
-		
+
 		<g:HTMLPanel ui:field="contentPanel">
 
             <div id="$melati.Object.Name" title="$melati.Object.Name" class="widget">

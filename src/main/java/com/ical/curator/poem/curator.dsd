@@ -610,6 +610,27 @@ table Property
       // Not unique
       // (integrityfix = null)
       ;
+    //property.urlkey: nullable String(-1) (from the data structure definition) 
+    String urlkey
+      (displayname = "Url Key")
+      (description = "Key for an url")
+      // usereditable
+      (nullable)
+      (size = unlimited)
+      (width = 20)
+      (height = 1)
+      // (renderinfo = null)
+      // (rangelow_string = null)
+      // (rangelimit_string = null)
+      (displayorder = 70)
+      // usercreateable
+      (displaylevel = record)
+      (searchability = no)
+      (displayorderpriority = 70)
+      // (sortdescending = null)
+      // Not indexed
+      // Not unique
+      ;
  }
 
 //   widgetwidget (from the data structure definition)

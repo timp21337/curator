@@ -66,6 +66,10 @@ public abstract class PropertyBase extends JdbcPersistent {
   * Widget - The widget this property belongs to 
   */
   protected Integer widget;
+ /**
+  * Url Key - Key for an url 
+  */
+  protected String urlkey;
 
 
  /**
@@ -442,6 +446,89 @@ public abstract class PropertyBase extends JdbcPersistent {
   */
   public Field getWidgetField() throws AccessPoemException {
     Column c = _getPropertyTable().getWidgetColumn();
+    return new Field(c.getRaw(this), c);
+  }
+
+
+ /**
+  * Retrieves the <code>Urlkey</code> value, without locking, 
+  * for this <code>Property</code> <code>Persistent</code>.
+  *
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @return the String urlkey
+  */
+  public String getUrlkey_unsafe() {
+    return urlkey;
+  }
+
+
+ /**
+  * Sets the <code>Urlkey</code> value directly, without checking, 
+  * for this Property <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateBaseMethods 
+  * @param cooked  the pre-validated value to set
+  */
+  public void setUrlkey_unsafe(String cooked) {
+    urlkey = cooked;
+  }
+
+ /**
+  * Retrieves the Urlkey value, with locking, for this 
+  * <code>Property</code> <code>Persistent</code>.
+  * Field description: 
+  *   Key for an url 
+  * 
+  * @generator org.melati.poem.prepro.AtomFieldDef#generateBaseMethods 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights 
+  * @return the value of the field <code>Urlkey</code> for this 
+  *         <code>Property</code> <code>Persistent</code>  
+  */
+
+  public String getUrlkey()
+      throws AccessPoemException {
+    readLock();
+    return getUrlkey_unsafe();
+  }
+
+
+ /**
+  * Sets the <code>Urlkey</code> value, with checking, for this 
+  * <code>Property</code> <code>Persistent</code>.
+  * Field description: 
+  *   Key for an url 
+  * 
+  * @generator org.melati.poem.prepro.AtomFieldDef#generateBaseMethods  
+  * @param cooked  a validated <code>int</code> 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  * @throws ValidationPoemException 
+  *         if the value is not valid
+  */
+  public void setUrlkey(String cooked)
+      throws AccessPoemException, ValidationPoemException {
+    _getPropertyTable().getUrlkeyColumn().
+      getType().assertValidCooked(cooked);
+    writeLock();
+    setUrlkey_unsafe(cooked);
+  }
+
+
+ /**
+  * Retrieves the <code>Urlkey</code> value as a <code>Field</code>
+  * from this <code>Property</code> <code>Persistent</code>.
+  * 
+  * @see org.melati.poem.prepro.FieldDef#generateFieldCreator 
+  * @throws AccessPoemException 
+  *         if the current <code>AccessToken</code> 
+  *         does not confer write access rights
+  * @return the String urlkey
+  */
+  public Field getUrlkeyField() throws AccessPoemException {
+    Column c = _getPropertyTable().getUrlkeyColumn();
     return new Field(c.getRaw(this), c);
   }
 }

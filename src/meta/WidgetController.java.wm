@@ -74,7 +74,7 @@ public class $(melati.Object.Name)WidgetController {
 		
 		model.status.set(AsyncWidgetModel.STATUS_ASYNC_REQUEST_PENDING);
 		
-		String queryServiceUrl = Config.get(Config.QUERY_$(kid.Name.toUpperCase())_URL);
+		String queryServiceUrl = Config.get(Config.$(kid.Urlkey));
 
 		log.debug("QUERY_$(kid.Name.toUpperCase())_URL:"+queryServiceUrl);
 		
@@ -161,7 +161,7 @@ public class $(melati.Object.Name)WidgetController {
 		
 		model.status.set(AsyncWidgetModel.STATUS_ASYNC_REQUEST_PENDING);
 		
-		String queryServiceUrl = Config.get(Config.QUERY_$(kid.Name.toUpperCase())_URL);
+		String queryServiceUrl = Config.get(Config.$(kid.Urlkey));
 
 		log.debug("QUERY_$(kid.Name.toUpperCase())_URL:"+queryServiceUrl);
 		
