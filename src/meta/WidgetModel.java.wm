@@ -4,12 +4,24 @@
 package org.cggh.chassis.wwarn.ui.curator.client;
 
 import org.cggh.chassis.generic.widget.client.ObservableProperty;
-import org.cggh.chassis.generic.widget.client.AsyncWidgetModel;
 import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.AsyncRequestPendingStatus;
 import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.ReadyStatus;
 import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.Status;
 
+#set $includeDocument = 0
+#set $includeElement = 0
+#foreach $property in $melati.Object.Properties #begin
+    #if($property.Type.equals("Element")) #begin #set $includeElement = 1 #end
+    #if($property.Type.equals("Document")) #begin #set $includeDocument = 1 #end
+#end
+#if ($includeDocument) #begin
+
+import com.google.gwt.xml.client.Document;
+#end
+#if ($includeElement) #begin
+
 import com.google.gwt.xml.client.Element;
+#end
 
 /**
  * BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT

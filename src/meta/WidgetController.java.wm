@@ -20,6 +20,9 @@ import com.google.gwt.xml.client.Element;
  *
  * DELETE_TO_MANUALLY_EDIT
  *
+ *
+ * 
+ *
  * @author timp
  *
  */
@@ -46,148 +49,201 @@ public class $(melati.Object.Name)WidgetController {
   #end #else #begin 
     #if($kid.Table.Name.equals("request")) #begin
 
-	    #if($kid.Method.equals("GET")) #begin
+	##	// Expected to be $kid.Method $kid.Url.Url
 
-	private static String $kid.Name = "$kid.Url.Url";
-
+    #end #else #begin 
+      #if($kid.Table.Name.equals("method")) #begin
 			
-	public Deferred<Document> retrieve$(kid.MethodName)() {
-		log.enter("retrieve$(kid.MethodName)");
+	##public void $(kid.Name) { 
+	##  // TODO Generated stub 
+	##}
+	
+      #end #else #begin 
+        #if($kid.Table.Name.equals("event")) #begin
+					
+        //private $(kid.Name)Event $u.uncapitalised($kid.Name)Event;
+	
+        #end #else #begin 
+          #if($kid.Table.Name.equals("property")) #begin
+          
+
+#if($kid.Type.equals("Document")) #begin
+			
+	public Deferred<$kid.Type> retrieve$u.capitalised($(kid.Name))() {
+		log.enter("retrieve$u.capitalised($(kid.Name))");
 		
 		model.status.set(AsyncWidgetModel.STATUS_ASYNC_REQUEST_PENDING);
 		
-		String studyQueryServiceUrl = Config.get(Config.QUERY_STUDIES_URL);
+		String queryServiceUrl = Config.get(Config.QUERY_$(kid.Name.toUpperCase())_URL);
+
+		log.debug("QUERY_$(kid.Name.toUpperCase())_URL:"+queryServiceUrl);
 		
-		Deferred<Document> deferredDoc = Atom.getFeed(studyQueryServiceUrl);
+		Deferred<Document> deferredDoc = Atom.getFeed(queryServiceUrl);
 		
 		// Add a call-back and error-back for the asynchronous feed.
-		deferredDoc.addCallback(new Retrieve$(kid.MethodName)Callback());
+		deferredDoc.addCallback(new Retrieve$u.capitalised($(kid.Name))Callback());
 		deferredDoc.addErrback(new DefaultErrback());
 		
 		log.leave();
 		return deferredDoc;
 	}
 	
+	private class Retrieve$u.capitalised($(kid.Name))Callback implements Function<Document, Document> {
+
+		@Override
+		public Document apply(Document in) {
+			log.debug("Retrieve$u.capitalised($(kid.Name))Callback.apply setting model status to " + AsyncWidgetModel.STATUS_READY);
+			model.status.set(AsyncWidgetModel.STATUS_READY);
+			model.$(kid.Name).set(in);
+			return in;
+		}
+
+	}
 	
 	
 	public Deferred<ChassisWidget> refreshAndCallback() {
 		log.enter("refreshAndCallback");
 		
 		final Deferred<ChassisWidget> deferredOwner = new Deferred<ChassisWidget>();
-	/*	
-		if (model.submissionId.get() != null) {
-			
-			Deferred<Element> chain = retrieveSubmission();
-			
-			chain.addCallback(new RetrieveSubmissionCallback());
-			
-			chain.addCallback(new RetrieveQuestionnaireCallback());
-			
-			chain.addCallback(retrieveStudyCallback);
 
-			// handle errors
-			chain.addErrback(new DefaultErrback());
 			
-			// finally callback with owner, in any case
-			chain.addBoth(new Function<Object, Object>() {
+		Deferred<Document> chain = retrieve$u.capitalised($(kid.Name))();
+			
+		// handle errors
+		chain.addErrback(new DefaultErrback());
+			
+		// finally callback with owner, in any case
+		chain.addBoth(new Function<Object, Object>() {
 
-				public Object apply(Object in) {
-					deferredOwner.callback(owner);
-					return in;
-				}
+			public Object apply(Object in) {
+				deferredOwner.callback(owner);
+				return in;
+			}
 				
-			});
+		});
 
-		}
-		*/
 		log.leave();
 		return deferredOwner;
 		
 	}
 
+#end #else #begin 
+#if($kid.Type.equals("Element")) #begin
 	
-	
+	public Deferred<ChassisWidget> refreshAndCallback() {
+		log.enter("refreshAndCallback");
 		
+		final Deferred<ChassisWidget> deferredOwner = new Deferred<ChassisWidget>();
 
+			
+		Deferred<Document> chain = retrieve$u.capitalised($(kid.Name))();
+			
+		// handle errors
+		chain.addErrback(new DefaultErrback());
+			
+		// finally callback with owner, in any case
+		chain.addBoth(new Function<Object, Object>() {
+
+			public Object apply(Object in) {
+				deferredOwner.callback(owner);
+				return in;
+			}
+				
+		});
+
+		log.leave();
+		return deferredOwner;
+		
+	}
+
+	public Deferred<Document> retrieve$u.capitalised($(kid.Name))() {
+		log.enter("retrieve$u.capitalised($(kid.Name))");
+		
+		model.status.set(AsyncWidgetModel.STATUS_ASYNC_REQUEST_PENDING);
+		
+		String queryServiceUrl = Config.get(Config.QUERY_$(kid.Name.toUpperCase())_URL);
+
+		log.debug("QUERY_$(kid.Name.toUpperCase())_URL:"+queryServiceUrl);
+		
+		Deferred<Document> deferredDoc = Atom.getFeed(queryServiceUrl);
+		
+		// Add a call-back and error-back for the asynchronous feed.
+		deferredDoc.addCallback(new Retrieve$u.capitalised($(kid.Name))Callback());
+		deferredDoc.addErrback(new DefaultErrback());
+		
+		log.leave();
+		return deferredDoc;
+	}
+
+	
+	private class Retrieve$u.capitalised($(kid.Name))Callback implements Function<Deferred<Document>,Element> {
+
+		@Override
+		public Element apply(Deferred<Document> in) {
+		    Element $(kid.Name) = null;
+			model.$(kid.Name).set($(kid.Name));
+			return $(kid.Name);
+		}
+
+	}
+
+	
+#end #else #begin
+
+
+	public Deferred<Document> retrieve$u.capitalised($(kid.Name))() {
+		log.enter("retrieve$u.capitalised($(kid.Name))");
+		
+		log.leave();
+		return null;
+	}
+	
+	private class Retrieve$u.capitalised($(kid.Name))Callback implements Function<Deferred<Document>,$kid.Type> {
+
+		public $kid.Type apply(Deferred<Document> $u.uncapitalised($(kid.Name))Feed) {
+			
+			return null;
+		}
+		
+	}
+	
+	
+	
+#end
+#end
+	
+	
+
+          #end #else #begin 
+	//eeek $kid 
+          #end
+        #end
+	  #end 
+	#end 	
+  #end 
+#end
+
+	
 	private class DefaultErrback implements Function<Throwable, Throwable> {
 
 		public Throwable apply(Throwable in) {
 			log.error("unexpected error", in);
 			model.status.set(AsyncWidgetModel.STATUS_ERROR);
+
+			// TODO Do we want stack trace?
+			// TODO Should we be getting the message from ErrorEvent ?
+		    //StringWriter sw = new StringWriter();
+		    //PrintWriter pw = new PrintWriter(sw);
+		    //in.printStackTrace(pw);
+			//model.message.set(in.getMessage() +
+			//	"------\r\n" + sw.toString() + "------\r\n");
+
+			model.message.set(in.getMessage());
 			owner.fireEvent(new ErrorEvent(in));
 			return in;
 		}
 		
 	}
-
-
-
-
-	
-	private class Retrieve$(kid.MethodName)Callback implements Function<Element, Deferred<Document>> {
-
-		public Deferred<Document> apply(Element $u.uncapitalised($(kid.MethodName))EntryElement) {
-			
-			// model.set$(kid.MethodName)EntryElement($u.uncapitalised($(kid.MethodName))EntryElement);
-			
-			Deferred<Document> deferredFilesFeedDoc = null;
-			
-			if ($u.uncapitalised($(kid.MethodName))EntryElement != null) {
-
-				// we have one, so lets try retrieving the list of files uploaded so far
-				// deferredFilesFeedDoc = retrieveFiles();
-				
-			}
-			
-			else {
-				
-				//model.setStatus($(melati.Object.Name)WidgetModel.STATUS_STUDY_NOT_FOUND);
-				deferredFilesFeedDoc = new Deferred<Document>();
-				deferredFilesFeedDoc.callback(null);
-
-			}
-			
-			// return the deferred feed of files uploaded, for chaining of callbacks
-			return deferredFilesFeedDoc;
-		}
-		
-	}
-	
-	
-      #end 
-    #end #else #begin 
-      #if($kid.Table.Name.equals("method")) #begin
-			
-	public void $(kid.Name) { 
-	  // TODO Generated stub 
-	}
-	
-      #end #else #begin 
-        #if($kid.Table.Name.equals("widget")) #begin
-				
-	private $(kid.Name)Event $u.uncapitalised($kid.Name)Event;
-	
-        #end #else #begin 
-          #if($kid.Table.Name.equals("event")) #begin
-					
-  //private $(kid.Name)Event $u.uncapitalised($kid.Name)Event;
-	
-          #end #else #begin 
-            #if($kid.Table.Name.equals("property")) #begin
-					
-  //private $(kid.Name) property;
-	
-            #end #else #begin 
-	//eeek $kid 
-  	        #end
-					#end
-	      #end 
-	    #end 
-	  #end 	
-	#end 
-#end
-
-	
 	
 
 	

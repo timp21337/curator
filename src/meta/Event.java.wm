@@ -26,7 +26,7 @@ public class $(melati.Object.Name)Event extends WidgetEvent {
 
 
 	public void set$u.capitalised($(property.Name))($(property.Type) $u.uncapitalised($(property.Name))) {
-		log.enter("set$(property.Name)");		
+		log.enter("set$u.capitalised($(property.Name))");		
 		
 		this.$u.uncapitalised($(property.Name)) = $u.uncapitalised($(property.Name));
 		
@@ -34,7 +34,7 @@ public class $(melati.Object.Name)Event extends WidgetEvent {
 	}
 	
 	public $(property.Type) get$u.capitalised($(property.Name))() {
-		log.enter("get$(property.Name)");		
+		log.enter("get$u.capitalised($(property.Name))");		
 		
 		log.debug("Returning $u.uncapitalised($(property.Name)) " + this.$u.uncapitalised($(property.Name)));
 

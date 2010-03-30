@@ -38,12 +38,15 @@
 			<g:FlowPanel ui:field="errorMessage"  title="$melati.Object.Name"></g:FlowPanel>
     </g:HTMLPanel>
 
+#if($melati.Object.Requests.size() > 0) #begin
+
 		<g:HTMLPanel ui:field="pendingPanel">
 			<p title="$melati.Object.Name">
 				<ui:msg>pending... </ui:msg>
 			</p>
 		</g:HTMLPanel>
-
+#end
+		
 		<g:HTMLPanel ui:field="contentPanel">
 
             <div id="$melati.Object.Name" title="$melati.Object.Name" class="widget">

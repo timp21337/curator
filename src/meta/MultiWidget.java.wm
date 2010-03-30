@@ -41,7 +41,7 @@ public class $(melati.Object.Name)Widget
 
 
 #foreach $kid in $melati.Object.ChildWidgets #begin
-#foreach $event in $kid.Events #begin
+#foreach $event in $kid.AllEvents #begin
 	public final WidgetEventChannel $u.uncapitalised($kid.Name)$(event.Widget.Name)$(event.Name)EventChannel = new WidgetEventChannel(this);
 #end
 #end
@@ -79,11 +79,11 @@ public class $(melati.Object.Name)Widget
 #foreach $kid in $melati.Object.ChildWidgets #begin
 
 		// $kid.Name
-#foreach $event in $kid.Events #begin
+#foreach $event in $kid.AllEvents #begin
 
 		log.debug("Adding $kid.Name>$event.Widget.Name>$event.Name event handler");
 		this.childWidgetEventHandlerRegistrations.add(
-				$u.uncapitalised($kid.Name)$(event.Widget.Name)$(event.Name)EventChannel.addHandler(
+				$u.uncapitalised($kid.Name)Widget.$u.uncapitalised($(event.Widget.Name))$(event.Name)EventChannel.addHandler(
 						new WidgetEventHandler<$(event.Name)Event>() {
 			@Override
 			public void onEvent($(event.Name)Event e) {
