@@ -26,6 +26,7 @@ import org.cggh.chassis.generic.widget.client.WidgetEvent;
 import org.cggh.chassis.generic.widget.client.WidgetEventHandler;
 import org.cggh.chassis.generic.widget.client.WidgetEventChannel;
 
+
 #end
 
 #set $includeDocument = 0
@@ -43,6 +44,7 @@ import com.google.gwt.xml.client.Document;
 import com.google.gwt.xml.client.Element;
 #end
 
+import com.google.gwt.http.client.URL;
 
 /**
  * BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT
@@ -164,9 +166,8 @@ public class $(melati.Object.Name)Widget
 				
 				url = AtomHelper.getEditLinkHrefAttr($property.Name);
 			
-				if (url != null) {
-					
-					map.put(KEY, url);
+				if (url != null) {					
+					map.put(KEY, URL.encodeComponent(url));
 				}
 				
 			}
@@ -184,13 +185,13 @@ public class $(melati.Object.Name)Widget
 			
 			model.status.set(AsyncWidgetModel.STATUS_INITIAL);
 			
-			String url = mnemonic.get(KEY);
+			String url = URL.decodeComponent(mnemonic.get(KEY));
 			log.debug("found url: " + url);
 			
 			if (url != null) {
 				
 				log.debug("set url to:" + url);
-				
+
 #foreach $property in $melati.Object.Properties #begin
 	#if ($property.Type.equals("String")) #begin 
 				model.$(property.Name).set(url);

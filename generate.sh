@@ -1,7 +1,8 @@
 
 cp src/meta/*.wm target/classes/
 
-export DEST=~/workspace/wwarn_ui_generated/src/main/java/org/cggh/chassis/wwarn/ui/curator/client
+
+export DEST=~/dist/dsn-chassis/wwarn/ui/src/main/java/org/cggh/chassis/wwarn/ui/curator/client
 
   # =============================================================
   #  A generated generator script for $melati.Database.DisplayName

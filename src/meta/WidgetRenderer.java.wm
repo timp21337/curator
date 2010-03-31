@@ -119,6 +119,7 @@ public class $(melati.Object.Name)WidgetRenderer extends
 
 	@Override
 	protected void registerHandlersForModelChanges() {
+		log.enter("registerHandlersForModelChanges");
 
 	
 #if($melati.Object.Requests.size() > 0) #begin
@@ -155,6 +156,7 @@ public class $(melati.Object.Name)WidgetRenderer extends
 
 #end
 
+		log.leave();
 	}
 	
 #if($melati.Object.AllEvents.size() > 0) #begin
@@ -162,7 +164,9 @@ public class $(melati.Object.Name)WidgetRenderer extends
 	@Override
 	protected void registerHandlersForChildWidgetEvents() {
 		log.enter("registerHandlersForChildWidgetEvents");
-		
+
+		// Our children's events
+
 #foreach $kid in $melati.Object.ChildWidgets #begin
   #foreach $event in $kid.AllEvents #begin
 		this.childWidgetEventHandlerRegistrations.add(
@@ -206,17 +210,18 @@ public class $(melati.Object.Name)WidgetRenderer extends
 
 	@Override
 	protected void syncUI() {
+		log.enter("syncUI");
 
 #if($melati.Object.Requests.size() > 0) #begin
 		syncUIWithStatus(model.status.get());
 
 #end
 #foreach $property in $melati.Object.Properties #begin
-	
 		syncUIWith$u.capitalised($(property.Name))(model.$(property.Name).get());
 
 #end
 
+		log.leave();
 	}
 
 #foreach $property in $melati.Object.Properties #begin
@@ -305,11 +310,10 @@ public class $(melati.Object.Name)WidgetRenderer extends
 #end			
 
 		rows.add(row);
-#if ($property.Name.endsWith("Feed")) #begin
+#if ($property.Type.equals("Document")) #begin
 		} 
 
-		//FlexTable t = RenderUtils.renderResultsTable(rows);
-		FlexTable t = RenderUtils.renderFirstRowHeadingResultsAsFirstColumnHeadingTable(rows);
+		FlexTable t = RenderUtils.renderResultsTable(rows);
 
 #end #else #begin
 

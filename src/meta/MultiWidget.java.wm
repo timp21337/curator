@@ -6,10 +6,12 @@ import com.google.gwt.xml.client.Element;
 
 import org.cggh.chassis.generic.log.client.Log;
 import org.cggh.chassis.generic.log.client.LogFactory;
-import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.Status;
 import org.cggh.chassis.generic.widget.client.ChassisWidget;
 import org.cggh.chassis.generic.widget.client.MultiWidget;
+#if ($melati.Object.Properties.size() > 0) #begin
+
 import org.cggh.chassis.generic.widget.client.ObservableProperty;
+#end
 import org.cggh.chassis.generic.widget.client.WidgetEventChannel;
 import org.cggh.chassis.generic.widget.client.WidgetEventHandler;
 
@@ -26,10 +28,9 @@ public class $(melati.Object.Name)Widget
 
 	private static final Log log = LogFactory.getLog($(melati.Object.Name)Widget.class);
 
+
 #foreach $kid in $melati.Object.ChildWidgets #begin
-
 	private $(kid.Name)Widget $u.uncapitalised($kid.Name)Widget;
-
 #end
 
 
@@ -60,6 +61,7 @@ public class $(melati.Object.Name)Widget
 
 #if ($count == 0) #begin
 
+		// Set default child
 		this.defaultChild = this.$u.uncapitalised($kid.Name)Widget;
 #set	$count = 1
 #end
@@ -76,7 +78,15 @@ public class $(melati.Object.Name)Widget
 		log.enter("registerHandlersForChildWidgetEvents");
 		super.registerHandlersForChildWidgetEvents();
 		
+#if ($melati.Object.Events.size() > 0) #begin
+## We should not have any events ourselves. 
+#foreach $event in $melati.Object.Events #begin
+		throw new RuntimeException("$event.Name is linked directly to a MultiWidget");
+#end
+#end 	
+
 #foreach $kid in $melati.Object.ChildWidgets #begin
+
 
 		// $kid.Name events
 #foreach $event in $kid.AllEvents #begin

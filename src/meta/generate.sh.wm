@@ -11,7 +11,9 @@ cp src/meta/*.wm target/classes/
 ##mkdir target/generated-sources/org/cggh/chassis
 ##mkdir target/generated-sources/org/cggh/chassis/wwarn
 ##mkdir target/generated-sources/org/cggh/chassis/wwarn/ui
-export DEST=~/workspace/wwarn_ui_generated/src/main/java/org/cggh/chassis/wwarn/ui/curator/client
+
+##export DEST=~/workspace/wwarn_ui_generated/src/main/java/org/cggh/chassis/wwarn/ui/curator/client
+export DEST=~/dist/dsn-chassis/wwarn/ui/src/main/java/org/cggh/chassis/wwarn/ui/curator/client
 
 #text #begin
   # =============================================================

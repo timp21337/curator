@@ -140,7 +140,15 @@ public class $(melati.Object.Name)Widget
 	protected void bindUI() {
 		super.bindUI();
 
+#if ($melati.Object.AllEvents.size() > 0) #begin
+
+		// Much the same as registerHandlersForChildWidgetEvents in ChassisWidgetRenderer
+
 #foreach $kid in $melati.Object.ChildWidgets #begin
+#if ($kid.AllEvents.size() > 0) #begin
+		// $kid.Name events
+
+#end
   #foreach $event in $kid.AllEvents #begin
 		this.childWidgetEventHandlerRegistrations.add(
 				$u.uncapitalised($event.Widget.Name)WidgetUiField.$u.uncapitalised($event.Widget.Name)$(event.Name)EventChannel.addHandler(new WidgetEventHandler<WidgetEvent>() {
@@ -152,11 +160,12 @@ public class $(melati.Object.Name)Widget
 		}));
   #end
 #end
+#end
 
 
-	// Model changes
+		// Model changes
 
-	
+
 #if($melati.Object.Requests.size() > 0) #begin
 		status.addChangeHandler(new PropertyChangeHandler<Status>() {
 			public void onChange(PropertyChangeEvent<Status> e) {

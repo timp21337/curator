@@ -91,7 +91,7 @@ public class Widget extends WidgetBase {
     while (ours.hasMoreElements())
       them.add((Event)ours.nextElement());
     for (Widget kid : getChildWidgets())
-      them.addAll(kid.getEvents());
+      them.addAll(kid.getAllEvents());
     return them;
   }
 
