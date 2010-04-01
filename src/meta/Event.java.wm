@@ -1,11 +1,28 @@
 #set $u=$melati.getContextUtil("org.melati.poem.util.StringUtils")
 package org.cggh.chassis.wwarn.ui.curator.client;
 
+#if ($melati.Object.To.Properties.size() > 0) #begin
 import org.cggh.chassis.generic.log.client.Log;
 import org.cggh.chassis.generic.log.client.LogFactory;
+#end
+
 import org.cggh.chassis.generic.widget.client.WidgetEvent;
 
+#set $includeDocument = 0
+#set $includeElement = 0
+#foreach $property in $melati.Object.To.Properties #begin
+    #if($property.Type.equals("Element")) #begin #set $includeElement = 1 #end
+    #if($property.Type.equals("Document")) #begin #set $includeDocument = 1 #end
+#end
+#if ($includeDocument != 0) #begin
+
+import com.google.gwt.xml.client.Document;
+#end
+#if ($includeElement != 0) #begin
+
 import com.google.gwt.xml.client.Element;
+#end
+
 
 /**
  * Generated event $melati.Object.Name from $(melati.Object.Widget.Name) to 
@@ -18,10 +35,13 @@ import com.google.gwt.xml.client.Element;
  */
 public class $(melati.Object.Name)Event extends WidgetEvent {
 
+#if ($melati.Object.To.Properties.size() > 0) #begin
+
 	private static final Log log = LogFactory.getLog($(melati.Object.Name)Event.class);	
-	
+#end	
 
 #foreach $property in $melati.Object.To.Properties #begin
+
 	private $property.Type $property.Name;
 
 
@@ -42,7 +62,6 @@ public class $(melati.Object.Name)Event extends WidgetEvent {
 		
 		return this.$u.uncapitalised($(property.Name));
 	}
-
 #end
 
 

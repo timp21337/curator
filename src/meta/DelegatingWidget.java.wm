@@ -55,7 +55,7 @@ import com.google.gwt.http.client.URL;
  *
  */
 public class $(melati.Object.Name)Widget 
-	extends DelegatingWidget<$(melati.Object.Name)WidgetModel, $(melati.Object.Name)WidgetRenderer> {
+		extends DelegatingWidget<$(melati.Object.Name)WidgetModel, $(melati.Object.Name)WidgetRenderer> {
 
 	private static final Log log = LogFactory.getLog($(melati.Object.Name)Widget.class);
 	
@@ -65,8 +65,8 @@ public class $(melati.Object.Name)Widget
 #foreach $property in $melati.Object.Properties #begin
 
 	public final ObservableProperty<$property.Type> $property.Name = new ObservableProperty<$property.Type>();
-
 #end
+
 #if ($melati.Object.Requests.size() > 0) #begin
 	public final ObservableProperty<Status> status = new ObservableProperty<Status>();
 #end
@@ -92,20 +92,25 @@ public class $(melati.Object.Name)Widget
 		return new $(melati.Object.Name)WidgetModel();
 	}
 
-	public $(melati.Object.Name)WidgetModel getModel() {
-		return model;
+#foreach $property in $melati.Object.Properties #begin
+	public $property.Type get$u.capitalised($property.Name)() { 
+		return model.$(property.Name).get();
+	} 
+	public void set$u.capitalised($property.Name)($property.Type $property.Name) {
+		model.$(property.Name).set($property.Name);
 	}
+	
+#end
 
 	@Override
 	protected $(melati.Object.Name)WidgetRenderer createRenderer() {
 		return new $(melati.Object.Name)WidgetRenderer(this);
 	}
-	
+
 	// Using init() rather than constructor because reset() uses init().
 	public void init() {
-		
+
 		super.init();
-		
 
 		this.controller = new $(melati.Object.Name)WidgetController(this, this.model);
 
@@ -118,9 +123,10 @@ public class $(melati.Object.Name)Widget
 		log.enter("refresh");
 		
 #foreach $property in $melati.Object.Properties #begin
+#if ($property.Type.equals("Element") #begin
 
 		this.controller.retrieve$u.capitalised($property.Name)();
-
+#end
 #end
 
 #foreach $kid in $melati.Object.ChildWidgets #begin
@@ -128,7 +134,7 @@ public class $(melati.Object.Name)Widget
 		renderer.$u.uncapitalised($kid.Name)WidgetUiField.refresh();
 
 #end
-		log.leave();	
+		log.leave();
 	}
 	
 
@@ -143,6 +149,35 @@ public class $(melati.Object.Name)Widget
 		return deferredSelf;
 	}
 	
+
+#if ($includeElement == 0) #begin 
+	private class Memory extends MapMemory {
+
+		@Override
+		public Map<String, String> createMnemonicMap() {
+			log.enter("createMnemonicMap");
+			
+			Map<String, String> map = new HashMap<String, String>();
+
+			log.leave();
+			return map;
+		}
+
+		@Override
+		public Deferred<WidgetMemory> remember(Map<String, String> mnemonic) {
+			log.enter("remember");
+			
+			log.debug("call back immediately");
+			final Deferred<WidgetMemory> deferredMemory = new Deferred<WidgetMemory>();
+			deferredMemory.callback(this);
+		
+			log.leave();
+			return deferredMemory;
+		}
+
+
+	}
+#end #else #begin 
 	
 	private class Memory extends MapMemory {
 
@@ -155,28 +190,25 @@ public class $(melati.Object.Name)Widget
 			
 			Map<String, String> map = new HashMap<String, String>();
 
-#foreach $property in $melati.Object.Properties #begin
-	#if ($property.Type.equals("Element")) #begin 
-
-			$property.Type $property.Name = model.$(property.Name).get();
+			Element studyEntry = model.studyEntry.get();
 			
 			String url = null;
 			
-			if ($property.Name != null) { 
+			if (studyEntry != null) { 
 				
-				url = AtomHelper.getEditLinkHrefAttr($property.Name);
+				url = AtomHelper.getEditLinkHrefAttr(studyEntry);
 			
 				if (url != null) {					
 					map.put(KEY, URL.encodeComponent(url));
 				}
 				
 			}
-	#end
-#end
+			
 			log.leave();
 			return map;
 		}
 
+		
 		@Override
 		public Deferred<WidgetMemory> remember(Map<String, String> mnemonic) {
 			log.enter("remember");
@@ -192,15 +224,12 @@ public class $(melati.Object.Name)Widget
 				
 				log.debug("set url to:" + url);
 
-#foreach $property in $melati.Object.Properties #begin
-	#if ($property.Type.equals("String")) #begin 
-				model.$(property.Name).set(url);
-	#end
-#end
+				model.studyUrl.set(url);
 				
 				deferredMemory = refreshAndCallback().adapt(new Function<ChassisWidget, WidgetMemory>() {
 
 					public WidgetMemory apply(ChassisWidget in) {
+						log.debug("call back returning this memory");
 						return Memory.this;
 					}
 					
@@ -223,6 +252,7 @@ public class $(melati.Object.Name)Widget
 
 	}
 
+#end
 
 	
 }

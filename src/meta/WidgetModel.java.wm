@@ -14,11 +14,11 @@ import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.Status;
     #if($property.Type.equals("Element")) #begin #set $includeElement = 1 #end
     #if($property.Type.equals("Document")) #begin #set $includeDocument = 1 #end
 #end
-#if ($includeDocument) #begin
+#if ($includeDocument != 0) #begin
 
 import com.google.gwt.xml.client.Document;
 #end
-#if ($includeElement) #begin
+#if ($includeElement != 0) #begin
 
 import com.google.gwt.xml.client.Element;
 #end

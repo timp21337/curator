@@ -63,9 +63,9 @@ public class $(melati.Object.Name)Widget
 
 		// Set default child
 		this.defaultChild = this.$u.uncapitalised($kid.Name)Widget;
+
 #set	$count = 1
 #end
-
 #end
 
 		log.leave();
@@ -107,7 +107,7 @@ public class $(melati.Object.Name)Widget
 
 #if ($event.To.ExtendedFrom.equals("DelegatingWidget")) #begin
 
-				$u.uncapitalised($event.To.Name)Widget.getModel().$(property.Name).set($property.Name);
+				$u.uncapitalised($event.To.Name)Widget.set$u.capitalised($(property.Name))($property.Name);
 				
 #end	#else #begin
 
@@ -127,34 +127,21 @@ public class $(melati.Object.Name)Widget
 
 		log.leave();
 	}
-	
 
-	
-	
-	@Override
-	public void refresh() {
-		log.enter("refresh");
-		
-		((ChassisWidget)this.defaultChild).refresh();
 
-#foreach $kid in $melati.Object.ChildWidgets #begin
 
-		// $u.uncapitalised($kid.Name)Widget.refresh();
-
-#end
-		log.leave();	
-	}
-	
 	@Override
 	public void setActiveChild(Widget child, boolean memorise) {
 		log.enter("setActiveChild");
 		
 		super.setActiveChild(child, memorise);
 		
-		// override to trigger refresh if set as active child
-		if (child == this.defaultChild && child instanceof ChassisWidget) {
+		// FIXME 
+		// Most widgets will refresh themselves, but the HomeWidget will not 
+		if (child == curatorHomeWidget) {
 			((ChassisWidget)child).refresh();
 		}
+
 
 		log.leave();
 	}

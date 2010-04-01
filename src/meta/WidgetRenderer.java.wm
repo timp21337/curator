@@ -8,40 +8,15 @@ import java.util.List;
 
 import org.cggh.chassis.generic.log.client.Log;
 import org.cggh.chassis.generic.log.client.LogFactory;
-
 import org.cggh.chassis.generic.miniatom.client.AtomHelper;
 import org.cggh.chassis.generic.miniatom.client.ext.ChassisHelper;
-
-import org.cggh.chassis.generic.widget.client.AsyncWidgetModel;
-import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.Status;
-import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.StatusChangeEvent;
-import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.StatusChangeHandler;
-import org.cggh.chassis.generic.widget.client.ChassisWidgetRenderer;
-import org.cggh.chassis.generic.widget.client.PropertyChangeEvent;
-import org.cggh.chassis.generic.widget.client.PropertyChangeHandler;
-import org.cggh.chassis.generic.widget.client.WidgetEvent;
-import org.cggh.chassis.generic.widget.client.WidgetEventHandler;
 import org.cggh.chassis.wwarn.ui.common.client.RenderUtils;
 
-
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Anchor;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.TextArea;
-import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
 
@@ -51,13 +26,15 @@ import com.google.gwt.user.client.ui.Widget;
     #if($property.Type.equals("Element")) #begin #set $includeElement = 1 #end
     #if($property.Type.equals("Document")) #begin #set $includeDocument = 1 #end
 #end
-#if ($includeDocument) #begin
+#if ($includeDocument != 0) #begin
 
 import com.google.gwt.xml.client.Document;
-#end
-#if ($includeElement) #begin
+import com.google.gwt.xml.client.Element;
+#end #else #begin 
+  #if ($includeElement != 0) #begin
 
 import com.google.gwt.xml.client.Element;
+  #end
 #end
 
 
@@ -69,185 +46,16 @@ import com.google.gwt.xml.client.Element;
  * @author timp
  */
 public class $(melati.Object.Name)WidgetRenderer extends
-		ChassisWidgetRenderer<$(melati.Object.Name)WidgetModel> {
+		$(melati.Object.Name)WidgetRendererBase {
 
 	private Log log = LogFactory.getLog($(melati.Object.Name)WidgetRenderer.class);
-	
-#if($melati.Object.ExtendedFrom.equals("DelegatingWidget")) #begin
-#foreach $kid in $melati.Object.ChildWidgets #begin
-	$(kid.Name)Widget $u.uncapitalised($kid.Name)Widget;
-
-#end
-#end
-
-
-	@UiTemplate("$(melati.Object.Name)Widget.ui.xml")
-	interface $(melati.Object.Name)WidgetRendererUiBinder extends
-			UiBinder<HTMLPanel, $(melati.Object.Name)WidgetRenderer> {
-	}
-	private static $(melati.Object.Name)WidgetRendererUiBinder uiBinder = 
-		GWT.create($(melati.Object.Name)WidgetRendererUiBinder.class);
-
-
-	@UiField HTMLPanel mainPanel;
-	@UiField HTMLPanel contentPanel;
-#if ($melati.Object.Requests.size() > 0) #begin
-
-	@UiField HTMLPanel pendingPanel;
-#end
-
-	@UiField HTMLPanel errorPanel;
-	@UiField FlowPanel errorMessage;
-
-	@UiField FlowPanel $u.uncapitalised($melati.Object.Name)Panel;
-	
-#foreach $kid in $melati.Object.ChildWidgets #begin
-
-	@UiField $(kid.Name)Widget $u.uncapitalised($kid.Name)WidgetUiField;
-#end
-
-
-
-
-	private $(melati.Object.Name)Widget owner;
 	
 	public $(melati.Object.Name)WidgetRenderer($(melati.Object.Name)Widget owner) {
 		this.owner = owner;
 	}
 
 
-
-	@Override
-	protected void registerHandlersForModelChanges() {
-		log.enter("registerHandlersForModelChanges");
-
-	
-#if($melati.Object.Requests.size() > 0) #begin
-		this.modelChangeHandlerRegistrations.add(
-				model.status.addChangeHandler(new PropertyChangeHandler<Status>() {
-			public void onChange(PropertyChangeEvent<Status> e) {
-				log.enter("onChange<Status>");		
-				syncUIWithStatus(e.getAfter());
-				log.leave();
-			}
-		}));
-#end
-
-		this.modelChangeHandlerRegistrations.add(
-				model.message.addChangeHandler(new PropertyChangeHandler<String>() {
-			public void onChange(PropertyChangeEvent<String> e) {
-				log.enter("onChange<String>");		
-				syncUIWithMessage(e.getAfter());
-				log.leave();
-			}
-		}));
-
-
-#foreach $property in $melati.Object.Properties #begin
-	
-		this.modelChangeHandlerRegistrations.add(
-				model.$(property.Name).addChangeHandler(new PropertyChangeHandler<$property.Type>() {
-			public void onChange(PropertyChangeEvent<$property.Type> e) {
-				log.enter("onchange($(property.Name))");
-				syncUIWith$u.capitalised($(property.Name))(e.getAfter());
-				log.leave();
-			}
-		}));
-
-#end
-
-		log.leave();
-	}
-	
-#if($melati.Object.AllEvents.size() > 0) #begin
-	
-	@Override
-	protected void registerHandlersForChildWidgetEvents() {
-		log.enter("registerHandlersForChildWidgetEvents");
-
-		// Our children's events
-
-#foreach $kid in $melati.Object.ChildWidgets #begin
-  #foreach $event in $kid.AllEvents #begin
-		this.childWidgetEventHandlerRegistrations.add(
-				$u.uncapitalised($kid.Name)WidgetUiField.$u.uncapitalised($event.Widget.Name)$(event.Name)EventChannel.addHandler(new WidgetEventHandler<WidgetEvent>() {
-			public void onEvent(WidgetEvent e) {
-				log.enter("onEvent($u.uncapitalised($kid.Name)WidgetUiField.$u.uncapitalised($event.Widget.Name)$(event.Name))");
-				owner.$u.uncapitalised($event.Widget.Name)$(event.Name)EventChannel.fireEvent(e);
-				log.leave();
-			}
-		}));
-  #end
-#end
-		
-		log.leave();
-	}
-
-#end
-
-
-	@Override
-	protected void renderUI() {
-
-		this.canvas.clear();
-		this.canvas.add(uiBinder.createAndBindUi(this));
-		
-	}
-	
-
-	@Override
-	protected void bindUI($(melati.Object.Name)WidgetModel model) {
-		super.bindUI(model);
-
-#if($melati.Object.Requests.size() > 0) #begin
-
-		this.pendingPanel.setVisible(true);	
-#end		
-		this.errorPanel.setVisible(false);	
-		this.contentPanel.setVisible(true);
-	}
-
-
-	@Override
-	protected void syncUI() {
-		log.enter("syncUI");
-
-#if($melati.Object.Requests.size() > 0) #begin
-		syncUIWithStatus(model.status.get());
-
-#end
-#foreach $property in $melati.Object.Properties #begin
-		syncUIWith$u.capitalised($(property.Name))(model.$(property.Name).get());
-
-#end
-
-		log.leave();
-	}
-
-#foreach $property in $melati.Object.Properties #begin
-	
-	protected void syncUIWith$u.capitalised($property.Name)($(property.Type) $(property.Name)) {
-		log.enter("syncUIWith$u.capitalised($property.Name)");
-		// TODO make abstract 
-		if ($(property.Name) == null) 
-			log.debug("$property.Name null");
-		else {
-			log.debug("$property.Name :"+$property.Name);
-
-			this.$u.uncapitalised($melati.Object.Name)Panel.clear();
-			this.$u.uncapitalised($melati.Object.Name)Panel.add(render$u.capitalised($property.Name)($property.Name));
-#if($melati.Object.Requests.size() > 0) #begin
-
-			pendingPanel.setVisible(false);
-
-#end
-		}
-		
-		log.leave();
-	}
-
-	
-	private FlexTable render$u.capitalised($property.Name)($(property.Type) $(property.Name)) {
+	FlexTable render$u.capitalised($property.Name)($(property.Type) $(property.Name)) {
 		log.enter("render$u.capitalised($property.Name)");
 		List<List<Widget>> rows = new ArrayList<List<Widget>>();
 		
@@ -257,69 +65,67 @@ public class $(melati.Object.Name)WidgetRenderer extends
 
 		headerRow.add(strongWidget("Authors"));  	// i18n
 
-#foreach $event in $melati.Object.Events #begin
+ #foreach $event in $melati.Object.Events #begin
 		
 		headerRow.add(strongWidget("$event.Name"));     // i18n
-#end		
+ #end
 		rows.add(headerRow);
 
-#if ($property.Type.equals("Document")) #begin
+ #if ($property.Type.equals("Document")) #begin
 
 		for (final Element entry : AtomHelper.getEntries($(property.Name).getDocumentElement())) { 
-#end #else #begin
+ #end #else #begin
+		{ 
+			Element entry = $(property.Name);
 
-		Element entry = $(property.Name);
+ #end 
 
-#end 
+			ArrayList<Widget> row = new ArrayList<Widget>();
 
-		ArrayList<Widget> row = new ArrayList<Widget>();
+			row.add(new HTML(ChassisHelper.getTitle(entry)));
+			row.add(new HTML(RenderUtils.join(ChassisHelper.getAuthorEmails(entry), ", ")));
+
+ #foreach $event in $melati.Object.Events #begin
 		
-		row.add(new HTML(ChassisHelper.getTitle(entry)));
-		row.add(new HTML(RenderUtils.join(ChassisHelper.getAuthorEmails(entry), ", ")));
-
-#foreach $event in $melati.Object.Events #begin
-		
-		Anchor $u.uncapitalised($(event.Name))Link = new Anchor("$event.Name"); // TODO i18n
+			Anchor $u.uncapitalised($(event.Name))Link = new Anchor("$event.Name"); // i18n
 			
-		$u.uncapitalised($(event.Name))Link.addClickHandler(new ClickHandler() {
+			$u.uncapitalised($(event.Name))Link.addClickHandler(new ClickHandler() {
 				
-			public void onClick(ClickEvent e) {
+				public void onClick(ClickEvent e) {
 					
-				log.enter("onClick");
+					log.enter("onClick");
 					
-				log.debug("Firing event...");
+					log.debug("Firing event...");
 					
-				$(event.Name)Event $u.uncapitalised($(event.Name))Event  = new $(event.Name)Event();
-#if ($property.Name.endsWith("Feed")) #begin
-#set $entryHolder = $u.capitalised($property.Name.replace("Feed","Entry"))
-#end #else #begin
-#set $entryHolder = $u.capitalised($property.Name);
-#end
+					$(event.Name)Event $u.uncapitalised($(event.Name))Event  = new $(event.Name)Event();
+  #if ($property.Name.endsWith("Feed")) #begin
+   #set $entryHolder = $u.capitalised($property.Name.replace("Feed","Entry"))
+  #end #else #begin
+   #set $entryHolder = $u.capitalised($property.Name);
+  #end
 				
-				$u.uncapitalised($(event.Name))Event.set$(entryHolder)(entry);
+					$u.uncapitalised($(event.Name))Event.set$(entryHolder)(entry);
 					
-				owner.$u.uncapitalised($event.Widget.Name)$(event.Name)EventChannel.fireEvent($u.uncapitalised($(event.Name))Event);
+					owner.$u.uncapitalised($event.Widget.Name)$(event.Name)EventChannel.fireEvent($u.uncapitalised($(event.Name))Event);
 					
-				log.leave();
-			}
+					log.leave();
+				}
 
-		});
+			});
 
-		row.add($u.uncapitalised($(event.Name))Link);
+			row.add($u.uncapitalised($(event.Name))Link);
 	
-#end			
+ #end			
 
-		rows.add(row);
-#if ($property.Type.equals("Document")) #begin
+			rows.add(row);
 		} 
+ #if ($property.Type.equals("Document")) #begin
 
 		FlexTable t = RenderUtils.renderResultsTable(rows);
-
-#end #else #begin
+ #end #else #begin
 
 		FlexTable t = RenderUtils.renderFirstRowHeadingResultsAsFirstColumnHeadingTable(rows);
-		
-#end
+ #end
 #end #else #begin
 
 		rows.add(headerRow);
@@ -330,74 +136,11 @@ public class $(melati.Object.Name)WidgetRenderer extends
 		rows.add(row);
 
 		FlexTable t = RenderUtils.renderFirstRowHeadingResultsAsFirstColumnHeadingTable(rows);
-
 #end
 
 		log.leave();
 		return t;
 	}
-		
-#end
-
-
-#if($melati.Object.Requests.size() > 0) #begin
-
-	protected void syncUIWithStatus(Status status) {
-		log.enter("syncUIWithStatus");		
-		
-		errorPanel.setVisible(false);	
-		if (status == null) {
-			// null before being set
-			log.debug("Called with null status");
-		}
-		else if (status instanceof AsyncWidgetModel.InitialStatus) {
-			pendingPanel.setVisible(true);	
-			contentPanel.setVisible(false);
-		}
-		else if (status instanceof AsyncWidgetModel.AsyncRequestPendingStatus) {
-			pendingPanel.setVisible(true);	
-			contentPanel.setVisible(false);
-		}
-		else if (status instanceof AsyncWidgetModel.ReadyStatus) {
-			pendingPanel.setVisible(false);	
-			contentPanel.setVisible(true);
-		}			
-		else if (status instanceof AsyncWidgetModel.ErrorStatus) {
-			pendingPanel.setVisible(false);	
-			contentPanel.setVisible(false);
-			model.message.set("Error status given on asynchronous call.");
-		}			
-		else {
-			pendingPanel.setVisible(false);	
-			contentPanel.setVisible(false);
-			model.message.set("Unhandled status:" + status);
-		}
-
-		log.leave();
-	}
-
-#end
-
-
-	protected void syncUIWithMessage(String message) {
-		log.enter("syncUIWithMessage");
-
-		if (message != null) {
-			log.debug("Setting message to :" + message + ":");
-
-#if($melati.Object.Requests.size() > 0) #begin
-			pendingPanel.setVisible(false);	
-#end
-			contentPanel.setVisible(false);
-			errorMessage.clear();
-			errorMessage.add(new HTML(message));
-			errorPanel.setVisible(true);
-		}
-
-		log.leave();
-	}
-
-
 
 }
 

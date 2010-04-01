@@ -10,7 +10,6 @@ import org.cggh.chassis.generic.miniatom.client.Atom;
 import org.cggh.chassis.generic.widget.client.AsyncWidgetModel;
 import org.cggh.chassis.generic.widget.client.ChassisWidget;
 import org.cggh.chassis.generic.widget.client.ErrorEvent;
-import org.cggh.chassis.wwarn.ui.common.client.Config;
 
 import com.google.gwt.xml.client.Document;
 import com.google.gwt.xml.client.Element;
@@ -44,7 +43,7 @@ public class $(melati.Object.Name)WidgetController {
 
   #if($kid.Table.Name.equals("widget")) #begin
 
-	private $(kid.Name)Widget $u.uncapitalised($kid.Name)Widget;
+	##private $(kid.Name)Widget $u.uncapitalised($kid.Name)Widget;
 
   #end #else #begin 
     #if($kid.Table.Name.equals("request")) #begin
@@ -61,7 +60,7 @@ public class $(melati.Object.Name)WidgetController {
       #end #else #begin 
         #if($kid.Table.Name.equals("event")) #begin
 					
-        //private $(kid.Name)Event $u.uncapitalised($kid.Name)Event;
+        ##//private $(kid.Name)Event $u.uncapitalised($kid.Name)Event;
 	
         #end #else #begin 
           #if($kid.Table.Name.equals("property")) #begin
@@ -136,78 +135,109 @@ public class $(melati.Object.Name)WidgetController {
 		final Deferred<ChassisWidget> deferredOwner = new Deferred<ChassisWidget>();
 
 			
-		Deferred<Document> chain = retrieve$u.capitalised($(kid.Name))();
+		if (model.studyUrl.get() != null) {
+			Deferred<Element> chain = retrieve$u.capitalised($(kid.Name))();
 			
-		// handle errors
-		chain.addErrback(new DefaultErrback());
+			chain.addCallback(new Retrieve$u.capitalised($(kid.Name))Callback());
 			
-		// finally callback with owner, in any case
-		chain.addBoth(new Function<Object, Object>() {
+			// handle errors
+			chain.addErrback(new DefaultErrback());
+			
+			// finally callback with owner, in any case
+			chain.addBoth(new Function<Object, Object>() {
 
-			public Object apply(Object in) {
-				deferredOwner.callback(owner);
-				return in;
-			}
+				public Object apply(Object in) {
+					deferredOwner.callback(owner);
+					return in;
+				}
 				
-		});
+			});
+
+		}
 
 		log.leave();
 		return deferredOwner;
 		
 	}
 
-	public Deferred<Document> retrieve$u.capitalised($(kid.Name))() {
+	public Deferred<Element> retrieve$u.capitalised($(kid.Name))() {
 		log.enter("retrieve$u.capitalised($(kid.Name))");
 		
 		model.status.set(AsyncWidgetModel.STATUS_ASYNC_REQUEST_PENDING);
 		
-		String queryServiceUrl = Config.get(Config.$(kid.Urlkey));
+		Deferred<Element> deferredElement;
+		log.debug("model.StudyUrl"+ model.studyUrl.get());
+		if (!model.studyUrl.isNull()) {
+			
+			deferredElement = Atom.getEntry(model.studyUrl.get()).adapt(new Function<Document, Element>() {
 
-		log.debug("QUERY_$(kid.Name.toUpperCase())_URL:"+queryServiceUrl);
-		
-		Deferred<Document> deferredDoc = Atom.getFeed(queryServiceUrl);
+				public Element apply(Document in) {
+					log.debug("retrieve$(u.capitalised($(kid.Name))).apply returning " + in.getDocumentElement());
+					return in.getDocumentElement();
+				}
+				
+			});
+			
+		}
+		else {
+			deferredElement = new Deferred<Element>();
+			deferredElement.callback(null);
+		}
 		
 		// Add a call-back and error-back for the asynchronous feed.
-		deferredDoc.addCallback(new Retrieve$u.capitalised($(kid.Name))Callback());
-		deferredDoc.addErrback(new DefaultErrback());
+		deferredElement.addCallback(new Retrieve$u.capitalised($(kid.Name))Callback());
+		deferredElement.addErrback(new DefaultErrback());
 		
 		log.leave();
-		return deferredDoc;
+		return deferredElement;
 	}
 
 	
-	private class Retrieve$u.capitalised($(kid.Name))Callback implements Function<Deferred<Document>,Element> {
+	private class Retrieve$u.capitalised($(kid.Name))Callback implements Function<Element,Element> {
 
 		@Override
-		public Element apply(Deferred<Document> in) {
-		    Element $(kid.Name) = null;
-			model.$(kid.Name).set($(kid.Name));
-			return $(kid.Name);
+		public Element apply(Element $(kid.Name)Element) {
+			log.enter("apply<$(kid.Name)Element>");
+			if ($(kid.Name)Element != null) {
+
+				model.$(kid.Name).set($(kid.Name)Element);
+				// we have one
+				log.debug("Retrieve$u.capitalised($(kid.Name))Callback.apply not null");
+				
+			}
+			
+			else {
+				
+				log.debug("Retrieve$u.capitalised($(kid.Name))Callback.apply null");
+
+			}
+			
+			log.leave();
+			return $(kid.Name)Element;
 		}
 
 	}
 
 	
 #end #else #begin
-
-
-	public Deferred<Document> retrieve$u.capitalised($(kid.Name))() {
-		log.enter("retrieve$u.capitalised($(kid.Name))");
-		
-		log.leave();
-		return null;
-	}
-	
-	private class Retrieve$u.capitalised($(kid.Name))Callback implements Function<Deferred<Document>,$kid.Type> {
-
-		public $kid.Type apply(Deferred<Document> $u.uncapitalised($(kid.Name))Feed) {
-			
-			return null;
-		}
-		
-	}
-	
-	
+##
+##
+##	public Deferred<Document> retrieve$u.capitalised($(kid.Name))() {
+##		log.enter("retrieve$u.capitalised($(kid.Name))");
+##		
+##		log.leave();
+##		return null;
+##	}
+##
+##	private class Retrieve$u.capitalised($(kid.Name))Callback implements Function<Deferred<Document>,$kid.Type> {
+##
+##		public $kid.Type apply(Deferred<Document> $u.uncapitalised($(kid.Name))Feed) {
+##
+##			return null;
+##		}
+##
+##	}
+##
 	
 #end
 #end
