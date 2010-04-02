@@ -123,7 +123,7 @@ public class $(melati.Object.Name)Widget
 		log.enter("refresh");
 		
 #foreach $property in $melati.Object.Properties #begin
-#if ($property.Type.equals("Element") #begin
+#if ($property.Type.equals("Element")) #begin
 
 		this.controller.retrieve$u.capitalised($property.Name)();
 #end
