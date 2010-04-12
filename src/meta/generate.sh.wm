@@ -36,7 +36,18 @@ export M2_REPO=/home/timp/.m2/repository
   # $rec.Name
 
 #if(!$rec.ExtendedFrom.equals("MultiWidget")) #begin
-grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)Widget.ui.xml && java -cp target/classes:\\
+DOIT=0
+if [ -f \$DEST/$(rec.Name)Widget.ui.xml ]; then
+	grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)Widget.ui.xml 
+	
+	if [ "$?" -eq "0" ]; then 
+		DOIT=1
+	fi
+else 
+  DOIT=1
+fi 
+if [ \$DOIT -eq 1 ] ; then 
+java -cp target/classes:\\
 \$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\\
@@ -55,9 +66,21 @@ grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)Widget.ui.xml && java -cp target/
 \$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\\
 \$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \\
    org.melati.app.TemplateApp curator widget $rec.Troid  Widget.ui.xml -o \$DEST/$(rec.Name)Widget.ui.xml
+fi
 #end
 
-grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)Widget.java && java -cp target/classes:\\
+DOIT=0
+if [ -f \$DEST/$(rec.Name)Widget.java ]; then
+  grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)Widget.java
+	
+	if [ "$?" -eq "0" ]; then 
+		DOIT=1
+	fi
+else 
+  DOIT=1
+fi 
+if [ \$DOIT -eq 1 ] ; then 
+java -cp target/classes:\\
 \$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\\
@@ -76,10 +99,22 @@ grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)Widget.java && java -cp target/cl
 \$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\\
 \$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \\
    org.melati.app.TemplateApp curator widget $rec.Troid  $(rec.ExtendedFrom).java -o \$DEST/$(rec.Name)Widget.java
+fi
 
 #if($rec.ExtendedFrom.equals("DelegatingWidget")) #begin
 
-grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)WidgetController.java && java -cp target/classes:\\
+DOIT=0
+if [ -f \$DEST/$(rec.Name)WidgetController.java ]; then
+	grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)WidgetController.java 
+	
+	if [ "$?" -eq "0" ]; then 
+		DOIT=1
+	fi
+else 
+  DOIT=1
+fi 
+if [ \$DOIT -eq 1 ] ; then 
+java -cp target/classes:\\
 \$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\\
@@ -98,9 +133,20 @@ grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)WidgetController.java && java -cp
 \$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\\
 \$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \\
    org.melati.app.TemplateApp curator widget $rec.Troid  WidgetController.java -o \$DEST/$(rec.Name)WidgetController.java
+fi
 
-
-grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)WidgetModel.java && java -cp target/classes:\\
+DOIT=0
+if [ -f \$DEST/$(rec.Name)WidgetModel.java ]; then
+	grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)WidgetModel.java
+	
+	if [ "$?" -eq "0" ]; then 
+		DOIT=1
+	fi
+else 
+  DOIT=1
+fi 
+if [ \$DOIT -eq 1 ] ; then 
+java -cp target/classes:\\
 \$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\\
@@ -119,9 +165,20 @@ grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)WidgetModel.java && java -cp targ
 \$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\\
 \$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \\
    org.melati.app.TemplateApp curator widget $rec.Troid  WidgetModel.java -o \$DEST/$(rec.Name)WidgetModel.java
+fi
 
-
-grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)WidgetRenderer.java && java -cp target/classes:\\
+DOIT=0
+if [ -f \$DEST/$(rec.Name)WidgetRenderer.java ]; then
+	grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)WidgetRenderer.java
+	
+	if [ "$?" -eq "0" ]; then 
+		DOIT=1
+	fi
+else 
+  DOIT=1
+fi 
+if [ \$DOIT -eq 1 ] ; then 
+java -cp target/classes:\\
 \$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\\
@@ -140,8 +197,20 @@ grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)WidgetRenderer.java && java -cp t
 \$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\\
 \$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \\
    org.melati.app.TemplateApp curator widget $rec.Troid  WidgetRenderer.java -o \$DEST/$(rec.Name)WidgetRenderer.java
+fi 
 
-grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)WidgetRendererBase.java && java -cp target/classes:\\
+DOIT=0
+if [ -f \$DEST/$(rec.Name)WidgetRendererBase.java ]; then
+	grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)WidgetRendererBase.java
+	
+	if [ "$?" -eq "0" ]; then 
+		DOIT=1
+	fi
+else 
+  DOIT=1
+fi 
+if [ \$DOIT -eq 1 ] ; then 
+java -cp target/classes:\\
 \$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\\
@@ -160,6 +229,7 @@ grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)WidgetRendererBase.java && java -
 \$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\\
 \$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \\
    org.melati.app.TemplateApp curator widget $rec.Troid  WidgetRendererBase.java -o \$DEST/$(rec.Name)WidgetRendererBase.java
+fi
 
 #end 
 #end
@@ -173,7 +243,19 @@ grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)WidgetRendererBase.java && java -
 #foreach $rec in $melati.Database.EventTable.selection() #begin  
 #if (!$rec.Manual) #begin
   # $rec.Name
-grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)Event.java && java -cp target/classes:\\
+
+DOIT=0
+if [ -f \$DEST/$(rec.Name)Event.java ]; then
+	grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)Event.java
+	
+	if [ "$?" -eq "0" ]; then 
+		DOIT=1
+	fi
+else 
+  DOIT=1
+fi 
+if [ \$DOIT -eq 1 ] ; then 
+java -cp target/classes:\\
 \$M2_REPO/org/melati/melati/0.7.8-RC3-SNAPSHOT/melati-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/org/melati/poem/0.7.8-RC3-SNAPSHOT/poem-0.7.8-RC3-SNAPSHOT.jar:\\
 \$M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:\\
@@ -192,6 +274,7 @@ grep DELETE_TO_MANUALLY_EDIT \$DEST/$(rec.Name)Event.java && java -cp target/cla
 \$M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:\\
 \$M2_REPO/org/slf4j/slf4j-simple/1.5.8/slf4j-simple-1.5.8.jar \\
    org.melati.app.TemplateApp curator event $rec.Troid  Event.java -o \$DEST/$(rec.Name)Event.java
+fi 
 
 #end 
 #end

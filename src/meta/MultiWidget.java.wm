@@ -1,19 +1,37 @@
 #set $u=$melati.getContextUtil("org.melati.poem.util.StringUtils")
 package org.cggh.chassis.wwarn.ui.curator.client;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.gwt.http.client.URL;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.xml.client.Element;
 
+import org.cggh.chassis.generic.async.client.Deferred;
+import org.cggh.chassis.generic.async.client.Function;
 import org.cggh.chassis.generic.log.client.Log;
 import org.cggh.chassis.generic.log.client.LogFactory;
+import org.cggh.chassis.generic.miniatom.client.AtomHelper;
+import org.cggh.chassis.generic.widget.client.AsyncWidgetModel;
 import org.cggh.chassis.generic.widget.client.ChassisWidget;
+import org.cggh.chassis.generic.widget.client.MapMemory;
 import org.cggh.chassis.generic.widget.client.MultiWidget;
+import org.cggh.chassis.generic.widget.client.WidgetMemory;
 #if ($melati.Object.Properties.size() > 0) #begin
 
 import org.cggh.chassis.generic.widget.client.ObservableProperty;
 #end
 import org.cggh.chassis.generic.widget.client.WidgetEventChannel;
 import org.cggh.chassis.generic.widget.client.WidgetEventHandler;
+import org.cggh.chassis.generic.widget.client.AsyncWidgetModel.Status;
+
+#set $includeDocument = 0
+#set $includeElement = 0
+#foreach $property in $melati.Object.Properties #begin
+    #if($property.Type.equals("Element")) #begin #set $includeElement = 1 #end
+    #if($property.Type.equals("Document")) #begin #set $includeDocument = 1 #end
+#end
 
 /**
  * BE SURE TO EDIT THE TEMPLATE NOT THE RENDERED RESULT
@@ -34,19 +52,51 @@ public class $(melati.Object.Name)Widget
 #end
 
 
+#if ($melati.Object.Requests.size() > 0) #begin
+
+	public final ObservableProperty<Status> status = new ObservableProperty<Status>();
+#end
 #foreach $property in $melati.Object.Properties #begin
 
 	public final ObservableProperty<$property.Type> $property.Name = new ObservableProperty<$property.Type>();
-
 #end
 
 
 #foreach $kid in $melati.Object.ChildWidgets #begin
+
+	// $kid.Name
+
 #foreach $event in $kid.AllEvents #begin
 	public final WidgetEventChannel $u.uncapitalised($kid.Name)$(event.Widget.Name)$(event.Name)EventChannel = new WidgetEventChannel(this);
 #end
 #end
 
+
+
+	@Override
+	public void refresh() {
+		log.enter("refresh");
+#set $count = 0
+#foreach $kid in $melati.Object.ChildWidgets #begin
+#if ($count == 0) #begin
+
+		this.$u.uncapitalised($kid.Name)Widget.refresh();
+
+#set	$count = 1
+#end
+#end
+		log.leave();
+	}
+
+	@Override
+	public void init() {
+		super.init();
+#if ($includeElement != 0) #begin 
+
+		this.memory = new Memory();
+#end
+
+	}
 
 	
 	@Override
@@ -86,9 +136,10 @@ public class $(melati.Object.Name)Widget
 #end 	
 
 #foreach $kid in $melati.Object.ChildWidgets #begin
+#if(!$kid.ExtendedFrom.equals("MultiWidget")) #begin
 
 
-		// $kid.Name events
+		// $kid.Name events 
 #foreach $event in $kid.AllEvents #begin
 
 		log.debug("Adding $kid.Name>$event.Widget.Name>$event.Name event handler");
@@ -124,6 +175,7 @@ public class $(melati.Object.Name)Widget
 
 #end
 #end
+#end
 
 		log.leave();
 	}
@@ -137,15 +189,124 @@ public class $(melati.Object.Name)Widget
 		super.setActiveChild(child, memorise);
 		
 		// FIXME 
-		// Most widgets will refresh themselves, but the HomeWidget will not 
-		if (child == curatorHomeWidget) {
+		// Only Delegating widgets refresh themselves
+
+#foreach $kid in $melati.Object.ChildWidgets #begin
+#if(!$kid.ExtendedFrom.equals("DelegatingWidget")) #begin
+		if (child == this.$u.uncapitalised($kid.Name)Widget) {
 			((ChassisWidget)child).refresh();
 		}
-
-
+#end
+#end
 		log.leave();
 	}
 
 	
+#if ($includeElement == 0) #begin 
+
+##	private class Memory extends MapMemory {
+##
+##		@Override
+##		public Map<String, String> createMnemonicMap() {
+##			log.enter("createMnemonicMap");
+##			
+##			Map<String, String> map = new HashMap<String, String>();
+##
+##			log.leave();
+##			return map;
+##		}
+##
+##		@Override
+##		public Deferred<WidgetMemory> remember(Map<String, String> mnemonic) {
+##			log.enter("remember");
+##			
+##			log.debug("call back immediately");
+##			final Deferred<WidgetMemory> deferredMemory = new Deferred<WidgetMemory>();
+##			deferredMemory.callback(this);
+##		
+##			log.leave();
+##			return deferredMemory;
+##		}
+##
+##
+##	}
+#end #else #begin 
+
+	
+	private class Memory extends MapMemory {
+
+		private static final String KEY = "studyUrl";
+
+
+		@Override
+		public Map<String, String> createMnemonicMap() {
+			log.enter("createMnemonicMap");
+			
+			Map<String, String> map = new HashMap<String, String>();
+
+			Element studyEntryElement = studyEntry.get();
+			
+			String url = null;
+			
+			if (studyEntryElement != null) { 
+				
+				url = AtomHelper.getEditLinkHrefAttr(studyEntryElement);
+			
+				if (url != null) {					
+					map.put(KEY, URL.encodeComponent(url));
+				}
+				
+			}
+			
+			log.leave();
+			return map;
+		}
+
+		
+		@Override
+		public Deferred<WidgetMemory> remember(Map<String, String> mnemonic) {
+			log.enter("remember");
+			
+			final Deferred<WidgetMemory> deferredMemory;
+			
+			status.set(AsyncWidgetModel.STATUS_INITIAL);
+			
+			String url = URL.decodeComponent(mnemonic.get(KEY));
+			log.debug("found url: " + url);
+			
+			if (url != null) {
+				
+				log.debug("set url to:" + url);
+
+				studyUrl.set(url);
+				
+				deferredMemory = refreshAndCallback().adapt(new Function<ChassisWidget, WidgetMemory>() {
+
+					public WidgetMemory apply(ChassisWidget in) {
+						log.debug("call back returning this memory");
+						return Memory.this;
+					}
+					
+				});
+
+			}
+			
+			else {
+				
+				log.debug("call back immediately");
+				deferredMemory = new Deferred<WidgetMemory>();
+				deferredMemory.callback(this);
+				
+			}
+			
+			log.leave();
+			return deferredMemory;
+		}
+
+
+	}
+
+#end
+
 	
 }

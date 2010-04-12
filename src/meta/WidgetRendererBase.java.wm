@@ -279,9 +279,6 @@ public abstract class $(melati.Object.Name)WidgetRendererBase extends
 		}
 		else if (status instanceof AsyncWidgetModel.AsyncRequestPendingStatus) {
 		}
-		else if (status instanceof AsyncWidgetModel.NotFoundStatus) {
-			model.message.set("Not found. url " + model.studyUrl.get());
-		}			
 		else if (status instanceof AsyncWidgetModel.ReadyStatus) {
 			pendingPanel.setVisible(false);
 			contentPanel.setVisible(true);

@@ -1,6 +1,8 @@
 #set $u=$melati.getContextUtil("org.melati.poem.util.StringUtils")
 package org.cggh.chassis.wwarn.ui.curator.client;
 
+import static org.cggh.chassis.generic.widget.client.HtmlElements.strongWidget;
+
 import org.cggh.chassis.generic.log.client.Log;
 import org.cggh.chassis.generic.log.client.LogFactory;
 import org.cggh.chassis.generic.miniatom.client.ext.ChassisHelper;
@@ -112,13 +114,21 @@ public class $(melati.Object.Name)Widget
 	public void refresh() {
 		log.enter("refresh");
 		
-#if($melati.Object.ExtendedFrom.equals("ChassisWidget")) #begin
 #foreach $kid in $melati.Object.ChildWidgets #begin
 
 		$u.uncapitalised($kid.Name)WidgetUiField.refresh();
 
 #end
+
+#foreach $property in $melati.Object.Properties #begin
+#if (!$property.Type.equals("String")) #begin
+
+		syncUIWith$u.capitalised($property.Name)($(u.uncapitalised($(property.Name))).get());
 #end
+#end
+
+		this.setVisible(true);
+
 		log.leave();	
 	}
 	
@@ -129,7 +139,6 @@ public class $(melati.Object.Name)Widget
 		
 		this.clear();
 		this.add(uiBinder.createAndBindUi(this));
-		errorPanel.setVisible(false);	
 		
 
 		log.leave();
@@ -206,7 +215,29 @@ public class $(melati.Object.Name)Widget
 	
 
 	
-#if($melati.Object.Requests.size() > 0) #begin
+#if($melati.Object.Requests.size() == 0) #begin
+
+
+	@Override
+	protected void syncUI() {
+		log.enter("syncUI");
+
+#foreach $property in $melati.Object.Properties #begin
+#if (!$property.Type.equals("String")) #begin
+
+		syncUIWith$u.capitalised($property.Name)($(u.uncapitalised($(property.Name))).get());
+#end
+#end
+
+		errorPanel.setVisible(false);	
+		contentPanel.setVisible(true);
+		this.setVisible(true);
+		log.leave();
+	}
+
+
+
+#end #else #begin 
 
 	@Override
 	protected void syncUI() {
@@ -262,6 +293,8 @@ public class $(melati.Object.Name)Widget
 	protected void syncUIWith$u.capitalised($(property.Name))($(property.Type) $(property.Name)) {
 		log.enter("syncUIWith$u.capitalised($(property.Name))");
 		// TODO needs to be a method in an extension
+		this.$u.uncapitalised($melati.Object.Name)Panel.clear();
+		this.$u.uncapitalised($melati.Object.Name)Panel.add(strongWidget("syncUIWith$u.capitalised($(property.Name))"));
 		log.leave();
 	}
 

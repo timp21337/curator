@@ -50,6 +50,7 @@
 		<g:HTMLPanel ui:field="contentPanel">
 
             <div id="$melati.Object.Name" title="$melati.Object.Name" class="widget">
+            	<h2>$melati.Object.Name</h2>
             	<g:FlowPanel ui:field="$u.uncapitalised($melati.Object.Name)Panel"></g:FlowPanel>
 
 #foreach $kid in $melati.Object.ChildWidgets #begin
