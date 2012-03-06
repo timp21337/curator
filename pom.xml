@@ -99,7 +99,7 @@ http://sourceforge.net/mailarchive/forum.php?forum=melati-users
     <dependency>
       <groupId>org.melati</groupId>
       <artifactId>melati</artifactId>
-      <version>0.7.8-RC3-SNAPSHOT</version>
+      <version>0.7.8</version>
       <scope>compile</scope>
     </dependency>
 
@@ -121,14 +121,14 @@ http://sourceforge.net/mailarchive/forum.php?forum=melati-users
     <dependency>
       <groupId>org.melati</groupId>
       <artifactId>poem</artifactId>
-      <version>0.7.8-RC3-SNAPSHOT</version>
+      <version>0.7.8</version>
       <classifier>tests</classifier>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.melati</groupId>
       <artifactId>melati</artifactId>
-      <version>0.7.8-RC3-SNAPSHOT</version>
+      <version>0.7.8</version>
       <classifier>tests</classifier>
       <scope>test</scope>
     </dependency>
@@ -236,7 +236,7 @@ http://sourceforge.net/mailarchive/forum.php?forum=melati-users
       <dependency>
        <groupId>org.melati</groupId>
        <artifactId>poem</artifactId>
-       <version>0.7.8-RC3-SNAPSHOT</version>
+       <version>0.7.8</version>
       </dependency>
      </dependencies>
     </plugin>
@@ -256,7 +256,7 @@ http://sourceforge.net/mailarchive/forum.php?forum=melati-users
                <artifactItem>
                  <groupId>org.melati</groupId>
                  <artifactId>melati</artifactId>
-                 <version>0.7.8-RC3-SNAPSHOT</version>
+                 <version>0.7.8</version>
                </artifactItem>
              </artifactItems>
              <outputDirectory>src/main/webapp</outputDirectory>
@@ -376,6 +376,12 @@ http://sourceforge.net/mailarchive/forum.php?forum=melati-users
       <name>Melati M2 Repository</name>
       <url>http://www.melati.org/maven2/</url>
     </repository>
+    <repository>
+      <id>wm</id>
+      <name>WM M2 Repository</name>
+      <url>http://webmacro.sourceforge.net/maven2/</url>
+    </repository>
+
   </repositories>
   <properties>
         <pDir>/dist/curator</pDir>
