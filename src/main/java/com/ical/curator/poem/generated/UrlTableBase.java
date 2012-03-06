@@ -2,6 +2,7 @@
 
 package com.ical.curator.poem.generated;
 
+
 import com.ical.curator.poem.CuratorDatabaseTables;
 import com.ical.curator.poem.CuratorTable;
 import com.ical.curator.poem.Url;
@@ -24,18 +25,18 @@ import org.melati.poem.ValidationPoemException;
  * Melati POEM generated base class for 
 <code>Table</code> <code>Url</code>.
  *
- * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+ * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
  */
 
 public class UrlTableBase extends CuratorTable {
 
-  private Column col_id = null;
-  private Column col_url = null;
+  private Column<Integer> col_id = null;
+  private Column<String> col_url = null;
 
  /**
   * Constructor. 
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param database          the POEM database we are using
   * @param name              the name of this <code>Table</code>
   * @param definitionSource  which definition is being used
@@ -52,7 +53,7 @@ public class UrlTableBase extends CuratorTable {
  /**
   * Get the database tables.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @return the database tables
   */
   public CuratorDatabaseTables getCuratorDatabaseTables() {
@@ -62,7 +63,7 @@ public class UrlTableBase extends CuratorTable {
   public void init() throws PoemException {
     super.init();
     defineColumn(col_id =
-        new Column(this, "id",
+        new Column<Integer>(this, "id",
                    new TroidPoemType(),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -75,7 +76,7 @@ public class UrlTableBase extends CuratorTable {
             ((Url)g).setId((Integer)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Url)g).getIdField();
           }
 
@@ -141,7 +142,7 @@ public class UrlTableBase extends CuratorTable {
         });
 
     defineColumn(col_url =
-        new Column(this, "url",
+        new Column<String>(this, "url",
                    new StringPoemType(false, -1),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -154,7 +155,7 @@ public class UrlTableBase extends CuratorTable {
             ((Url)g).setUrl((String)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<String> asField(Persistent g) {
             return ((Url)g).getUrlField();
           }
 
@@ -221,10 +222,10 @@ public class UrlTableBase extends CuratorTable {
   * Retrieves the <code>Id</code> <code>Column</code> for this 
   * <code>Url</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the id <code>Column</code>
   */
-  public final Column getIdColumn() {
+  public final Column<Integer> getIdColumn() {
     return col_id;
   }
 
@@ -233,10 +234,10 @@ public class UrlTableBase extends CuratorTable {
   * Retrieves the <code>Url</code> <code>Column</code> for this 
   * <code>Url</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the url <code>Column</code>
   */
-  public final Column getUrlColumn() {
+  public final Column<String> getUrlColumn() {
     return col_url;
   }
 
@@ -244,7 +245,7 @@ public class UrlTableBase extends CuratorTable {
  /**
   * Retrieve the <code>Url</code> as a <code>Url</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Oject ID
   * @return the <code>Persistent</code> identified by the <code>troid</code>
   */
@@ -257,7 +258,7 @@ public class UrlTableBase extends CuratorTable {
   * Retrieve the <code>Url</code> 
   * as a <code>Url</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Object ID
   * @return the <code>Persistent</code> identified   */
   public Url getUrlObject(int troid) {

@@ -2,6 +2,7 @@
 
 package com.ical.curator.poem.generated;
 
+
 import com.ical.curator.poem.CuratorDatabaseTables;
 import com.ical.curator.poem.CuratorTable;
 import com.ical.curator.poem.Event;
@@ -28,21 +29,21 @@ import org.melati.poem.ValidationPoemException;
  * Melati POEM generated base class for 
 <code>Table</code> <code>Event</code>.
  *
- * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+ * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
  */
 
 public class EventTableBase extends CuratorTable {
 
-  private Column col_id = null;
-  private Column col_widget = null;
-  private Column col_name = null;
-  private Column col_manual = null;
-  private Column col_to = null;
+  private Column<Integer> col_id = null;
+  private Column<Integer> col_widget = null;
+  private Column<String> col_name = null;
+  private Column<Boolean> col_manual = null;
+  private Column<Integer> col_to = null;
 
  /**
   * Constructor. 
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param database          the POEM database we are using
   * @param name              the name of this <code>Table</code>
   * @param definitionSource  which definition is being used
@@ -59,7 +60,7 @@ public class EventTableBase extends CuratorTable {
  /**
   * Get the database tables.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @return the database tables
   */
   public CuratorDatabaseTables getCuratorDatabaseTables() {
@@ -69,7 +70,7 @@ public class EventTableBase extends CuratorTable {
   public void init() throws PoemException {
     super.init();
     defineColumn(col_id =
-        new Column(this, "id",
+        new Column<Integer>(this, "id",
                    new TroidPoemType(),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -82,7 +83,7 @@ public class EventTableBase extends CuratorTable {
             ((Event)g).setId((Integer)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Event)g).getIdField();
           }
 
@@ -152,7 +153,7 @@ public class EventTableBase extends CuratorTable {
         });
 
     defineColumn(col_widget =
-        new Column(this, "widget",
+        new Column<Integer>(this, "widget",
                    new ReferencePoemType(getCuratorDatabaseTables().
                                              getWidgetTable(), true),
                    DefinitionSource.dsd) { 
@@ -166,7 +167,7 @@ public class EventTableBase extends CuratorTable {
             ((Event)g).setWidget((Widget)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Event)g).getWidgetField();
           }
 
@@ -232,7 +233,7 @@ public class EventTableBase extends CuratorTable {
         });
 
     defineColumn(col_name =
-        new Column(this, "name",
+        new Column<String>(this, "name",
                    new StringPoemType(false, -1),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -245,7 +246,7 @@ public class EventTableBase extends CuratorTable {
             ((Event)g).setName((String)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<String> asField(Persistent g) {
             return ((Event)g).getNameField();
           }
 
@@ -299,7 +300,7 @@ public class EventTableBase extends CuratorTable {
         });
 
     defineColumn(col_manual =
-        new Column(this, "manual",
+        new Column<Boolean>(this, "manual",
                    new BooleanPoemType(false),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -312,7 +313,7 @@ public class EventTableBase extends CuratorTable {
             ((Event)g).setManual((Boolean)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Boolean> asField(Persistent g) {
             return ((Event)g).getManualField();
           }
 
@@ -370,7 +371,7 @@ public class EventTableBase extends CuratorTable {
         });
 
     defineColumn(col_to =
-        new Column(this, "to",
+        new Column<Integer>(this, "to",
                    new ReferencePoemType(getCuratorDatabaseTables().
                                              getWidgetTable(), true),
                    DefinitionSource.dsd) { 
@@ -384,7 +385,7 @@ public class EventTableBase extends CuratorTable {
             ((Event)g).setTo((Widget)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Event)g).getToField();
           }
 
@@ -455,10 +456,10 @@ public class EventTableBase extends CuratorTable {
   * Retrieves the <code>Id</code> <code>Column</code> for this 
   * <code>Event</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the id <code>Column</code>
   */
-  public final Column getIdColumn() {
+  public final Column<Integer> getIdColumn() {
     return col_id;
   }
 
@@ -467,10 +468,10 @@ public class EventTableBase extends CuratorTable {
   * Retrieves the <code>Widget</code> <code>Column</code> for this 
   * <code>Event</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the widget <code>Column</code>
   */
-  public final Column getWidgetColumn() {
+  public final Column<Integer> getWidgetColumn() {
     return col_widget;
   }
 
@@ -479,10 +480,10 @@ public class EventTableBase extends CuratorTable {
   * Retrieves the <code>Name</code> <code>Column</code> for this 
   * <code>Event</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the name <code>Column</code>
   */
-  public final Column getNameColumn() {
+  public final Column<String> getNameColumn() {
     return col_name;
   }
 
@@ -491,10 +492,10 @@ public class EventTableBase extends CuratorTable {
   * Retrieves the <code>Manual</code> <code>Column</code> for this 
   * <code>Event</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the manual <code>Column</code>
   */
-  public final Column getManualColumn() {
+  public final Column<Boolean> getManualColumn() {
     return col_manual;
   }
 
@@ -503,10 +504,10 @@ public class EventTableBase extends CuratorTable {
   * Retrieves the <code>To</code> <code>Column</code> for this 
   * <code>Event</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the to <code>Column</code>
   */
-  public final Column getToColumn() {
+  public final Column<Integer> getToColumn() {
     return col_to;
   }
 
@@ -514,7 +515,7 @@ public class EventTableBase extends CuratorTable {
  /**
   * Retrieve the <code>Event</code> as a <code>Event</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Oject ID
   * @return the <code>Persistent</code> identified by the <code>troid</code>
   */
@@ -527,7 +528,7 @@ public class EventTableBase extends CuratorTable {
   * Retrieve the <code>Event</code> 
   * as a <code>Event</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Object ID
   * @return the <code>Persistent</code> identified   */
   public Event getEventObject(int troid) {

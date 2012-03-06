@@ -2,6 +2,7 @@
 
 package com.ical.curator.poem.generated;
 
+
 // 17 tables in database
 import org.melati.poem.UserTable;
 import org.melati.poem.GroupTable;
@@ -31,7 +32,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>UserTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the UserTable from this database
   */
   UserTable getUserTable();
@@ -39,7 +40,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>GroupTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the GroupTable from this database
   */
   GroupTable getGroupTable();
@@ -47,7 +48,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>CapabilityTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the CapabilityTable from this database
   */
   CapabilityTable getCapabilityTable();
@@ -55,7 +56,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>GroupMembershipTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the GroupMembershipTable from this database
   */
   GroupMembershipTable getGroupMembershipTable();
@@ -63,7 +64,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>GroupCapabilityTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the GroupCapabilityTable from this database
   */
   GroupCapabilityTable getGroupCapabilityTable();
@@ -71,7 +72,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>TableCategoryTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the TableCategoryTable from this database
   */
   TableCategoryTable getTableCategoryTable();
@@ -79,7 +80,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>TableInfoTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the TableInfoTable from this database
   */
   TableInfoTable getTableInfoTable();
@@ -87,7 +88,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>ColumnInfoTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the ColumnInfoTable from this database
   */
   ColumnInfoTable getColumnInfoTable();
@@ -95,7 +96,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>SettingTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the SettingTable from this database
   */
   SettingTable getSettingTable();
@@ -103,7 +104,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>WidgetTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the WidgetTable from this database
   */
   WidgetTable getWidgetTable();
@@ -111,7 +112,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>RequestTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the RequestTable from this database
   */
   RequestTable getRequestTable();
@@ -119,7 +120,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>MethodTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the MethodTable from this database
   */
   MethodTable getMethodTable();
@@ -127,7 +128,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>EventTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the EventTable from this database
   */
   EventTable getEventTable();
@@ -135,7 +136,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>UrlTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the UrlTable from this database
   */
   UrlTable getUrlTable();
@@ -143,7 +144,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>PropertyTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the PropertyTable from this database
   */
   PropertyTable getPropertyTable();
@@ -151,7 +152,7 @@ public interface CuratorDatabaseTablesBase {
  /**
   * Retrieves the <code>WidgetwidgetTable</code> table.
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorDefnJava 
   * @return the WidgetwidgetTable from this database
   */
   WidgetwidgetTable getWidgetwidgetTable();

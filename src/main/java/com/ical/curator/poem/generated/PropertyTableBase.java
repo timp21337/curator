@@ -2,6 +2,7 @@
 
 package com.ical.curator.poem.generated;
 
+
 import com.ical.curator.poem.CuratorDatabaseTables;
 import com.ical.curator.poem.CuratorTable;
 import com.ical.curator.poem.Property;
@@ -26,21 +27,21 @@ import org.melati.poem.ValidationPoemException;
  * Melati POEM generated base class for 
 <code>Table</code> <code>Property</code>.
  *
- * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+ * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
  */
 
 public class PropertyTableBase extends CuratorTable {
 
-  private Column col_id = null;
-  private Column col_name = null;
-  private Column col_type = null;
-  private Column col_widget = null;
-  private Column col_urlkey = null;
+  private Column<Integer> col_id = null;
+  private Column<String> col_name = null;
+  private Column<String> col_type = null;
+  private Column<Integer> col_widget = null;
+  private Column<String> col_urlkey = null;
 
  /**
   * Constructor. 
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param database          the POEM database we are using
   * @param name              the name of this <code>Table</code>
   * @param definitionSource  which definition is being used
@@ -57,7 +58,7 @@ public class PropertyTableBase extends CuratorTable {
  /**
   * Get the database tables.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @return the database tables
   */
   public CuratorDatabaseTables getCuratorDatabaseTables() {
@@ -67,7 +68,7 @@ public class PropertyTableBase extends CuratorTable {
   public void init() throws PoemException {
     super.init();
     defineColumn(col_id =
-        new Column(this, "id",
+        new Column<Integer>(this, "id",
                    new TroidPoemType(),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -80,7 +81,7 @@ public class PropertyTableBase extends CuratorTable {
             ((Property)g).setId((Integer)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Property)g).getIdField();
           }
 
@@ -146,7 +147,7 @@ public class PropertyTableBase extends CuratorTable {
         });
 
     defineColumn(col_name =
-        new Column(this, "name",
+        new Column<String>(this, "name",
                    new StringPoemType(false, -1),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -159,7 +160,7 @@ public class PropertyTableBase extends CuratorTable {
             ((Property)g).setName((String)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<String> asField(Persistent g) {
             return ((Property)g).getNameField();
           }
 
@@ -213,7 +214,7 @@ public class PropertyTableBase extends CuratorTable {
         });
 
     defineColumn(col_type =
-        new Column(this, "type",
+        new Column<String>(this, "type",
                    new StringPoemType(false, -1),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -226,7 +227,7 @@ public class PropertyTableBase extends CuratorTable {
             ((Property)g).setType((String)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<String> asField(Persistent g) {
             return ((Property)g).getTypeField();
           }
 
@@ -280,7 +281,7 @@ public class PropertyTableBase extends CuratorTable {
         });
 
     defineColumn(col_widget =
-        new Column(this, "widget",
+        new Column<Integer>(this, "widget",
                    new ReferencePoemType(getCuratorDatabaseTables().
                                              getWidgetTable(), false),
                    DefinitionSource.dsd) { 
@@ -294,7 +295,7 @@ public class PropertyTableBase extends CuratorTable {
             ((Property)g).setWidget((Widget)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Property)g).getWidgetField();
           }
 
@@ -352,7 +353,7 @@ public class PropertyTableBase extends CuratorTable {
         });
 
     defineColumn(col_urlkey =
-        new Column(this, "urlkey",
+        new Column<String>(this, "urlkey",
                    new StringPoemType(true, -1),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -365,7 +366,7 @@ public class PropertyTableBase extends CuratorTable {
             ((Property)g).setUrlkey((String)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<String> asField(Persistent g) {
             return ((Property)g).getUrlkeyField();
           }
 
@@ -428,10 +429,10 @@ public class PropertyTableBase extends CuratorTable {
   * Retrieves the <code>Id</code> <code>Column</code> for this 
   * <code>Property</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the id <code>Column</code>
   */
-  public final Column getIdColumn() {
+  public final Column<Integer> getIdColumn() {
     return col_id;
   }
 
@@ -440,10 +441,10 @@ public class PropertyTableBase extends CuratorTable {
   * Retrieves the <code>Name</code> <code>Column</code> for this 
   * <code>Property</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the name <code>Column</code>
   */
-  public final Column getNameColumn() {
+  public final Column<String> getNameColumn() {
     return col_name;
   }
 
@@ -452,10 +453,10 @@ public class PropertyTableBase extends CuratorTable {
   * Retrieves the <code>Type</code> <code>Column</code> for this 
   * <code>Property</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the type <code>Column</code>
   */
-  public final Column getTypeColumn() {
+  public final Column<String> getTypeColumn() {
     return col_type;
   }
 
@@ -464,10 +465,10 @@ public class PropertyTableBase extends CuratorTable {
   * Retrieves the <code>Widget</code> <code>Column</code> for this 
   * <code>Property</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the widget <code>Column</code>
   */
-  public final Column getWidgetColumn() {
+  public final Column<Integer> getWidgetColumn() {
     return col_widget;
   }
 
@@ -476,10 +477,10 @@ public class PropertyTableBase extends CuratorTable {
   * Retrieves the <code>Urlkey</code> <code>Column</code> for this 
   * <code>Property</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the urlkey <code>Column</code>
   */
-  public final Column getUrlkeyColumn() {
+  public final Column<String> getUrlkeyColumn() {
     return col_urlkey;
   }
 
@@ -487,7 +488,7 @@ public class PropertyTableBase extends CuratorTable {
  /**
   * Retrieve the <code>Property</code> as a <code>Property</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Oject ID
   * @return the <code>Persistent</code> identified by the <code>troid</code>
   */
@@ -500,7 +501,7 @@ public class PropertyTableBase extends CuratorTable {
   * Retrieve the <code>Property</code> 
   * as a <code>Property</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Object ID
   * @return the <code>Persistent</code> identified   */
   public Property getPropertyObject(int troid) {

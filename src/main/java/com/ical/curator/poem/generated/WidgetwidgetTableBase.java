@@ -2,6 +2,7 @@
 
 package com.ical.curator.poem.generated;
 
+
 import com.ical.curator.poem.CuratorDatabaseTables;
 import com.ical.curator.poem.CuratorTable;
 import com.ical.curator.poem.Widget;
@@ -26,19 +27,19 @@ import org.melati.poem.ValidationPoemException;
  * Melati POEM generated base class for 
 <code>Table</code> <code>Widgetwidget</code>.
  *
- * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+ * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
  */
 
 public class WidgetwidgetTableBase extends CuratorTable {
 
-  private Column col_id = null;
-  private Column col_owner = null;
-  private Column col_child = null;
+  private Column<Integer> col_id = null;
+  private Column<Integer> col_owner = null;
+  private Column<Integer> col_child = null;
 
  /**
   * Constructor. 
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param database          the POEM database we are using
   * @param name              the name of this <code>Table</code>
   * @param definitionSource  which definition is being used
@@ -55,7 +56,7 @@ public class WidgetwidgetTableBase extends CuratorTable {
  /**
   * Get the database tables.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @return the database tables
   */
   public CuratorDatabaseTables getCuratorDatabaseTables() {
@@ -65,7 +66,7 @@ public class WidgetwidgetTableBase extends CuratorTable {
   public void init() throws PoemException {
     super.init();
     defineColumn(col_id =
-        new Column(this, "id",
+        new Column<Integer>(this, "id",
                    new TroidPoemType(),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -78,7 +79,7 @@ public class WidgetwidgetTableBase extends CuratorTable {
             ((Widgetwidget)g).setId((Integer)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Widgetwidget)g).getIdField();
           }
 
@@ -144,7 +145,7 @@ public class WidgetwidgetTableBase extends CuratorTable {
         });
 
     defineColumn(col_owner =
-        new Column(this, "owner",
+        new Column<Integer>(this, "owner",
                    new ReferencePoemType(getCuratorDatabaseTables().
                                              getWidgetTable(), false),
                    DefinitionSource.dsd) { 
@@ -158,7 +159,7 @@ public class WidgetwidgetTableBase extends CuratorTable {
             ((Widgetwidget)g).setOwner((Widget)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Widgetwidget)g).getOwnerField();
           }
 
@@ -220,7 +221,7 @@ public class WidgetwidgetTableBase extends CuratorTable {
         });
 
     defineColumn(col_child =
-        new Column(this, "child",
+        new Column<Integer>(this, "child",
                    new ReferencePoemType(getCuratorDatabaseTables().
                                              getWidgetTable(), false),
                    DefinitionSource.dsd) { 
@@ -234,7 +235,7 @@ public class WidgetwidgetTableBase extends CuratorTable {
             ((Widgetwidget)g).setChild((Widget)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Widgetwidget)g).getChildField();
           }
 
@@ -301,10 +302,10 @@ public class WidgetwidgetTableBase extends CuratorTable {
   * Retrieves the <code>Id</code> <code>Column</code> for this 
   * <code>Widgetwidget</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the id <code>Column</code>
   */
-  public final Column getIdColumn() {
+  public final Column<Integer> getIdColumn() {
     return col_id;
   }
 
@@ -313,10 +314,10 @@ public class WidgetwidgetTableBase extends CuratorTable {
   * Retrieves the <code>Owner</code> <code>Column</code> for this 
   * <code>Widgetwidget</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the owner <code>Column</code>
   */
-  public final Column getOwnerColumn() {
+  public final Column<Integer> getOwnerColumn() {
     return col_owner;
   }
 
@@ -325,10 +326,10 @@ public class WidgetwidgetTableBase extends CuratorTable {
   * Retrieves the <code>Child</code> <code>Column</code> for this 
   * <code>Widgetwidget</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the child <code>Column</code>
   */
-  public final Column getChildColumn() {
+  public final Column<Integer> getChildColumn() {
     return col_child;
   }
 
@@ -336,7 +337,7 @@ public class WidgetwidgetTableBase extends CuratorTable {
  /**
   * Retrieve the <code>Widgetwidget</code> as a <code>Widgetwidget</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Oject ID
   * @return the <code>Persistent</code> identified by the <code>troid</code>
   */
@@ -349,7 +350,7 @@ public class WidgetwidgetTableBase extends CuratorTable {
   * Retrieve the <code>Widgetwidget</code> 
   * as a <code>Widgetwidget</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Object ID
   * @return the <code>Persistent</code> identified   */
   public Widgetwidget getWidgetwidgetObject(int troid) {

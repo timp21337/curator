@@ -2,6 +2,7 @@
 
 package com.ical.curator.poem.generated;
 
+
 import com.ical.curator.poem.CuratorDatabaseTables;
 import com.ical.curator.poem.CuratorTable;
 import com.ical.curator.poem.Method;
@@ -27,19 +28,19 @@ import org.melati.poem.ValidationPoemException;
  * Melati POEM generated base class for 
 <code>Table</code> <code>Method</code>.
  *
- * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+ * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
  */
 
 public class MethodTableBase extends CuratorTable {
 
-  private Column col_id = null;
-  private Column col_widget = null;
-  private Column col_name = null;
+  private Column<Integer> col_id = null;
+  private Column<Integer> col_widget = null;
+  private Column<String> col_name = null;
 
  /**
   * Constructor. 
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param database          the POEM database we are using
   * @param name              the name of this <code>Table</code>
   * @param definitionSource  which definition is being used
@@ -56,7 +57,7 @@ public class MethodTableBase extends CuratorTable {
  /**
   * Get the database tables.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @return the database tables
   */
   public CuratorDatabaseTables getCuratorDatabaseTables() {
@@ -66,7 +67,7 @@ public class MethodTableBase extends CuratorTable {
   public void init() throws PoemException {
     super.init();
     defineColumn(col_id =
-        new Column(this, "id",
+        new Column<Integer>(this, "id",
                    new TroidPoemType(),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -79,7 +80,7 @@ public class MethodTableBase extends CuratorTable {
             ((Method)g).setId((Integer)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Method)g).getIdField();
           }
 
@@ -149,7 +150,7 @@ public class MethodTableBase extends CuratorTable {
         });
 
     defineColumn(col_widget =
-        new Column(this, "widget",
+        new Column<Integer>(this, "widget",
                    new ReferencePoemType(getCuratorDatabaseTables().
                                              getWidgetTable(), true),
                    DefinitionSource.dsd) { 
@@ -163,7 +164,7 @@ public class MethodTableBase extends CuratorTable {
             ((Method)g).setWidget((Widget)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Method)g).getWidgetField();
           }
 
@@ -225,7 +226,7 @@ public class MethodTableBase extends CuratorTable {
         });
 
     defineColumn(col_name =
-        new Column(this, "name",
+        new Column<String>(this, "name",
                    new StringPoemType(false, -1),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -238,7 +239,7 @@ public class MethodTableBase extends CuratorTable {
             ((Method)g).setName((String)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<String> asField(Persistent g) {
             return ((Method)g).getNameField();
           }
 
@@ -301,10 +302,10 @@ public class MethodTableBase extends CuratorTable {
   * Retrieves the <code>Id</code> <code>Column</code> for this 
   * <code>Method</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the id <code>Column</code>
   */
-  public final Column getIdColumn() {
+  public final Column<Integer> getIdColumn() {
     return col_id;
   }
 
@@ -313,10 +314,10 @@ public class MethodTableBase extends CuratorTable {
   * Retrieves the <code>Widget</code> <code>Column</code> for this 
   * <code>Method</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the widget <code>Column</code>
   */
-  public final Column getWidgetColumn() {
+  public final Column<Integer> getWidgetColumn() {
     return col_widget;
   }
 
@@ -325,10 +326,10 @@ public class MethodTableBase extends CuratorTable {
   * Retrieves the <code>Name</code> <code>Column</code> for this 
   * <code>Method</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the name <code>Column</code>
   */
-  public final Column getNameColumn() {
+  public final Column<String> getNameColumn() {
     return col_name;
   }
 
@@ -336,7 +337,7 @@ public class MethodTableBase extends CuratorTable {
  /**
   * Retrieve the <code>Method</code> as a <code>Method</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Oject ID
   * @return the <code>Persistent</code> identified by the <code>troid</code>
   */
@@ -349,7 +350,7 @@ public class MethodTableBase extends CuratorTable {
   * Retrieve the <code>Method</code> 
   * as a <code>Method</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Object ID
   * @return the <code>Persistent</code> identified   */
   public Method getMethodObject(int troid) {

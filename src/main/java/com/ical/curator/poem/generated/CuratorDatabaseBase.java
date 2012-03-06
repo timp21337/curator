@@ -2,6 +2,7 @@
 
 package com.ical.curator.poem.generated;
 
+
 import org.melati.poem.PoemDatabase;
 import org.melati.poem.DefinitionSource;
 import org.melati.poem.UserTable;
@@ -47,26 +48,26 @@ public class CuratorDatabaseBase extends PoemDatabase {
     redefineTable(tab_user = new UserTable(this, "user", DefinitionSource.dsd));
     redefineTable(tab_group = new GroupTable(this, "group", DefinitionSource.dsd));
     redefineTable(tab_capability = new CapabilityTable(this, "capability", DefinitionSource.dsd));
-    redefineTable(tab_groupmembership = new GroupMembershipTable(this, "groupmembership", DefinitionSource.dsd));
-    redefineTable(tab_groupcapability = new GroupCapabilityTable(this, "groupcapability", DefinitionSource.dsd));
-    redefineTable(tab_tablecategory = new TableCategoryTable(this, "tablecategory", DefinitionSource.dsd));
-    redefineTable(tab_tableinfo = new TableInfoTable(this, "tableinfo", DefinitionSource.dsd));
-    redefineTable(tab_columninfo = new ColumnInfoTable(this, "columninfo", DefinitionSource.dsd));
+    redefineTable(tab_groupmembership = new GroupMembershipTable(this, "groupMembership", DefinitionSource.dsd));
+    redefineTable(tab_groupcapability = new GroupCapabilityTable(this, "groupCapability", DefinitionSource.dsd));
+    redefineTable(tab_tablecategory = new TableCategoryTable(this, "tableCategory", DefinitionSource.dsd));
+    redefineTable(tab_tableinfo = new TableInfoTable(this, "tableInfo", DefinitionSource.dsd));
+    redefineTable(tab_columninfo = new ColumnInfoTable(this, "columnInfo", DefinitionSource.dsd));
     redefineTable(tab_setting = new SettingTable(this, "setting", DefinitionSource.dsd));
-    redefineTable(tab_widget = new WidgetTable(this, "widget", DefinitionSource.dsd));
-    redefineTable(tab_request = new RequestTable(this, "request", DefinitionSource.dsd));
-    redefineTable(tab_method = new MethodTable(this, "method", DefinitionSource.dsd));
-    redefineTable(tab_event = new EventTable(this, "event", DefinitionSource.dsd));
-    redefineTable(tab_url = new UrlTable(this, "url", DefinitionSource.dsd));
-    redefineTable(tab_property = new PropertyTable(this, "property", DefinitionSource.dsd));
-    redefineTable(tab_widgetwidget = new WidgetwidgetTable(this, "widgetwidget", DefinitionSource.dsd));
+    redefineTable(tab_widget = new WidgetTable(this, "Widget", DefinitionSource.dsd));
+    redefineTable(tab_request = new RequestTable(this, "Request", DefinitionSource.dsd));
+    redefineTable(tab_method = new MethodTable(this, "Method", DefinitionSource.dsd));
+    redefineTable(tab_event = new EventTable(this, "Event", DefinitionSource.dsd));
+    redefineTable(tab_url = new UrlTable(this, "Url", DefinitionSource.dsd));
+    redefineTable(tab_property = new PropertyTable(this, "Property", DefinitionSource.dsd));
+    redefineTable(tab_widgetwidget = new WidgetwidgetTable(this, "Widgetwidget", DefinitionSource.dsd));
   }
 
 
  /**
   * Retrieves the UserTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the UserTable from this database
   */
   public UserTable getUserTable() {
@@ -77,7 +78,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the GroupTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the GroupTable from this database
   */
   public GroupTable getGroupTable() {
@@ -88,7 +89,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the CapabilityTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the CapabilityTable from this database
   */
   public CapabilityTable getCapabilityTable() {
@@ -99,7 +100,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the GroupMembershipTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the GroupMembershipTable from this database
   */
   public GroupMembershipTable getGroupMembershipTable() {
@@ -110,7 +111,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the GroupCapabilityTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the GroupCapabilityTable from this database
   */
   public GroupCapabilityTable getGroupCapabilityTable() {
@@ -121,7 +122,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the TableCategoryTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the TableCategoryTable from this database
   */
   public TableCategoryTable getTableCategoryTable() {
@@ -132,7 +133,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the TableInfoTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the TableInfoTable from this database
   */
   public TableInfoTable getTableInfoTable() {
@@ -144,7 +145,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the ColumnInfoTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the ColumnInfoTable from this database
   */
   public ColumnInfoTable getColumnInfoTable() {
@@ -155,7 +156,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the SettingTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the SettingTable from this database
   */
   public SettingTable getSettingTable() {
@@ -166,7 +167,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the WidgetTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the WidgetTable from this database
   */
   public WidgetTable getWidgetTable() {
@@ -177,7 +178,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the RequestTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the RequestTable from this database
   */
   public RequestTable getRequestTable() {
@@ -188,7 +189,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the MethodTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the MethodTable from this database
   */
   public MethodTable getMethodTable() {
@@ -199,7 +200,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the EventTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the EventTable from this database
   */
   public EventTable getEventTable() {
@@ -210,7 +211,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the UrlTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the UrlTable from this database
   */
   public UrlTable getUrlTable() {
@@ -221,7 +222,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the PropertyTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the PropertyTable from this database
   */
   public PropertyTable getPropertyTable() {
@@ -232,7 +233,7 @@ public class CuratorDatabaseBase extends PoemDatabase {
  /**
   * Retrieves the WidgetwidgetTable table.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
+  * see org.melati.poem.prepro.TableDef#generateTableAccessorJava 
   * @return the WidgetwidgetTable from this database
   */
   public WidgetwidgetTable getWidgetwidgetTable() {

@@ -20,7 +20,7 @@
 
 package com.ical.curator.poem;
 
-//   widget (from the data structure definition)
+//   Widget (from the data structure definition)
 //   com.ical.curator.poem.WidgetTable
 table Widget
 
@@ -35,7 +35,7 @@ table Widget
   (seqcached)
   (category = "Normal")
 {
-    //widget.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
+    //Widget.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
     Integer id
       (primary)
       (displayname = "Id")
@@ -54,7 +54,7 @@ table Widget
       (indexed)
       (unique)
       ;
-    //widget.name: String(-1) (from the data structure definition) 
+    //Widget.name: String(-1) (from the data structure definition) 
     String name
       (displayname = "Name")
       (description = "The widget name")
@@ -75,7 +75,7 @@ table Widget
       (indexed)
       (unique)
       ;
-    //widget.extendedFrom: String(-1) (from the data structure definition) 
+    //Widget.extendedFrom: String(-1) (from the data structure definition) 
     String extendedFrom
       (displayname = "extendedFrom")
       (description = "The Chassis widget this extendedFrom")
@@ -96,7 +96,7 @@ table Widget
       (indexed)
       // Not unique
       ;
-    //widget.manual: BOOLEAN (org.melati.poem.BooleanPoemType) (from the data structure definition) 
+    //Widget.manual: BOOLEAN (org.melati.poem.BooleanPoemType) (from the data structure definition) 
     Boolean manual
       (displayname = "Manual")
       (description = "Whether this Widget's files have been written")
@@ -118,7 +118,7 @@ table Widget
       ;
  }
 
-//   request (from the data structure definition)
+//   Request (from the data structure definition)
 //   com.ical.curator.poem.RequestTable
 table Request
 
@@ -133,7 +133,7 @@ table Request
   (seqcached)
   (category = "Normal")
 {
-    //request.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
+    //Request.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
     Integer id
       (primary)
       (displayname = "Id")
@@ -152,7 +152,7 @@ table Request
       (indexed)
       (unique)
       ;
-    //request.widget: reference to widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
+    //Request.widget: reference to Widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
     Widget widget
       (displayname = "Widget")
       (description = "The reqesting widget")
@@ -173,7 +173,7 @@ table Request
       // Not unique
       (integrityfix = prevent)
       ;
-    //request.method: String(-1) (from the data structure definition) 
+    //Request.method: String(-1) (from the data structure definition) 
     String method
       (displayname = "Method")
       (description = "HTTP method")
@@ -194,7 +194,7 @@ table Request
       // Not indexed
       // Not unique
       ;
-    //request.url: reference to url (INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
+    //Request.url: reference to Url (INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
     Url url
       (displayname = "URL")
       (description = "The Url")
@@ -215,7 +215,7 @@ table Request
       // Not unique
       (integrityfix = delete)
       ;
-    //request.name: String(-1) (from the data structure definition) 
+    //Request.name: String(-1) (from the data structure definition) 
     String name
       (displayname = "Name")
       (description = "The name of static variable")
@@ -236,7 +236,7 @@ table Request
       (indexed)
       // Not unique
       ;
-    //request.methodName: String(-1) (from the data structure definition) 
+    //Request.methodName: String(-1) (from the data structure definition) 
     String methodName
       (displayname = "Java Method")
       (description = "The  method which calls this resource")
@@ -259,7 +259,7 @@ table Request
       ;
  }
 
-//   method (from the data structure definition)
+//   Method (from the data structure definition)
 //   com.ical.curator.poem.MethodTable
 table Method
 
@@ -274,7 +274,7 @@ table Method
   (seqcached)
   (category = "Normal")
 {
-    //method.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
+    //Method.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
     Integer id
       (primary)
       (displayname = "Id")
@@ -293,7 +293,7 @@ table Method
       (indexed)
       (unique)
       ;
-    //method.widget: reference to widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
+    //Method.widget: reference to Widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
     Widget widget
       (displayname = "Widget")
       (description = "The widget")
@@ -314,7 +314,7 @@ table Method
       // Not unique
       (integrityfix = delete)
       ;
-    //method.name: String(-1) (from the data structure definition) 
+    //Method.name: String(-1) (from the data structure definition) 
     String name
       (displayname = "name")
       (description = "method name, with arguments")
@@ -337,7 +337,7 @@ table Method
       ;
  }
 
-//   event (from the data structure definition)
+//   Event (from the data structure definition)
 //   com.ical.curator.poem.EventTable
 table Event
 
@@ -352,7 +352,7 @@ table Event
   (seqcached)
   (category = "Normal")
 {
-    //event.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
+    //Event.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
     Integer id
       (primary)
       (displayname = "Id")
@@ -371,7 +371,7 @@ table Event
       (indexed)
       (unique)
       ;
-    //event.widget: reference to widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
+    //Event.widget: reference to Widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
     Widget widget
       (displayname = "Origination")
       (description = "The widget from which the event is generated")
@@ -392,7 +392,7 @@ table Event
       // Not unique
       (integrityfix = delete)
       ;
-    //event.name: String(-1) (from the data structure definition) 
+    //Event.name: String(-1) (from the data structure definition) 
     String name
       (displayname = "Name")
       (description = "Event name")
@@ -413,7 +413,7 @@ table Event
       // Not indexed
       // Not unique
       ;
-    //event.manual: BOOLEAN (org.melati.poem.BooleanPoemType) (from the data structure definition) 
+    //Event.manual: BOOLEAN (org.melati.poem.BooleanPoemType) (from the data structure definition) 
     Boolean manual
       (displayname = "Manual")
       (description = "Whether to over write")
@@ -433,7 +433,7 @@ table Event
       // Not indexed
       // Not unique
       ;
-    //event.to: reference to widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
+    //Event.to: reference to Widget (nullable INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
     Widget to
       (displayname = "Destination")
       (description = "Where to, for Navigation Events")
@@ -456,7 +456,7 @@ table Event
       ;
  }
 
-//   url (from the data structure definition)
+//   Url (from the data structure definition)
 //   com.ical.curator.poem.UrlTable
 table Url
 
@@ -471,7 +471,7 @@ table Url
   (seqcached)
   (category = "Normal")
 {
-    //url.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
+    //Url.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
     Integer id
       (primary)
       (displayname = "Id")
@@ -490,7 +490,7 @@ table Url
       (indexed)
       (unique)
       ;
-    //url.url: String(-1) (from the data structure definition) 
+    //Url.url: String(-1) (from the data structure definition) 
     String url
       (displayname = "URL")
       (description = "The url")
@@ -513,7 +513,7 @@ table Url
       ;
  }
 
-//   property (from the data structure definition)
+//   Property (from the data structure definition)
 //   com.ical.curator.poem.PropertyTable
 table Property
 
@@ -528,7 +528,7 @@ table Property
   // Not seqcached
   (category = "Normal")
 {
-    //property.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
+    //Property.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
     Integer id
       (primary)
       (displayname = "Id")
@@ -547,7 +547,7 @@ table Property
       (indexed)
       (unique)
       ;
-    //property.name: String(-1) (from the data structure definition) 
+    //Property.name: String(-1) (from the data structure definition) 
     String name
       (displayname = "Name")
       (description = "The identifier for the member")
@@ -568,7 +568,7 @@ table Property
       // Not indexed
       // Not unique
       ;
-    //property.type: String(-1) (from the data structure definition) 
+    //Property.type: String(-1) (from the data structure definition) 
     String type
       (displayname = "Type")
       (description = "The class name of the member")
@@ -589,7 +589,7 @@ table Property
       // Not indexed
       // Not unique
       ;
-    //property.widget: reference to widget (INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
+    //Property.widget: reference to Widget (INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
     Widget widget
       (displayname = "Widget")
       (description = "The widget this property belongs to")
@@ -610,7 +610,7 @@ table Property
       // Not unique
       // (integrityfix = null)
       ;
-    //property.urlkey: nullable String(-1) (from the data structure definition) 
+    //Property.urlkey: nullable String(-1) (from the data structure definition) 
     String urlkey
       (displayname = "Url Key")
       (description = "Key for an url")
@@ -633,7 +633,7 @@ table Property
       ;
  }
 
-//   widgetwidget (from the data structure definition)
+//   Widgetwidget (from the data structure definition)
 //   com.ical.curator.poem.WidgetwidgetTable
 table Widgetwidget
 
@@ -648,7 +648,7 @@ table Widgetwidget
   (seqcached)
   (category = "Normal")
 {
-    //widgetwidget.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
+    //Widgetwidget.id: troid (INT (org.melati.poem.TroidPoemType)) (from the data structure definition) 
     Integer id
       (primary)
       (displayname = "Id")
@@ -667,7 +667,7 @@ table Widgetwidget
       (indexed)
       (unique)
       ;
-    //widgetwidget.owner: reference to widget (INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
+    //Widgetwidget.owner: reference to Widget (INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
     Widget owner
       (displayname = "Owner")
       (description = "The parent")
@@ -688,7 +688,7 @@ table Widgetwidget
       // Not unique
       (integrityfix = delete)
       ;
-    //widgetwidget.child: reference to widget (INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
+    //Widgetwidget.child: reference to Widget (INT (org.melati.poem.ReferencePoemType)) (from the data structure definition) 
     Widget child
       (displayname = "Child")
       (description = "Child")

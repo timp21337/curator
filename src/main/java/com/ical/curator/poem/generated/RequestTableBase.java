@@ -2,6 +2,7 @@
 
 package com.ical.curator.poem.generated;
 
+
 import com.ical.curator.poem.CuratorDatabaseTables;
 import com.ical.curator.poem.CuratorTable;
 import com.ical.curator.poem.Request;
@@ -28,22 +29,22 @@ import org.melati.poem.ValidationPoemException;
  * Melati POEM generated base class for 
 <code>Table</code> <code>Request</code>.
  *
- * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+ * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
  */
 
 public class RequestTableBase extends CuratorTable {
 
-  private Column col_id = null;
-  private Column col_widget = null;
-  private Column col_method = null;
-  private Column col_url = null;
-  private Column col_name = null;
-  private Column col_methodName = null;
+  private Column<Integer> col_id = null;
+  private Column<Integer> col_widget = null;
+  private Column<String> col_method = null;
+  private Column<Integer> col_url = null;
+  private Column<String> col_name = null;
+  private Column<String> col_methodName = null;
 
  /**
   * Constructor. 
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param database          the POEM database we are using
   * @param name              the name of this <code>Table</code>
   * @param definitionSource  which definition is being used
@@ -60,7 +61,7 @@ public class RequestTableBase extends CuratorTable {
  /**
   * Get the database tables.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @return the database tables
   */
   public CuratorDatabaseTables getCuratorDatabaseTables() {
@@ -70,7 +71,7 @@ public class RequestTableBase extends CuratorTable {
   public void init() throws PoemException {
     super.init();
     defineColumn(col_id =
-        new Column(this, "id",
+        new Column<Integer>(this, "id",
                    new TroidPoemType(),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -83,7 +84,7 @@ public class RequestTableBase extends CuratorTable {
             ((Request)g).setId((Integer)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Request)g).getIdField();
           }
 
@@ -149,7 +150,7 @@ public class RequestTableBase extends CuratorTable {
         });
 
     defineColumn(col_widget =
-        new Column(this, "widget",
+        new Column<Integer>(this, "widget",
                    new ReferencePoemType(getCuratorDatabaseTables().
                                              getWidgetTable(), true),
                    DefinitionSource.dsd) { 
@@ -163,7 +164,7 @@ public class RequestTableBase extends CuratorTable {
             ((Request)g).setWidget((Widget)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Request)g).getWidgetField();
           }
 
@@ -229,7 +230,7 @@ public class RequestTableBase extends CuratorTable {
         });
 
     defineColumn(col_method =
-        new Column(this, "method",
+        new Column<String>(this, "method",
                    new StringPoemType(false, -1),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -242,7 +243,7 @@ public class RequestTableBase extends CuratorTable {
             ((Request)g).setMethod((String)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<String> asField(Persistent g) {
             return ((Request)g).getMethodField();
           }
 
@@ -300,7 +301,7 @@ public class RequestTableBase extends CuratorTable {
         });
 
     defineColumn(col_url =
-        new Column(this, "url",
+        new Column<Integer>(this, "url",
                    new ReferencePoemType(getCuratorDatabaseTables().
                                              getUrlTable(), false),
                    DefinitionSource.dsd) { 
@@ -314,7 +315,7 @@ public class RequestTableBase extends CuratorTable {
             ((Request)g).setUrl((Url)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Request)g).getUrlField();
           }
 
@@ -376,7 +377,7 @@ public class RequestTableBase extends CuratorTable {
         });
 
     defineColumn(col_name =
-        new Column(this, "name",
+        new Column<String>(this, "name",
                    new StringPoemType(false, -1),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -389,7 +390,7 @@ public class RequestTableBase extends CuratorTable {
             ((Request)g).setName((String)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<String> asField(Persistent g) {
             return ((Request)g).getNameField();
           }
 
@@ -451,7 +452,7 @@ public class RequestTableBase extends CuratorTable {
         });
 
     defineColumn(col_methodName =
-        new Column(this, "methodName",
+        new Column<String>(this, "methodName",
                    new StringPoemType(false, -1),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -464,7 +465,7 @@ public class RequestTableBase extends CuratorTable {
             ((Request)g).setMethodName((String)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<String> asField(Persistent g) {
             return ((Request)g).getMethodNameField();
           }
 
@@ -527,10 +528,10 @@ public class RequestTableBase extends CuratorTable {
   * Retrieves the <code>Id</code> <code>Column</code> for this 
   * <code>Request</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the id <code>Column</code>
   */
-  public final Column getIdColumn() {
+  public final Column<Integer> getIdColumn() {
     return col_id;
   }
 
@@ -539,10 +540,10 @@ public class RequestTableBase extends CuratorTable {
   * Retrieves the <code>Widget</code> <code>Column</code> for this 
   * <code>Request</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the widget <code>Column</code>
   */
-  public final Column getWidgetColumn() {
+  public final Column<Integer> getWidgetColumn() {
     return col_widget;
   }
 
@@ -551,10 +552,10 @@ public class RequestTableBase extends CuratorTable {
   * Retrieves the <code>Method</code> <code>Column</code> for this 
   * <code>Request</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the method <code>Column</code>
   */
-  public final Column getMethodColumn() {
+  public final Column<String> getMethodColumn() {
     return col_method;
   }
 
@@ -563,10 +564,10 @@ public class RequestTableBase extends CuratorTable {
   * Retrieves the <code>Url</code> <code>Column</code> for this 
   * <code>Request</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the url <code>Column</code>
   */
-  public final Column getUrlColumn() {
+  public final Column<Integer> getUrlColumn() {
     return col_url;
   }
 
@@ -575,10 +576,10 @@ public class RequestTableBase extends CuratorTable {
   * Retrieves the <code>Name</code> <code>Column</code> for this 
   * <code>Request</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the name <code>Column</code>
   */
-  public final Column getNameColumn() {
+  public final Column<String> getNameColumn() {
     return col_name;
   }
 
@@ -587,10 +588,10 @@ public class RequestTableBase extends CuratorTable {
   * Retrieves the <code>MethodName</code> <code>Column</code> for this 
   * <code>Request</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the methodName <code>Column</code>
   */
-  public final Column getMethodNameColumn() {
+  public final Column<String> getMethodNameColumn() {
     return col_methodName;
   }
 
@@ -598,7 +599,7 @@ public class RequestTableBase extends CuratorTable {
  /**
   * Retrieve the <code>Request</code> as a <code>Request</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Oject ID
   * @return the <code>Persistent</code> identified by the <code>troid</code>
   */
@@ -611,7 +612,7 @@ public class RequestTableBase extends CuratorTable {
   * Retrieve the <code>Request</code> 
   * as a <code>Request</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Object ID
   * @return the <code>Persistent</code> identified   */
   public Request getRequestObject(int troid) {

@@ -2,6 +2,7 @@
 
 package com.ical.curator.poem.generated;
 
+
 import com.ical.curator.poem.CuratorDatabaseTables;
 import com.ical.curator.poem.CuratorTable;
 import com.ical.curator.poem.Widget;
@@ -25,20 +26,20 @@ import org.melati.poem.ValidationPoemException;
  * Melati POEM generated base class for 
 <code>Table</code> <code>Widget</code>.
  *
- * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+ * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
  */
 
 public class WidgetTableBase extends CuratorTable {
 
-  private Column col_id = null;
-  private Column col_name = null;
-  private Column col_extendedFrom = null;
-  private Column col_manual = null;
+  private Column<Integer> col_id = null;
+  private Column<String> col_name = null;
+  private Column<String> col_extendedFrom = null;
+  private Column<Boolean> col_manual = null;
 
  /**
   * Constructor. 
   * 
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param database          the POEM database we are using
   * @param name              the name of this <code>Table</code>
   * @param definitionSource  which definition is being used
@@ -55,7 +56,7 @@ public class WidgetTableBase extends CuratorTable {
  /**
   * Get the database tables.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @return the database tables
   */
   public CuratorDatabaseTables getCuratorDatabaseTables() {
@@ -65,7 +66,7 @@ public class WidgetTableBase extends CuratorTable {
   public void init() throws PoemException {
     super.init();
     defineColumn(col_id =
-        new Column(this, "id",
+        new Column<Integer>(this, "id",
                    new TroidPoemType(),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -78,7 +79,7 @@ public class WidgetTableBase extends CuratorTable {
             ((Widget)g).setId((Integer)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Integer> asField(Persistent g) {
             return ((Widget)g).getIdField();
           }
 
@@ -148,7 +149,7 @@ public class WidgetTableBase extends CuratorTable {
         });
 
     defineColumn(col_name =
-        new Column(this, "name",
+        new Column<String>(this, "name",
                    new StringPoemType(false, -1),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -161,7 +162,7 @@ public class WidgetTableBase extends CuratorTable {
             ((Widget)g).setName((String)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<String> asField(Persistent g) {
             return ((Widget)g).getNameField();
           }
 
@@ -227,7 +228,7 @@ public class WidgetTableBase extends CuratorTable {
         });
 
     defineColumn(col_extendedFrom =
-        new Column(this, "extendedFrom",
+        new Column<String>(this, "extendedFrom",
                    new StringPoemType(false, -1),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -240,7 +241,7 @@ public class WidgetTableBase extends CuratorTable {
             ((Widget)g).setExtendedFrom((String)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<String> asField(Persistent g) {
             return ((Widget)g).getExtendedFromField();
           }
 
@@ -302,7 +303,7 @@ public class WidgetTableBase extends CuratorTable {
         });
 
     defineColumn(col_manual =
-        new Column(this, "manual",
+        new Column<Boolean>(this, "manual",
                    new BooleanPoemType(false),
                    DefinitionSource.dsd) { 
           public Object getCooked(Persistent g)
@@ -315,7 +316,7 @@ public class WidgetTableBase extends CuratorTable {
             ((Widget)g).setManual((Boolean)cooked);
           }
 
-          public Field asField(Persistent g) {
+          public Field<Boolean> asField(Persistent g) {
             return ((Widget)g).getManualField();
           }
 
@@ -374,10 +375,10 @@ public class WidgetTableBase extends CuratorTable {
   * Retrieves the <code>Id</code> <code>Column</code> for this 
   * <code>Widget</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the id <code>Column</code>
   */
-  public final Column getIdColumn() {
+  public final Column<Integer> getIdColumn() {
     return col_id;
   }
 
@@ -386,10 +387,10 @@ public class WidgetTableBase extends CuratorTable {
   * Retrieves the <code>Name</code> <code>Column</code> for this 
   * <code>Widget</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the name <code>Column</code>
   */
-  public final Column getNameColumn() {
+  public final Column<String> getNameColumn() {
     return col_name;
   }
 
@@ -398,10 +399,10 @@ public class WidgetTableBase extends CuratorTable {
   * Retrieves the <code>ExtendedFrom</code> <code>Column</code> for this 
   * <code>Widget</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the extendedFrom <code>Column</code>
   */
-  public final Column getExtendedFromColumn() {
+  public final Column<String> getExtendedFromColumn() {
     return col_extendedFrom;
   }
 
@@ -410,10 +411,10 @@ public class WidgetTableBase extends CuratorTable {
   * Retrieves the <code>Manual</code> <code>Column</code> for this 
   * <code>Widget</code> <code>Table</code>.
   * 
-  * @see org.melati.poem.prepro.FieldDef#generateColAccessor 
+  * see org.melati.poem.prepro.FieldDef#generateColAccessor 
   * @return the manual <code>Column</code>
   */
-  public final Column getManualColumn() {
+  public final Column<Boolean> getManualColumn() {
     return col_manual;
   }
 
@@ -421,7 +422,7 @@ public class WidgetTableBase extends CuratorTable {
  /**
   * Retrieve the <code>Widget</code> as a <code>Widget</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Oject ID
   * @return the <code>Persistent</code> identified by the <code>troid</code>
   */
@@ -434,7 +435,7 @@ public class WidgetTableBase extends CuratorTable {
   * Retrieve the <code>Widget</code> 
   * as a <code>Widget</code>.
   *
-  * @see org.melati.poem.prepro.TableDef#generateTableBaseJava 
+  * see org.melati.poem.prepro.TableDef#generateTableBaseJava 
   * @param troid a Table Row Object ID
   * @return the <code>Persistent</code> identified   */
   public Widget getWidgetObject(int troid) {
